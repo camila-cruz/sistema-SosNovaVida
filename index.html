@@ -3,35 +3,31 @@
 <head>
     <meta charset="utf-8">
     <title>Principal</title>
+    <script src="src/js/jquery-2.0.3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="src/bs/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="src/jasny/css/jasny-bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="src/css/style.css">
+    <script src="src/bs/js/bootstrap.min.js"></script>
+    <script src="src/jasny/js/jasny-bootstrap.min.js"></script>
 </head>
 <body>
-    <header>
-        <h1>SOS Nova Vida</h1>
+    <header class="container row col-md-offset-1 col-md-11 col-sm-12">
+        <div class="text-right">
+            <h3>Simone Buda <span class="glyphicon glyphicon-user"></span></h3>
+        </div>
     </header>
-    <aside>
-        <nav>
-            <ul>
-                <li>Acolhidos
-                    <ul>Cadastrar</ul>
-                    <ul>Consultar</ul>
-                </li>
-                <li>Doadores
-                    <ul>Cadastrar</ul>
-                    <ul>Consultar</ul>
-                </li>
-                <li>Doações</li>
-                <li>Estoque
-                    <ul>
-                        <li>Inserir produto</li>
-                        <li>Retirar produto</li>
-                        <li>Consultar</li>
-                    </ul>
-                </li>
-                <li>Contabilidade</li>
-                <li>Usuários</li>
-            </ul>
-        </nav>
-    </aside>
-    <section></section>
+    <div class="menu col-md-2 col-sm-2">
+    <!--<div class="menu container col-md-2 hidden-sm">-->
+        <nav class="navmenu navmenu-default navmenu-fixed-left" id="menuLateral"></nav>
+        <!--<nav class="nav nav-pills" id="menuLateral"></nav>-->
+        <!-- <nav class="navbar navbar-left" id="menuLateral"></nav> -->
+        <script src="src/js/menu.js"></script>
+    </div>
+    <section class="container col-md-10 col-sm-10">
+        <h1>Bem vindo(a) ao sistema da SOS Nova Vida!</h1>
+        <h2>Para onde deseja ir?</h2>
+        <button>Anotações</button>
+        <button>Calendário</button>
+    </section>
 </body>
 </html>

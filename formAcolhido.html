@@ -3,41 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <title>Cadastro de Acolhidos</title>
+    <script src="src/js/jquery-2.0.3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="src/bs/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="src/jasny/css/jasny-bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="src/css/style.css">
+    <script src="src/bs/js/bootstrap.min.js"></script>
+    <script src="src/jasny/js/jasny-bootstrap.min.js"></script>
 </head>
 <body>
-    <header>
-        <h1>SOS Nova Vida</h1>
+    <header class="container row col-md-offset-1 col-md-11 col-sm-12">
+        <div class="text-right">
+            <h3>Simone Buda <span class="glyphicon glyphicon-user"></span></h3>
+        </div>
     </header>
-    <aside>
-        <nav>
-            <ul>
-                <li>Acolhidos
-                    <ul>Cadastrar</ul>
-                    <ul>Consultar</ul>
-                </li>
-                <li>Doadores
-                    <ul>Cadastrar</ul>
-                    <ul>Consultar</ul>
-                </li>
-                <li>Doações</li>
-                <li>Estoque
-                    <ul>
-                        <li>Inserir produto</li>
-                        <li>Retirar produto</li>
-                        <li>Consultar</li>
-                    </ul>
-                </li>
-                <li>Contabilidade</li>
-                <li>Usuários</li>
-            </ul>
-        </nav>
-    </aside>
-    <section>
+    <div class="menu col-md-2 col-sm-2">
+        <nav class="navmenu navmenu-default navmenu-fixed-left" id="menuLateral"></nav>
+        <script src="src/js/menu.js"></script>
+    </div>
+    <section class="container col-md-8 col-sm-10">
+        <h1>Cadastro de acolhidos</h1><br>
         <form>
-            <label>Nome completo</label>
-            <input type="text">
-            <label>Data de nascimento</label>
-            <input type="text">
+            <div class="row">
+                <div class="col-md-9">
+                    <label>Nome completo</label><br>
+                    <input type="text" class="form-control"><br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Data de nascimento</label><br>
+                            <input type="date" class="form-control">
+                        </div>
+                        <div class="col-md-offset-1 col-md-5">
+                            <label>Data de entrada</label><br>
+                            <input type="date" class="form-control"><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <label>Local de nascimento</label><br>
+                            <input type="text" class="form-control"><br>
+                        </div>
+                        <div class="col-md-offset-1 col-md-2">
+                            <label>UF</label><br>
+                            <input type="text" class="form-control"><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-offset-1 col-md-2">
+                    <label>Foto</label><br>
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 240px; height: 180px;"></div>
+                        <div>
+                        <span class="btn btn-default btn-file">
+                            <span class="fileinput-new">Selecione a imagem</span>
+                            <span class="fileinput-exists">Alterar</span>
+                            <input type="file" name="...">
+                        </span>
+                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
+                        </div>
+                    </div><br>
+                </div><br>
+            </div>
+
+            <div class="row">
+                <div class="col-md-9">
+                    <label>Nome da mãe</label><br>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-offset-1 col-md-2">
+                    <br><input type="checkbox">
+                    <label>Responsável</label><br><br>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-9">
+                    <label>Nome do pai</label><br>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-offset-1 col-md-2">
+                    <br><input type="checkbox">
+                    <label>Responsável</label><br><br>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Nome do responsável</label><br>
+                    <input type="text" class="form-control"><br><br>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <button>Limpar</button> <button>Salvar</button>
+                </div>
+            </div>
         </form>
     </section>
 </body>
