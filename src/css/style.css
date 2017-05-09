@@ -2,14 +2,19 @@
 @import url('https://fonts.googleapis.com/css?family=Sacramento');
 @import url('https://fonts.googleapis.com/css?family=Patrick+Hand+SC');
 
+body {
+    font-family: "Handlee", Arial;
+}
+
 header {
     background-color: #9d8bff;
     margin: 0px;
+    width: 100%;
 }
 
 section {
     margin-top: 1%;
-    margin-left: 10%;
+    margin-left: 18%;
     font-family: "Handlee", Arial;
     font-size: 15pt;
     padding-bottom: 3%;
@@ -29,6 +34,14 @@ nav div {
     padding: 0px;
 }
 
+nav li {
+    font-size: 1.5em;
+}
+
+nav li:hover {
+    background-color: rgb(20,200,150);
+}
+
 .navmenu {
     margin-left: 0px;
     width: 15%;
@@ -39,10 +52,6 @@ a.navmenu-brand {
     height: 5%;
 }
 
-nav li:hover {
-   background-color: rgb(20,200,150);
-}
-
 .dropdown-menu {
     border: 0pt;
     border-radius: 0px; /* cantos 90º */
@@ -50,4 +59,18 @@ nav li:hover {
     box-shadow: none;
     position: relative;
     /*background-color: rgb(20,100,200);*/
+}
+
+.navmenu-nav {
+    padding-right: 0%;
+}
+
+#collapse-navbar {
+    padding-left: 0%;
+    padding-right: 0%;
+}
+
+.menu-baixo {
+    position: fixed;
+    bottom: 0;
 }

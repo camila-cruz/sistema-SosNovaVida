@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Cadastro de Acolhidos</title>
+    <title>Cadastro de Doadores</title>
     <script src="src/js/jquery-2.0.3.min.js"></script>
     <link rel="stylesheet" type="text/css" href="src/bs/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="src/jasny/css/jasny-bootstrap.min.css">
@@ -21,30 +21,34 @@
         <script src="src/js/menu.js"></script>
     </div>
     <section class="container col-md-8 col-sm-10">
-        <h1>Cadastro de acolhidos</h1><hr><br>
+        <h1>Cadastro de doadores</h1><hr><br>
         <form>
             <div class="row">
                 <div class="col-md-9">
                     <label>Nome completo</label><br>
                     <input type="text" class="form-control"><br>
                     <div class="row">
-                        <div class="col-md-6">
-                            <label>Data de nascimento</label><br>
+                        <div class="col-md-5">
+                            <label>Data de entrada</label><br>
                             <input type="date" class="form-control">
                         </div>
-                        <div class="col-md-offset-1 col-md-5">
-                            <label>Data de entrada</label><br>
-                            <input type="date" class="form-control"><br>
+                        <div class="col-md-offset-1 col-md-6">
+                            <label>Tipo</label><br>
+                            <input type="text" class="form-control"><br>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-9">
-                            <label>Local de nascimento</label><br>
+                        <div class="col-md-6">
+                            <label>Endereço</label><br>
                             <input type="text" class="form-control"><br>
                         </div>
-                        <div class="col-md-offset-1 col-md-2">
-                            <label>UF</label><br>
+                        <div class="col-md-3">
+                            <label>Complemento</label><br>
                             <input type="text" class="form-control"><br>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Número</label><br>
+                            <input type="number" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -65,34 +69,48 @@
             </div>
 
             <div class="row">
-                <div class="col-md-9">
-                    <label>Nome da mãe</label><br>
+                <div class="col-md-3">
+                    <label>Bairro</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-offset-1 col-md-5">
+                    <label>Cidade</label><br>
                     <input type="text" class="form-control">
                 </div>
                 <div class="col-md-offset-1 col-md-2">
-                    <br><input type="checkbox">
-                    <label>Responsável</label><br><br>
+                    <label>UF</label><br>
+                    <input type="text" class="form-control">
+                    <br>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-md-9">
-                    <label>Nome do pai</label><br>
-                    <input type="text" class="form-control">
+                <div class="col-md-4">
+                    <label>Telefone residencial</label><br>
+                    <input type="tel" class="form-control"><br>
                 </div>
-                <div class="col-md-offset-1 col-md-2">
-                    <br><input type="checkbox">
-                    <label>Responsável</label><br><br>
+                <div class="col-md-4">
+                    <label>Celular</label><br>
+                    <input type="text" class="form-control"><br>
+                </div>
+                <div class="col-md-4">
+                    <label>Telefone comercial</label><br>
+                    <input type="text" class="form-control"><br>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-md-12">
-                    <label>Nome do responsável</label><br>
-                    <input type="text" class="form-control"><br><br>
+                <div class="col-md-4">
+                    <label>E-mail</label><br>
+                    <input type="email" class="form-control">
                 </div>
-            </div>
+                <div class="col-md-offset-1 col-md-7 hidden">
+                    <label>Última doação</label><br>
+                    <input type="text" class="form-control">
+                </div>
 
+            </div>
+            <br>
             <div class="row">
                 <div class="col-md-12">
                     <button>Limpar</button> <button>Salvar</button>

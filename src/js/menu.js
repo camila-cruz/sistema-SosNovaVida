@@ -24,7 +24,7 @@ document.getElementById("menuLateral").innerHTML =
                 '<a class="dropdown-toggle" data-toggle="dropdown" href="#">' +
                 'Doadores <span class="caret"></span></a>' +
                 '<ul class="dropdown-menu">' +
-                    '<li><a>Cadastrar</a></li>' +
+                    '<li><a href="formDoador.html">Cadastrar</a></li>' +
                     '<li><a>Consultar</a></li>' +
                 '</ul>' +
             '</li>' +
@@ -39,8 +39,8 @@ document.getElementById("menuLateral").innerHTML =
                 '</ul>' +
             '</li>' +
             '<li><a>Contabilidade</a></li>' +
-            '<li><a>Usuários</a></li>' +
-            '<li><a>Configurações</a></li>' +
+            '<li class="menu-baixo"><a>Usuários</a></li>' +
+            '<li class="menu-baixo"><a>Configurações</a></li>' +
         '</ul>' +
     '</div>' +
 '</div>'
