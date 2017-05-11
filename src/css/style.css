@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Handlee');
 @import url('https://fonts.googleapis.com/css?family=Sacramento');
 @import url('https://fonts.googleapis.com/css?family=Patrick+Hand+SC');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
 
 body {
     font-family: "Handlee", Arial;
@@ -8,18 +9,45 @@ body {
 
 header {
     background-color: #9d8bff;
-    margin: 0px;
-    width: 100%;
 }
 
-section {
-    margin-top: 1%;
-    margin-left: 18%;
-    font-family: "Handlee", Arial;
+section.container {
     font-size: 15pt;
+    padding-left: 2%;
+    padding-top: 1%;
     padding-bottom: 3%;
-    /*background: url("../../img/graph-bg.png") repeat;
-    background: url("http://www.timvandevall.com/wp-content/uploads/2013/05/Lined-Paper-Template-11.jpg");*/
+    background-color: #ffca71;
+}
+
+#menuLateral {
+    height: auto;
+    position: fixed;
+    right: auto;
+    left: 0;
+    border-radius: 0px;
+    top: auto;
+    min-height: 100vh;
+    /*width: 14%;*/
+}
+
+.home-button a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.home-button {
+    /*width: 16%;*/
+    width: 16.6666667%;
+    position: fixed;
+    top: 0;
+    background-color: #9d8bff;
+    left: 0;
+    height: 100%;   /*para o botão ocupar todo o seu espaco retangular */
+    border-right: 1px solid gray;
+}
+
+.user-cont {
+    float: right;
 }
 
 .menu {
@@ -44,12 +72,26 @@ nav li:hover {
 
 .navmenu {
     margin-left: 0px;
-    width: 15%;
+    /*width: 15%;*/
+    width: 16.66666667%;
 }
 
 a.navmenu-brand {
-    padding-top: 0px;
+    /*padding-top: 0px;*/
     height: 5%;
+   /* padding-bottom: 0px;
+    margin-bottom: 2%;*/
+    margin: 0px;
+    padding-top: 0px;
+    /*padding-right: 0px;*/
+    padding-bottom: 2%;
+}
+
+.navbar-header {
+    padding-right: 0px;
+    background-color: greenyellow;
+    width: 100%;
+    z-index: -1;
 }
 
 .dropdown-menu {
@@ -70,7 +112,6 @@ a.navmenu-brand {
     padding-right: 0%;
 }
 
-.menu-baixo {
-    position: fixed;
-    bottom: 0;
+.clear {
+    clear: right;
 }

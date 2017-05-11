@@ -8,7 +8,7 @@ document.getElementById("menuLateral").innerHTML =
             '<span class="icon-bar"></span>' +
             '<span class="icon-bar"></span>' +
         '</button>' +
-        '<a class="navmenu-brand" href="index.html"><h3>SOS Nova Vida</h3></a>' +
+        //'<a class="navmenu-brand" href="index.html"><h3>SOS Nova Vida</h3></a>' +
     '</div>' +
     '<div class="collapse navbar-collapse" id="collapse-navbar">' +
         '<ul class="nav navmenu-nav col-md-12">' +
@@ -39,8 +39,8 @@ document.getElementById("menuLateral").innerHTML =
                 '</ul>' +
             '</li>' +
             '<li><a>Contabilidade</a></li>' +
-            '<li class="menu-baixo"><a>Usuários</a></li>' +
-            '<li class="menu-baixo"><a>Configurações</a></li>' +
+            '<li><a>Usuários</a></li>' +
+            '<li><a>Configurações</a></li>' +
         '</ul>' +
     '</div>' +
 '</div>'
