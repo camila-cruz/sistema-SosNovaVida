@@ -4,11 +4,14 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
 
 body {
-    font-family: "Handlee", Arial;
+    font-family: "Patrick Hand SC", Arial;
 }
 
 header {
-    background-color: #9d8bff;
+    /*background-color: #9d8bff;
+    background-color: #FF6347;
+    color: #eaeaea;*/
+    background-color: #eaeaea;
 }
 
 section.container {
@@ -16,7 +19,7 @@ section.container {
     padding-left: 2%;
     padding-top: 1%;
     padding-bottom: 3%;
-    background-color: #ffca71;
+    /*background-color: #ffca71;*/
 }
 
 #menuLateral {
@@ -31,19 +34,22 @@ section.container {
 }
 
 .home-button a {
-    color: #000000;
+    /*color: #000000;*/
+    color: #eaeaea;
     text-decoration: none;
 }
 
 .home-button {
     /*width: 16%;*/
     width: 16.6666667%;
+    /*background-color: #9d8bff;*/
+    background-color: #999999;
     position: fixed;
     top: 0;
-    background-color: #9d8bff;
     left: 0;
     height: 100%;   /*para o botão ocupar todo o seu espaco retangular */
     border-right: 1px solid gray;
+    text-align: center;
 }
 
 .user-cont {
@@ -55,7 +61,8 @@ section.container {
 }
 
 nav a {
-    color: #000000;
+    /*color: #000000;*/
+    color: #eaeaea;
 }
 
 nav div {
@@ -64,16 +71,19 @@ nav div {
 
 nav li {
     font-size: 1.5em;
+    width: 100%;
 }
 
 nav li:hover {
-    background-color: rgb(20,200,150);
+    /*background-color: rgb(20,200,150);*/
+    background-color: #eaeaea;
 }
 
 .navmenu {
     margin-left: 0px;
     /*width: 15%;*/
     width: 16.66666667%;
+
 }
 
 a.navmenu-brand {
@@ -100,6 +110,7 @@ a.navmenu-brand {
     margin: 0% 0% 5%;   /* margem de baixo 5% */
     box-shadow: none;
     position: relative;
+    width: 100%;
     /*background-color: rgb(20,100,200);*/
 }
 
@@ -115,3 +126,10 @@ a.navmenu-brand {
 .clear {
     clear: right;
 }
+
+/*
+color: #eaeaea;
+background-color: #FF6347;
+
+
+*/
