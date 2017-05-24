@@ -1,0 +1,29 @@
+{
+  "name": "sistema-nova-vida",
+  "version": "1.0.0",
+  "description": "Sistema de controle da ONG SOS Nova Vida",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Camila-Cruz/sistema-SosNovaVida.git"
+  },
+  "keywords": [
+    "tcc",
+    "nova-vida",
+    "nova",
+    "vida",
+    "sos",
+    "ong",
+    "ongsosnovavida",
+    "ong-sos-nova-vida"
+  ],
+  "author": "Camila, Gabriel, Joice, Yuri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Camila-Cruz/sistema-SosNovaVida/issues"
+  },
+  "homepage": "https://github.com/Camila-Cruz/sistema-SosNovaVida#readme"
+}
