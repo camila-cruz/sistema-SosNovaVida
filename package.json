@@ -25,5 +25,12 @@
   "bugs": {
     "url": "https://github.com/Camila-Cruz/sistema-SosNovaVida/issues"
   },
-  "homepage": "https://github.com/Camila-Cruz/sistema-SosNovaVida#readme"
+  "homepage": "https://github.com/Camila-Cruz/sistema-SosNovaVida#readme",
+  "dependencies": {
+    "consign": "^0.1.4",
+    "express": "^4.15.3",
+    "mongo": "^0.1.0",
+    "morgan": "^1.8.2",
+    "winston": "^2.3.1"
+  }
 }
