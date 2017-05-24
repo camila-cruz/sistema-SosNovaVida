@@ -2,7 +2,7 @@
   "name": "sistema-nova-vida",
   "version": "1.0.0",
   "description": "Sistema de controle da ONG SOS Nova Vida",
-  "main": "index.js",
+  "main": "cluster.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -29,6 +29,7 @@
   "dependencies": {
     "consign": "^0.1.4",
     "express": "^4.15.3",
+    "memcached": "^2.2.2",
     "mongo": "^0.1.0",
     "morgan": "^1.8.2",
     "winston": "^2.3.1"
