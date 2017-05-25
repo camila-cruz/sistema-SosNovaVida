@@ -28,6 +28,7 @@
   "homepage": "https://github.com/Camila-Cruz/sistema-SosNovaVida#readme",
   "dependencies": {
     "consign": "^0.1.4",
+    "ejs": "^2.5.6",
     "express": "^4.15.3",
     "memcached": "^2.2.2",
     "mongo": "^0.1.0",
