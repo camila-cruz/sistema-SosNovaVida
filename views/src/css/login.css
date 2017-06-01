@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Handlee');
+
+body {
+    font-family: "Handlee", Arial;
+    font-size: 15pt;
+    /*background: url("http://www.safeguardingchildrenea.co.uk/wp-content/uploads/2015/03/Childs-drawing-my-family.png");*/
+}
+
+.caixa {
+    background-color: rgba(250,250,250,0.9);
+    position: relative;
+    margin: 12% 20% 10% 20%;
+    padding: 20pt;
+    text-align: center;
+}
