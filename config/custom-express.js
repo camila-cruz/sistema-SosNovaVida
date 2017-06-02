@@ -5,7 +5,7 @@ var logger = require('./../services/logger.js');
 
 module.exports = function(){
   var app = express();
-  app.set('view engine', 'ejs');
+  app.set('view engine', 'html');
 
   app.use(morgan('common', {
     stream: {
@@ -17,9 +17,9 @@ module.exports = function(){
 
   consign()
    .include('routes')
-//   .then('src')
    .then('controllers')
    .then('services')
+   .then('views')
    .into(app);
 
   return app;
