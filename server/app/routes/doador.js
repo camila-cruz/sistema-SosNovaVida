@@ -1,7 +1,9 @@
+const mongoose = require('../../config/database');
+
 module.exports = ( app ) => {
     app.get('/doadores', (req, res) => {
         console.log('Recebendo requisição GET em /doadores');
-        res.status(200).render('formDoador');
+        mongoose.connect();
     });
 
     app.get('/doadores/json', (req, res) => {
@@ -13,11 +15,14 @@ module.exports = ( app ) => {
         res.status(200).send(doadores);
     });
 
-    app.get('/cadastro/doador', ( req, res ) => {
-        res.status(301).redirect('/formDoador.html');
+    app.get('/formDoador', (req, res) => {
+        console.log('Recebendo requisição GET em /formDoador');
+        console.log('Redirecionando para /cadastro/doador');
+        res.status(301).redirect('/cadastro/doador');
     });
 
-    app.get('/formDoador.html', ( req, res ) => {
+    app.get('/cadastro/doador', ( req, res ) => {
+        console.log('Recebendo requisição GET em /cadastro/doador');
         res.render('formDoador');
     });
 };

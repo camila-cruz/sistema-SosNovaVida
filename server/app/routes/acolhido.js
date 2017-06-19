@@ -1,10 +1,12 @@
 module.exports = ( app ) => {
-    app.get('/cadastro/acolhido', ( req, res ) => {
-        res.status(300).redirect('/formAcolhido.html');
+    app.get('/formAcolhido', (req, res) => {
+        console.log('Recebendo requisicao em /formAcolhido');
+        console.log('Redirecionando para /cadastro/acolhido');
+        res.status(301).redirect('/cadastro/acolhido');
     });
 
-    app.get('/formAcolhido.html', ( req, res ) => {
-        res.status(200);
-        return SendFiles( req, res );
+    app.get('/cadastro/acolhido', (req, res) => {
+        console.log('Recebendo requisição em /cadastro/acolhido');
+        res.status(200).render('formAcolhido');
     });
 }

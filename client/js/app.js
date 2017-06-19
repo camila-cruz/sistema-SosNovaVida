@@ -1,1 +1,1 @@
-angular.module('novaVida');
+angular.module('novaVida', []);

@@ -1,7 +1,7 @@
-module.exports = (uri) => {
+module.exports = () => {
     var mongoose = require('mongoose');
 
-    mongoose.connect('mongodb://' + uri);
+    mongoose.connect('mongodb://localhost:27014');
 
     mongoose.connection.on('connected', () => {
         console.log('Conectado ao MongoDB')

@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Cadastro de Doadores</title>
-    <script src="src/js/jquery-2.0.3.min.js"></script>
-    <script src="src/bs/js/bootstrap.min.js"></script>
-    <script src="src/jasny/js/jasny-bootstrap.min.js"></script>
-    <script src="lib/angular/angular.js"></script>
-    <link rel="stylesheet" type="text/css" href="../public/src/bs/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="src/jasny/css/jasny-bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="src/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/jasny-bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script src="../lib/angular/angular.js"></script>
+    <script src="../lib/jquery/jquery-2.0.3.min.js"></script>
+    <script src="../lib/bootstrap/bootstrap.min.js"></script>
+    <script src="../lib/bootstrap/jasny-bootstrap.min.js"></script>
+    <script src=''></script>
 </head>
-<body>
-    {{doadores}}
+<body ng-controller='doadoresCtrl'>
     <header class="col-md-12 col-sm-12">
         <div class="text-left col-md-2 col-sm-2 home-button">
-            <a href="/index">
+            <a href="index">
                 <h3 class="hidden-sm hidden-xs">SOS Nova Vida</h3>
                 <h3 class="visible-sm visible-xs">Nova Vida</h3>
             </a>
@@ -26,23 +26,24 @@
     </header>
     <div class="menu col-md-2 col-sm-2">
         <nav class="navmenu navmenu-default navbar-default" id="menuLateral"></nav>
-        <script src="src/js/menu.js"></script>
+        
     </div>
+
     <section class="container col-md-10 col-sm-10">
         <h1>Cadastro de doadores</h1><hr><br>
         <form>
             <div class="row">
                 <div class="col-md-8">
                     <label>Nome completo</label><br>
-                    <input type="text" class="form-control"><br>
+                    <input type="text" class="form-control" ng-model='doador.nome'><br>
                     <div class="row">
                         <div class="col-md-5">
                             <label>Data de entrada</label><br>
-                            <input type="date" class="form-control">
+                            <input type="date" class="form-control" ng-model='doador.data'>
                         </div>
                         <div class="col-md-offset-1 col-md-6">
                             <label>Tipo</label><br>
-                            <input type="text" class="form-control"><br>
+                            <input type="text" class="form-control" ng-model='doador.tipo' placeholder="Tipo"><br>
                         </div>
                     </div>
                     <div class="row">
@@ -126,5 +127,7 @@
             </div>
         </form>
     </section>
+
+<script src="../js/menu.js"></script>
 </body>
 </html>

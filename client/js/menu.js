@@ -16,7 +16,7 @@ document.getElementById("menuLateral").innerHTML =
                 '<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">' +
                 'Acolhidos <span class="caret"></span></a>' +
                 '<ul class="dropdown-menu">' +
-                    '<li><a href="view/formAcolhido.html">Cadastrar</a></li>' +
+                    '<li><a href="/formAcolhido">Cadastrar</a></li>' +
                     '<li><a>Consultar</a></li>' +
                 '</ul>' +
             '</li>' +
@@ -24,7 +24,7 @@ document.getElementById("menuLateral").innerHTML =
                 '<a class="dropdown-toggle" data-toggle="dropdown" href="#">' +
                 'Doadores <span class="caret"></span></a>' +
                 '<ul class="dropdown-menu">' +
-                    '<li><a href="view/formDoador.html">Cadastrar</a></li>' +
+                    '<li><a href="/formDoador">Cadastrar</a></li>' +
                     '<li><a>Consultar</a></li>' +
                 '</ul>' +
             '</li>' +

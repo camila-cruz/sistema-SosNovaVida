@@ -16,7 +16,7 @@ module.exports = function(){
   app.set('view engine', 'html');
 
   app.set('clientPath', path.join(__dirname, '../..', 'client'));
-  console.log(app.get('clientPath'));
+  
   app.use(express.static(app.get('clientPath')));
   app.use(bodyParser.json());
 
