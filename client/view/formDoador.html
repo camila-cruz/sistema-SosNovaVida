@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html ng-app='novaVida'>
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Doadores</title>
+    <script src="src/js/jquery-2.0.3.min.js"></script>
+    <script src="src/bs/js/bootstrap.min.js"></script>
+    <script src="src/jasny/js/jasny-bootstrap.min.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <link rel="stylesheet" type="text/css" href="../public/src/bs/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="src/jasny/css/jasny-bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="src/css/style.css">
+</head>
+<body>
+    {{doadores}}
+    <header class="col-md-12 col-sm-12">
+        <div class="text-left col-md-2 col-sm-2 home-button">
+            <a href="/index">
+                <h3 class="hidden-sm hidden-xs">SOS Nova Vida</h3>
+                <h3 class="visible-sm visible-xs">Nova Vida</h3>
+            </a>
+        </div>
+        <div class="text-right col-md-10 col-sm-10 user-cont">
+            <h3>Simone <span class="glyphicon glyphicon-user"></span></h3>
+        </div>
+    </header>
+    <div class="menu col-md-2 col-sm-2">
+        <nav class="navmenu navmenu-default navbar-default" id="menuLateral"></nav>
+        <script src="src/js/menu.js"></script>
+    </div>
+    <section class="container col-md-10 col-sm-10">
+        <h1>Cadastro de doadores</h1><hr><br>
+        <form>
+            <div class="row">
+                <div class="col-md-8">
+                    <label>Nome completo</label><br>
+                    <input type="text" class="form-control"><br>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label>Data de entrada</label><br>
+                            <input type="date" class="form-control">
+                        </div>
+                        <div class="col-md-offset-1 col-md-6">
+                            <label>Tipo</label><br>
+                            <input type="text" class="form-control"><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Endereço</label><br>
+                            <input type="text" class="form-control"><br>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Complemento</label><br>
+                            <input type="text" class="form-control"><br>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Número</label><br>
+                            <input type="number" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-offset-1 col-md-2">
+                    <label>Foto</label><br>
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 240px; height: 180px;"></div>
+                        <div>
+                        <span class="btn btn-default btn-file">
+                            <span class="fileinput-new">Selecione a imagem</span>
+                            <span class="fileinput-exists">Alterar</span>
+                            <input type="file" name="...">
+                        </span>
+                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
+                        </div>
+                    </div><br>
+                </div><br>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Bairro</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-offset-1 col-md-5">
+                    <label>Cidade</label><br>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-offset-1 col-md-2">
+                    <label>UF</label><br>
+                    <input type="text" class="form-control">
+                    <br>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Telefone residencial</label><br>
+                    <input type="tel" class="form-control"><br>
+                </div>
+                <div class="col-md-4">
+                    <label>Celular</label><br>
+                    <input type="text" class="form-control"><br>
+                </div>
+                <div class="col-md-4">
+                    <label>Telefone comercial</label><br>
+                    <input type="text" class="form-control"><br>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label>E-mail</label><br>
+                    <input type="email" class="form-control">
+                </div>
+                <div class="col-md-offset-1 col-md-7 hidden">
+                    <label>Última doação</label><br>
+                    <input type="text" class="form-control">
+                </div>
+
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn-primary">Limpar</button> <button class="btn-success">Salvar</button>
+                </div>
+            </div>
+        </form>
+    </section>
+</body>
+</html>
