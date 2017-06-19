@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Formulário PIA</title>
-    <script src="src/js/jquery-2.0.3.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="src/bs/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="src/jasny/css/jasny-bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="src/css/style.css">
-    <script src="src/bs/js/bootstrap.min.js"></script>
-    <script src="src/jasny/js/jasny-bootstrap.min.js"></script>
+    <script src="../static/src/js/jquery-2.0.3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/src/bs/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/src/jasny/css/jasny-bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/src/css/style.css">
+    <script src="../static/src/bs/js/bootstrap.min.js"></script>
+    <script src="../static/src/jasny/js/jasny-bootstrap.min.js"></script>
+    <script src="../static/src/js/main.js"></script>
 </head>
 <body>
     <header class="col-md-12 col-sm-12">
@@ -24,87 +25,53 @@
     </header>
     <div class="menu col-md-2 col-sm-2">
         <nav class="navmenu navmenu-default navbar-default" id="menuLateral"></nav>
-        <script src="src/js/menu.js"></script>
+        <script src="../static/src/js/menu.js"></script>
     </div>
     <section class="container col-md-10 col-sm-10">
-        <h1>Formulário PIA</h1><hr><br>
+        <h1>PIA</h1><hr>
+        <div class="row">
+            <div class="col-md-9">
+                <table class="table">
+                    <tr>
+                        <th>Nome</th>
+                        <td>{{ acolhido.nome }}</td>
+                    </tr>
+                    <tr>
+                        <th>Local de nascimento</th>
+                        <td>{{ acolhido.local_nasc }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nome da mãe</th>
+                        <td>{{ acolhido.nome_mae }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nome do pai</th>
+                        <td>{{ acolhido.nome_pai }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nome do responsável</th>
+                        <td>{{ acolhido.nome_resp }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <img class="img-thumbnail text-right" src="{{ acolhido.imagem.url }}" style="width: 20%; height: 20%;">
+            </div>
+        </div>
         <form>
             <div class="row">
-                <div class="col-md-8">
-                    <label>Nome completo</label><br>
-                    <input type="text" class="form-control"><br>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>Data de nascimento</label><br>
-                            <input type="date" class="form-control">
-                        </div>
-                        <div class="col-md-offset-1 col-md-5">
-                            <label>Data de entrada</label><br>
-                            <input type="date" class="form-control"><br>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-9">
-                            <label>Local de nascimento</label><br>
-                            <input type="text" class="form-control"><br>
-                        </div>
-                        <div class="col-md-offset-1 col-md-2">
-                            <label>UF</label><br>
-                            <input type="text" class="form-control"><br>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-offset-1 col-md-2">
-                    <label>Foto</label><br>
-                    <div class="fileinput fileinput-new" data-provides="fileinput">
-                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 240px; height: 180px;"></div>
-                        <div>
-                        <span class="btn btn-default btn-file">
-                            <span class="fileinput-new">Selecione a imagem</span>
-                            <span class="fileinput-exists">Alterar</span>
-                            <input type="file" name="...">
-                        </span>
-                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
-                        </div>
-                    </div><br>
-                </div><br>
-            </div>
-
-            <div class="row">
-                <div class="col-md-9">
-                    <label>Nome da mãe</label><br>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-md-offset-1 col-md-2">
-                    <br><input type="checkbox">
-                    <label>Responsável</label><br><br>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-9">
-                    <label>Nome do pai</label><br>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-md-offset-1 col-md-2">
-                    <br><input type="checkbox">
-                    <label>Responsável</label><br><br>
-                </div>
-            </div>
-
-            <div class="row">
                 <div class="col-md-12">
-                    <label>Nome do responsável</label><br>
-                    <input type="text" class="form-control"><br><br>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <button>Limpar</button> <button>Salvar</button>
+                    <br><label>Relato do mês</label><br>
+                    <textarea rows=4 class="form-control" id="txt_pia"></textarea><br><br>
                 </div>
             </div>
         </form>
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <button class="btn btn-primary" onclick="clean()">Limpar</button> 
+                <button class="btn btn-success" type="submit">Salvar</button>
+            </div>
+        </div>
     </section>
 </body>
 </html>
