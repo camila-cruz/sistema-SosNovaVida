@@ -1,4 +1,4 @@
-angular.module('novaVida').factory('doadoresAPI', function( $http ) {
+angular.module('novaVida').factory('doadoresAPI', function( $http, config ) {
     let _getDoadores = () => {
         return $http.get( config.baseUrl + '/doadores' );
     };

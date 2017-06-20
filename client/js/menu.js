@@ -25,7 +25,7 @@ document.getElementById("menuLateral").innerHTML =
                 'Doadores <span class="caret"></span></a>' +
                 '<ul class="dropdown-menu">' +
                     '<li><a href="/formDoador">Cadastrar</a></li>' +
-                    '<li><a>Consultar</a></li>' +
+                    '<li><a href="/consultaDoador">Consultar</a></li>' +
                 '</ul>' +
             '</li>' +
             '<li><a>Doações</a></li>' +

@@ -37,7 +37,8 @@ module.exports = function(){
 
   // Carrega os arquivos
   consign()
-   .include('/app')
+   .include('/app/models')
+   .then('/app')
    .then('/services')
    .into(app);
 
