@@ -1,13 +1,4 @@
-angular.module('novaVida').controller('doadorCtrl', function( $scope, doadoresAPI ) {
-    $scope.app = 'SOS Nova Vida';
-        $scope.doadores = [];
-
-    let carregarDoadores = () => {
-        doadoresAPI.getDoadores().then( data => {
-            $scope.doadores = data.data;
-        });
-    };
-
-    carregarDoadores();
-
+angular.module('novaVida').controller('doadorCtrl', function( $scope, doador, uf ) {
+    $scope.doadores = doador.data;
+    $scope.ufs = uf.data;
 });

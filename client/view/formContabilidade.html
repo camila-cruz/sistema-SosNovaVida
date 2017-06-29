@@ -1,58 +1,19 @@
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <title>Fluxo de caixa</title>
-    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/jasny-bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
-    <script src="../lib/angular/angular.js"></script>
-    <script src="../lib/jquery/jquery-2.0.3.min.js"></script>
-    <script src="../lib/bootstrap/bootstrap.min.js"></script>
-    <script src="../lib/bootstrap/jasny-bootstrap.min.js"></script>
-</head>
-
-<body>
-    <header class="col-md-12 col-sm-12">
-        <div class="text-left col-md-2 col-sm-2 home-button">
-            <a href="index.html">
-                <h3 class="hidden-sm hidden-xs">SOS Nova Vida</h3>
-                <h3 class="visible-sm visible-xs">Nova Vida</h3>
-            </a>
-        </div>
-        <div class="text-right col-md-10 col-sm-10 user-cont">
-            <h3>Simone <span class="glyphicon glyphicon-user"></span></h3>
-        </div>
-    </header>
-    <br class="clear">
-    <div>
-        <div class="menu col-md-2 col-sm-2">
-            <nav class="navmenu navmenu-default navbar-default" id="menuLateral"></nav>
-            <script src="src/js/menu.js"></script>
-        </div>
-        <section class="container col-md-10 col-sm-10" style="padding-left: 2%;">
-            <h1>Fluxo de Caixa</h1>
-            <hr>
-            <table class="table">
-                <tr>
-                    <th>ID</th>
-                    <th>Descrição</th>
-                    <th>Data</th>
-                    <th>Entrada</th>
-                    <th>Saída</th>
-                    <th>Saldo</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>25/05/2017</td>
-                    <td>Conta de luz</td>
-                    <td>200,00</td>
-                    <td>-</td>
-                    <td>1528,54</td>
-                </tr>
-            </table>
-        </section>
-    </div>
-</body>
-
-</html>
+<h1>Fluxo de Caixa</h1>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Descrição</th>
+        <th><a href='' ng-click="ordenarPor('dtMov')">Data</a></th>
+        <th><a href='' ng-click="ordenarPor('tipoMov')">Tipo de Movimentação</a></th>
+        <th><a href='' ng-click="ordenarPor('valMov')">Valor</a></th>
+        <th>Saldo</th>
+    </tr>
+    <tr ng-repeat='movimentacao in movimentacoes | orderBy:criterioDeOrdenacao:true track by movimentacao.id '>
+        <td>{{movimentacao.id}}</td>
+        <td>{{movimentacao.descricao}}</td>
+        <td>{{movimentacao.dtMov | date: 'dd/MM/yy HH:mm'}}</td>
+        <td>{{movimentacao.tipoMov}}</td>
+        <td>{{movimentacao.valMov | currency}}</td>
+        <td>{{movimentacao.saldo}}</td>
+    </tr>
+</table>

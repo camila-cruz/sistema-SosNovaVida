@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app='novaVida'>
+<head>
+    <meta charset="utf-8">
+    <title>SOS Nova Vida</title>
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/jasny-bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-route.js"></script>
+    <script src="lib/jquery/jquery-2.0.3.min.js"></script>
+    <script src="lib/bootstrap/bootstrap.min.js"></script>
+    <script src="lib/bootstrap/jasny-bootstrap.min.js"></script>
+    <script src='js/app.js'></script>
+    <script src="js/controllers/acolhidoCtrl.js"></script>
+    <script src="js/controllers/estoqueCtrl.js"></script>
+    <script src="js/controllers/doadorCtrl.js"></script>
+    <script src="js/controllers/contabilCtrl.js"></script>
+    <script src="js/services/acolhidoAPI.js"></script>
+    <script src="js/services/estoqueAPI.js"></script>
+    <script src="js/services/doadorAPI.js"></script>
+    <script src="js/services/contabilAPI.js"></script>
+    <script src="js/services/ufAPI.js"></script>
+    <script src="js/value/configValues.js"></script>
+    <script src="js/config/routesCadastro.js"></script>
+    <script src="js/config/routesConsulta.js"></script>
+    <script src="js/config/routesOutros.js"></script>
+    <script src="js/config/interceptorConfig.js"></script>
+    <script src="js/interceptors/timestampInterceptor.js"></script>
+</head>
+<body ng-controller='inicioController'>
+    <!-- TOP Bar -->
+    <header class="col-md-12 col-sm-12">
+        <div class="text-left col-md-2 col-sm-2 home-button">
+            <a href="#!/index">
+                <h3 class="hidden-sm hidden-xs">{{app}}</h3>
+                <h3 class="visible-sm visible-xs">{{app}}</h3>
+            </a>
+        </div>
+        <div class="text-right col-md-10 col-sm-10 user-cont">
+            <h3>{{user}}<span class="glyphicon glyphicon-user"></span></h3>
+        </div>
+    </header>
+    <br class="clear">
+    <!-- Corpo do menú esquerdo -->
+    <div>
+        <div class="menu col-md-2 col-sm-2">
+            <nav class="navmenu navmenu-default navbar-default" id="menuLateral">
+                <div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-navbar" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                <!--       <a class="navmenu-brand" href="index.html"><h3>SOS Nova Vida</h3></a> -->
+                    </div>
+                    <div class="collapse navbar-collapse" id="collapse-navbar">
+                        <ul class="nav navmenu-nav col-md-12">
+                            <li role="presentation" class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acolhidos<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#!/cadastro/acolhido">Cadastrar</a></li>
+                                    <li><a href="#!/consulta/acolhido">Consultar</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown">Doadores<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#!/cadastro/doador">Cadastrar</a></li>
+                                    <li><a href="#!/consulta/doador">Consultar</a></li>
+                                </ul>
+                            </li>
+                            <li class='dropdown'>
+                                <a class='dropdown-toggle' data-toggle='dropdown'>Doações<span class='caret'></span></a>
+                                <ul class='dropdown-menu'>
+                                    <li><a href='#!/cadastro/doacao'>Cadastrar</a></li>
+                                    <li><a href='#!/consulta/doacao'>Consultar</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown">Estoque<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a>Inserir produto</a></li>
+                                    <li><a>Retirar produto</a></li>
+                                    <li><a href="#!/consulta/estoque">Consultar</a></li>
+                                </ul>
+                            </li>
+                            <li><a href='#!/contabil'>Contabilidade</a></li>
+                            <li><a href='#!/usuarios'>Usuários</a></li>
+                            <li><a href="#!/config">Configurações</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- Container aonde serão colocados os views -->
+        <section class='container col-md-10 col-sm-10' style='padding-left: 2%;'>
+            <!-- Views devem vir aqui -->
+            <div ng-view></div><br>
+            <div ng-include="'view/footer.html'"></div> 
+            <!-- Mais para frente ng-include vai ser movido daqui e vai ser inserido no menu lateral
+             com informações para contato-->
+        </section>
+    </div>
+    
+</body>
+</html>
