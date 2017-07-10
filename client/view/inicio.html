@@ -1,3 +1,52 @@
-<div class='form-control'>
-    <a href='#!/cadastro/doador'>CADASTRO DE DOADORES</a>
+<div class="row botoes-inicio">
+    <ul>
+        <a href="#!/cadastro/acolhido" role="button" class="btn-lg">
+            <li class="col-md-3">
+                <span class="glyphicon glyphicon-user"></span>
+                <div>
+                    CADASTRO DE ACOLHIDOS
+                </div>
+            </li>
+        </a>
+        <a href="#!/cadastro/doador">
+            <li class="col-md-3 col-md-offset-1">
+                <span class="glyphicon glyphicon-tint"></span>
+                <div>
+                    CADASTRO DE DOADORES
+                </div>
+            </li>
+        </a>
+        <a href="#!/cadastro/doador">
+            <li class="col-md-3 col-md-offset-1">
+                <span class="glyphicon glyphicon-user"></span>
+                <div>
+                    FLUXO DE CAIXA
+                </div>
+            </li>
+        </a>
+    </ul>
+</div>
+<br>
+<!-- Gráfico de barras -->
+<div class="graficos">
+    <canvas id="produtos" width="400" height="200"></canvas>
+    <script>
+        //window.onload = function() {
+        console.log("eita");
+        var c = document.getElementById("produtos");
+        var ctx = c.getContext("2d");
+        var chart = new Chart(ctx, {
+            type: 'bar',   // Tipo de gráfico
+            data: {
+                labels: ["Leite", "Arroz", "Feijão"],
+                datasets: [{
+                    label: "Produtos mais utilizados",
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    borderColor: 'rgb(200, 99, 132)',
+                    data: [40, 20, 10, 0],
+                }]
+            },
+            options: {}
+        });
+    </script>
 </div>
