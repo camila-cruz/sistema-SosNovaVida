@@ -1,52 +1,84 @@
-<div class="row botoes-inicio">
-    <ul>
-        <a href="#!/cadastro/acolhido" role="button" class="btn-lg">
-            <li class="col-md-3">
-                <span class="glyphicon glyphicon-user"></span>
-                <div>
-                    CADASTRO DE ACOLHIDOS
+<div ng-controller="inicioCtrl">  
+    <h2>ACESSO RÁPIDO</h2><hr>
+    <div class="row botoes-inicio">
+        <ul>
+            <a href="#!/cadastro/acolhido" role="button" class="btn-lg">
+                <li class="col-md-3">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <div>
+                        CADASTRO DE ACOLHIDOS
+                    </div>
+                </li>
+            </a>
+            <a href="#!/cadastro/doador">
+                <li class="col-md-3 col-md-offset-1">
+                    <span class="glyphicon glyphicon-tint"></span>
+                    <div>
+                        CADASTRO DE DOADORES
+                    </div>
+                </li>
+            </a>
+            <a href="#!/contabil">
+                <li class="col-md-3 col-md-offset-1">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <div>
+                        FLUXO DE CAIXA
+                    </div>
+                </li>
+            </a>
+        </ul>
+    </div>
+    <br>
+    
+    <h2>DADOS DE INTERESSE</h2><hr>
+    <div class="row graficos">
+        <!-- Gráfico de barras -->
+        <div class="col-md-5 col-md-offset-1">
+            <canvas id="produtos" width="400" height="200"></canvas>
+        </div>
+
+        <div class="col-md-5">
+            <canvas id="receitas"></canvas>
+        </div>
+    </div>
+
+    <div class="hidden">
+        <h2>PRÓXIMOS EVENTOS</h2><hr>
+        <div class="row">
+            <div id="eventos" class="carousel slide col-md-4 car-eventos" data-ride="carousel">
+
+                <!-- Indicadores -->
+                <ol class="carousel-indicators">
+                    <li data-target="#eventos" data-slide-to="0" class="active"></li>
+                    <li data-target="#eventos" data-slide-to="1"></li>
+                    <li data-target="#eventos" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Itens do carousel -->
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <h1>Paçoca</h1><br><br><br>
+                        <div class="carousel-caption">Primeiro item</div>
+                    </div>
+
+                    <div class="item">
+                        <img src="../res/img/familia-2.png">
+                        <div class="carousel-caption">Segundo item</div>
+                    </div>
                 </div>
-            </li>
-        </a>
-        <a href="#!/cadastro/doador">
-            <li class="col-md-3 col-md-offset-1">
-                <span class="glyphicon glyphicon-tint"></span>
-                <div>
-                    CADASTRO DE DOADORES
-                </div>
-            </li>
-        </a>
-        <a href="#!/contabil">
-            <li class="col-md-3 col-md-offset-1">
-                <span class="glyphicon glyphicon-user"></span>
-                <div>
-                    FLUXO DE CAIXA
-                </div>
-            </li>
-        </a>
-    </ul>
-</div>
-<br>
-<!-- Gráfico de barras -->
-<div class="graficos">
-    <canvas id="produtos" width="400" height="200"></canvas>
-    <script>
-        //window.onload = function() {
-        console.log("eita");
-        var c = document.getElementById("produtos");
-        var ctx = c.getContext("2d");
-        var chart = new Chart(ctx, {
-            type: 'bar',   // Tipo de gráfico
-            data: {
-                labels: ["Leite", "Arroz", "Feijão"],
-                datasets: [{
-                    label: "Produtos mais utilizados",
-                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                    borderColor: 'rgb(200, 99, 132)',
-                    data: [40, 20, 10, 0],
-                }]
-            },
-            options: {}
-        });
-    </script>
+
+                <!-- Controles do carousel -->
+                <a class="left carousel-control" href="#eventos" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Anterior</span>
+                </a>
+
+                <a class="right carousel-control" href="#eventos" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Próximo</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
 </div>

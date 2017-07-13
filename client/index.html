@@ -18,6 +18,7 @@
     <script src="js/controllers/doadorCtrl.js"></script>
     <script src="js/controllers/detalhesDoadorCtrl.js"></script>
     <script src="js/controllers/contabilCtrl.js"></script>
+    <script src="js/controllers/inicioCtrl.js"></script>
     <script src="js/services/acolhidoAPI.js"></script>
     <script src="js/services/estoqueAPI.js"></script>
     <script src="js/services/doadorAPI.js"></script>
@@ -29,8 +30,8 @@
     <script src="js/config/routesOutros.js"></script>
     <script src="js/config/interceptorConfig.js"></script>
     <script src="js/interceptors/timestampInterceptor.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-    <!--<script src="node_modules/chart.js/Chart.min.js"></script>-->
+    <script src="node_modules/chart.js/dist/Chart.min.js"></script>
+    <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
 </head>
 <body ng-controller='inicioController'>
     <!-- TOP Bar -->
@@ -110,6 +111,7 @@
         <section class='container col-md-10 col-sm-10' style='padding-left: 2%;'>
             <!-- Views devem vir aqui -->
             <div ng-view></div><br>
+
             <div ng-include="'view/footer.html'"></div> 
             <!-- Mais para frente ng-include vai ser movido daqui e vai ser inserido no menu lateral
              com informações para contato-->

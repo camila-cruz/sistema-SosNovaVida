@@ -56,9 +56,10 @@ section.container {
 
 .botoes-inicio li {
     padding: 5% 2%;
-    background-color: #eaeaea;
     color: black;
     text-align: center;
+    background-color: #eaeaea;
+    transition: all 0.25s linear;
 }
 
 .botoes-inicio li:hover {
@@ -69,6 +70,9 @@ section.container {
     color: black;
     text-decoration: none;
 }
+
+/* ******************************* EVENTOS ******************************* */
+
 
 /* ******************************* MENU LATERAL ******************************* */
 
