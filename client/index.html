@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/jasny-bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- WEBPACK AQUI ASAP, PRA TIRAR ESSE BANDO DE SCRIPT SRC ZUADO-->
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular/angular-route.js"></script>
     <script src="lib/jquery/jquery-2.0.3.min.js"></script>
@@ -15,7 +16,9 @@
     <script src="js/controllers/acolhidoCtrl.js"></script>
     <script src="js/controllers/estoqueCtrl.js"></script>
     <script src="js/controllers/doadorCtrl.js"></script>
+    <script src="js/controllers/detalhesDoadorCtrl.js"></script>
     <script src="js/controllers/contabilCtrl.js"></script>
+    <script src="js/controllers/inicioCtrl.js"></script>
     <script src="js/services/acolhidoAPI.js"></script>
     <script src="js/services/estoqueAPI.js"></script>
     <script src="js/services/doadorAPI.js"></script>
@@ -27,6 +30,8 @@
     <script src="js/config/routesOutros.js"></script>
     <script src="js/config/interceptorConfig.js"></script>
     <script src="js/interceptors/timestampInterceptor.js"></script>
+    <script src="node_modules/chart.js/dist/Chart.min.js"></script>
+    <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
 </head>
 <body ng-controller='inicioController'>
     <!-- TOP Bar -->
@@ -37,12 +42,17 @@
                 <h3 class="visible-sm visible-xs">{{app}}</h3>
             </a>
         </div>
-        <div class="text-right col-md-10 col-sm-10 user-cont">
-            <h3>{{user}}<span class="glyphicon glyphicon-user"></span></h3>
+        <div class="text-right col-md-10 col-sm-10 user-cont dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown">
+                <h3>{{user}} <span class="glyphicon glyphicon-user"></span></h3>
+            </a>
+            <ul class="dropdown-menu">
+                <li>paçoca</li>
+            </ul>
         </div>
     </header>
     <br class="clear">
-    <!-- Corpo do menú esquerdo -->
+    <!-- Corpo do menu esquerdo -->
     <div>
         <div class="menu col-md-2 col-sm-2">
             <nav class="navmenu navmenu-default navbar-default" id="menuLateral">
@@ -88,7 +98,7 @@
                                     <li><a href="#!/consulta/estoque">Consultar</a></li>
                                 </ul>
                             </li>
-                            <li><a href='#!/contabil'>Contabilidade</a></li>
+                            <li><a href='#!/contabil'>Fluxo de Caixa</a></li>
                             <li><a href='#!/usuarios'>Usuários</a></li>
                             <li><a href="#!/config">Configurações</a></li>
                         </ul>
@@ -96,15 +106,17 @@
                 </div>
             </nav>
         </div>
+        
         <!-- Container aonde serão colocados os views -->
         <section class='container col-md-10 col-sm-10' style='padding-left: 2%;'>
             <!-- Views devem vir aqui -->
             <div ng-view></div><br>
+
             <div ng-include="'view/footer.html'"></div> 
             <!-- Mais para frente ng-include vai ser movido daqui e vai ser inserido no menu lateral
              com informações para contato-->
         </section>
     </div>
-    
+    <script src="js/sistema.js"></script>
 </body>
 </html>

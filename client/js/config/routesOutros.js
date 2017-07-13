@@ -12,7 +12,7 @@ angular.module('novaVida').config( function( $routeProvider ) {
         }
     });
     $routeProvider.when('/index', {
-        templateUrl: 'view/inicio.html',
+        templateUrl: 'view/inicio.html'
     });
     $routeProvider.when('/login', {
         templateUrl: 'view/login.html'

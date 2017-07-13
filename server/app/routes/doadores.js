@@ -1,5 +1,6 @@
 module.exports = ( app ) => {
     let doadores = [{
+            id: 1,
             nome:'Yuri Cabral',
             telRes: '(11)95334-2161',
             telCel: '(11)91234-5678',
@@ -9,6 +10,12 @@ module.exports = ( app ) => {
     app.get('/doadores', (req, res) => {
         console.log('Recebendo requisição GET em /doadores');
         res.status(200).send(doadores);
+    });
+
+    app.get('/doadores/:id', (req, res) => {
+        id = req.params.id;
+        console.log('Buscando doador com ID ' + id);
+        res.send(doadores.find( (id) => { return id;} ));
     });
 
     app.post('/doadores', (req, res) => {

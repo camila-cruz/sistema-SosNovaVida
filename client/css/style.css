@@ -22,6 +22,60 @@ section.container {
     /*background-color: #ffca71;*/
 }
 
+/* ******************************* MENU DE USUÁRIO ******************************* */
+
+.user-cont {
+    float: right;
+    width: 15%;
+    position: relative;
+}
+.user-cont:hover {
+    background-color: #999999;
+}
+
+.user-cont a {
+    text-decoration: none;
+    color: black;
+}
+
+.user-cont ul {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    background-color: #eaeaea;
+    transition: height 1s ease;
+}
+
+/* ******************************* BOTÕES DA PÁGINA INICIAL ******************************* */
+
+.botoes-inicio ul {
+    list-style: none;
+    margin-top: 2%;
+}
+
+.botoes-inicio li {
+    padding: 5% 2%;
+    color: black;
+    text-align: center;
+    background-color: #eaeaea;
+    transition: all 0.25s linear;
+}
+
+.botoes-inicio li:hover {
+    background-color: #999999;
+}
+
+.botoes-inicio a {
+    color: black;
+    text-decoration: none;
+}
+
+/* ******************************* EVENTOS ******************************* */
+
+
+/* ******************************* MENU LATERAL ******************************* */
+
 #menuLateral {
     height: auto;
     position: fixed;
@@ -34,7 +88,6 @@ section.container {
 }
 
 .home-button a {
-    /*color: #000000;*/
     color: #eaeaea;
     text-decoration: none;
 }
@@ -47,13 +100,9 @@ section.container {
     position: fixed;
     top: 0;
     left: 0;
-    height: 100%;   /*para o botão ocupar todo o seu espaco retangular */
+    height: 100%;   /* botão ocupa todo o seu espaco retangular */
     border-right: 1px solid gray;
     text-align: center;
-}
-
-.user-cont {
-    float: right;
 }
 
 .menu {
@@ -83,18 +132,6 @@ nav li:hover {
     margin-left: 0px;
     /*width: 15%;*/
     width: 16.66666667%;
-
-}
-
-a.navmenu-brand {
-    /*padding-top: 0px;*/
-    height: 5%;
-   /* padding-bottom: 0px;
-    margin-bottom: 2%;*/
-    margin: 0px;
-    padding-top: 0px;
-    /*padding-right: 0px;*/
-    padding-bottom: 2%;
 }
 
 .navbar-header {
@@ -130,6 +167,4 @@ a.navmenu-brand {
 /*
 color: #eaeaea;
 background-color: #FF6347;
-
-
 */

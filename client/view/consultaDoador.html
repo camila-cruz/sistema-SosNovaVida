@@ -2,6 +2,7 @@
 <table class="table table-striped">
     <tr>
         <th></th>
+        <th>ID</th>
         <th>Nome</th>
         <th>Telefone Residencial</th>
         <th>Telefone Celular</th>
@@ -10,11 +11,12 @@
     </tr>
     <tr ng-repeat='doador in doadores'>
         <td><input type='checkbox' ng-model='doador.selecionado' /></td>
+        <td>{{doador.id}}</td>
         <td>{{doador.nome}}</td>
         <td>{{doador.telRes}}</td>
         <td>{{doador.telCel}}</td>
         <td>{{doador.email}}</td>
-        <td><a href='#!/consulta/doadores/{{doador.id}}' class='btn btn-primary'>Editar</a></td>
+        <td><a href='#!/consulta/doador/{{doador.id}}' class='btn btn-primary'>Editar</a></td>
     </tr>
 </table>
 <button class='btn btn-danger'>Excluir Selecionados</button>
