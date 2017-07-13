@@ -1,0 +1,23 @@
+{
+  "name": "front-sos-nova-vida",
+  "version": "1.0.0",
+  "description": "Sistema de controle para a SOS Nova Vida. *** # Integrantes:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Camila-Cruz/sistema-SosNovaVida.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Camila-Cruz/sistema-SosNovaVida/issues"
+  },
+  "homepage": "https://github.com/Camila-Cruz/sistema-SosNovaVida#readme",
+  "dependencies": {
+    "angular-chart.js": "^1.1.1",
+    "chart.js": "^2.6.0"
+  }
+}

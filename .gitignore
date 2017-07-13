@@ -41,6 +41,7 @@ bower_components
 ### Node ###
 # Logs
 /logs
+/logs/*.log
 logs
 *.log
 npm-debug.log*
