@@ -1,0 +1,105 @@
+<h1>Detalhes Doador</h1>
+<hr><br>
+<form>
+    <div class="row">
+        <div class="col-md-8">
+            <label>Nome completo</label><br>
+            <input type="text" class="form-control" ng-model='doador.nome'><br>
+            <div class="row">
+                <div class="col-md-5">
+                    <label>Data de entrada</label><br>
+                    <input type="date" class="form-control" ng-model='doador.data' ng-required='true'>
+                </div>
+                <div class="col-md-offset-1 col-md-6">
+                    <label>Tipo</label><br>
+                    <select class='form-control' ng-model='doador.tipo'>
+                        <option value="" ng-disabled='true'>Selecione o tipo</option>
+                        <option value='Pessoa Fisica'>Pessoa Física</option>
+                        <option value='Pessoa Jurídica'>Pessora Jurídica</option>
+                    </select><br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Endereço</label><br>
+                    <input type="text" class="form-control" ng-model='doador.endereco'><br>
+                </div>
+                <div class="col-md-3">
+                    <label>Número</label><br>
+                    <input type="number" class="form-control" ng-model='doador.numero'>
+                </div>
+                <div class="col-md-3">
+                    <label>Complemento</label><br>
+                    <input type="text" class="form-control" ng-model='doador.complemento'><br>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-offset-1 col-md-2">
+            <label>Foto</label><br>
+            <div class="fileinput fileinput-new" data-provides="fileinput">
+                <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 240px; height: 180px;"></div>
+                <div>
+                    <span class="btn btn-default btn-file">
+                            <span class="fileinput-new">Selecione a imagem</span>
+                    <span class="fileinput-exists">Alterar</span>
+                    <input type="file" name="...">
+                    </span>
+                    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
+                </div>
+            </div><br>
+        </div><br>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <label>Bairro</label>
+            <input type="text" class="form-control" ng-model='doador.bairro'>
+        </div>
+        <div class="col-md-offset-1 col-md-5">
+            <label>Cidade</label><br>
+            <input type="text" class="form-control" ng-model='doador.cidade'>
+        </div>
+        <div class="col-md-offset-1 col-md-2">
+            <label>UF</label><br>
+            <select class="form-control" ng-model='doador.uf' ng-options='uf.nome for uf in ufs'>
+                <option value="" ng-disabled='true'>Selecione o Estado</option>
+            </select>
+            <br>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <label>Telefone residencial</label><br>
+            <input type="tel" class="form-control" ng-model='doador.telRes'><br>
+        </div>
+        <div class="col-md-4">
+            <label>Celular</label><br>
+            <input type="text" class="form-control" ng-model='doador.telCel'><br>
+        </div>
+        <div class="col-md-4">
+            <label>Telefone comercial</label><br>
+            <input type="text" class="form-control" ng-model='doador.telCom'><br>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <label>E-mail</label><br>
+            <input type="email" class="form-control" ng-model='doador.email'>
+        </div>
+        <!-- ????? -->
+        <div class="col-md-offset-1 col-md-7 hidden">
+            <label>Última doação</label><br>
+            <input type="text" class="form-control" ng-model='doador.ultimaDoacao'>
+        </div>
+        <!-- ????? -->
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <button class="btn-primary">Limpar</button>
+            <button class="btn-success" ng-click="alterardoador( doador )">Salvar</button>
+        </div>
+    </div>
+</form>

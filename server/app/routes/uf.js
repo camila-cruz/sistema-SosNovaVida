@@ -21,7 +21,6 @@ module.exports = (app) => {
     app.get('/uf', function( req, res ) {
         //DESENHAR O QUE SERÁ FEITO
         console.log('Recebendo requisição GET em /uf');
-        console.log(uf);
         res.send( uf ).status(200);
     });
 

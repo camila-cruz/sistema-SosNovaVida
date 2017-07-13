@@ -1,7 +1,7 @@
 /*
     Arquivo que guarda as rotas da aplicação
 */
-angular.module('novaVida').config( function($routeProvider) {
+angular.module('novaVida').config( ($routeProvider) => {
     //quando a rota for /consulta/estoque
     $routeProvider.when('/consulta/estoque', {
         //carregará a view localizada na url abaixo
@@ -36,8 +36,24 @@ angular.module('novaVida').config( function($routeProvider) {
         templateUrl: 'view/consultaDoador.html',
         controller: 'doadorCtrl',
         resolve: {
-            doador: (doadorAPI) => {
+            doadorAPI: (doadorAPI) => {
                 return doadorAPI.getDoadores();
+            },
+            uf: (ufAPI) => {
+                return ufAPI;
+            }
+        }
+    });
+    $routeProvider.when('/consulta/doador/:id', {
+        templateUrl: 'view/detalhesDoador.html',
+        controller: 'detalhesDoadorCtrl',
+        resolve: {
+            doadorAPI: (doadorAPI, $route) => {
+                console.log($route.current.params.id);
+                return doadorAPI.getDoadorById( $route.current.params.id );
+            },
+            uf: (ufAPI) => {
+                return ufAPI.getUF();
             }
         }
     });
