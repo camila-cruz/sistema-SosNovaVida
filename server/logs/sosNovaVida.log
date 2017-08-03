@@ -193,3 +193,5 @@
 {"level":"info","message":"::1 - - [09/Jul/2017:20:35:24 +0000] \"GET /favicon.ico HTTP/1.1\" 404 150\n","timestamp":"2017-07-09T20:35:24.926Z"}
 {"level":"info","message":"::1 - - [12/Jul/2017:23:45:18 +0000] \"GET /uf?timestamp=1499903118455 HTTP/1.1\" 200 116\n","timestamp":"2017-07-12T23:45:18.561Z"}
 {"level":"info","message":"::1 - - [13/Jul/2017:00:25:03 +0000] \"GET /contabil?timestamp=1499905503043 HTTP/1.1\" 200 482\n","timestamp":"2017-07-13T00:25:03.064Z"}
+{"level":"info","message":"::1 - - [13/Jul/2017:21:18:29 +0000] \"GET /uf?timestamp=1499980709836 HTTP/1.1\" 200 116\n","timestamp":"2017-07-13T21:18:29.875Z"}
+{"level":"info","message":"::1 - - [13/Jul/2017:21:18:33 +0000] \"GET /uf?timestamp=1499980713263 HTTP/1.1\" 200 116\n","timestamp":"2017-07-13T21:18:33.271Z"}
