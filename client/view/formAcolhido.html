@@ -1,82 +1,347 @@
 <h1>Cadastro de Acolhidos</h1>
 <hr><br>
-<form>
-    <div class="row">
-        <div class="col-md-8">
-            <label>Nome completo</label><br>
-            <input type="text" ng-model='acolhido.nome' class="form-control"><br>
-            <div class="row">
-                <div class="col-md-6">
-                    <label>Data de nascimento</label><br>
-                    <input type="date" ng-model='acolhido.dtNasc' class="form-control">
-                </div>
-                <div class="col-md-offset-1 col-md-5">
-                    <label>Data de entrada</label><br>
-                    <input type="date" ng-model='acolhido.dtEntr' class="form-control"><br>
+<form class="form-horizontal">
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <h4 class="panel-title">Dados pessoais</h4>
+                </a>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-offset-5 col-md-7">
+                            <label>Foto</label><br>
+                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 240px; height: 180px;"></div>
+                                <div>
+                                    <span class="btn btn-default btn-block btn-file">
+                                        <span class="fileinput-new">Selecione a imagem</span>
+                                        <span class="fileinput-exists">Alterar</span>
+                                        <input type="file" name="...">
+                                    </span>
+                                    <a href="#" class="btn btn-default btn-block fileinput-exists" data-dismiss="fileinput">Remover</a>
+                                </div>
+                            </div><br>
+                        </div><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 col-md-offset-1">Nome completo</label>
+                        <div class="col-md-8">
+                            <input type="text" ng-model='acolhido.nome' class="form-control"><br>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 col-md-offset-1">Data de nascimento</label>
+                        <div class="col-md-3">
+                            <input type="date" ng-model='acolhido.dtNasc' class="form-control">
+                        </div>
+
+                        <label class="col-md-2">Data de entrada</label>
+                        <div class="col-md-3">
+                            <input type="date" ng-model='acolhido.dtEntr' class="form-control"><br>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-md-2 col-md-offset-1">Cidade natal</label>
+                        <div class="col-md-5">
+                            <input type="text" ng-model='acolhido.cidNatal' class="form-control"><br>
+                        </div>
+
+                        <label class="col-md-1">UF</label>
+                        <div class="col-md-2">
+                            <select class='form-control' ng-model='acolhido.uf' ng-options='uf.nome for uf in ufs'>
+                                <option value='' ng-disabled='true'>UF</option>
+                            </select><br>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 col-md-offset-1">Nome da mãe</label>
+                        <div class="col-md-8">
+                            <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 col-md-offset-1">Nome do pai</label>
+                        <div class="col-md-8">
+                            <input type="text" ng-model='acolhido.nomePai' class="form-control"><br>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 col-md-offset-1">CPF</label>
+                        <div class="col-md-2">
+                            <input type="text" data-mask="999.999.999-99" ng-model='acolhido.dtNasc' class="form-control">
+                        </div>
+
+                        <label class="col-md-1">RG</label>
+                        <div class="col-md-2">
+                            <input type="text" data-mask="99.999.999-w" ng-model='acolhido.dtNasc' class="form-control">
+                        </div>
+                        <!-- Órgão emissor -->
+                        <label class="col-md-1 ">SSP</label>
+                        <div class="col-md-2">
+                            <input type="text" ng-model='acolhido.dtNasc' class="form-control">
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-9">
-                    <label>Cidade Natal</label><br>
-                    <input type="text" ng-model='acolhido.cidNatal' class="form-control"><br>
-                </div>
-                <div class="col-md-offset-1 col-md-2">
-                    <label>UF</label><br>
-                    <select class='form-control' ng-model='acolhido.uf' ng-options='uf.nome for uf in ufs'>
-                        <option value='' ng-disabled='true'>UF</option>
-                    </select>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <h4 class="panel-title">Dados dos responsáveis</h4>
+                </a>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                    <ul class="nav nav-tabs">
+                        <li role="presentation" class="active"><a href="#resp1">Responsável 1</a></li>
+                        <li role="presentation"><a>Responsável 2</a></li>
+                    </ul>
+                    <div id="resp1">
+                        <br><br>
+                        <label class="col-md-10 col-md-offset-1"><h3>Dados pessoais</h3><hr></label>
+                        <div class="form-group">
+                            <label class="col-md-2 col-md-offset-1">Nome completo</label>
+                            <div class="col-md-8">
+                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 col-md-offset-1">Data de nascimento</label>
+                            <div class="col-md-3">
+                                <input type="date" ng-model='acolhido.dtNasc' class="form-control">
+                            </div>
+
+                            <label class="col-md-2">Grau de parentesco</label>
+                            <div class="col-md-3">
+                                <select class='form-control' ng-model='acolhido.uf' ng-options='uf.nome for uf in ufs'>
+                                    <option value='' ng-disabled='true'>MÃE</option>
+                                    <option value='' ng-disabled='true'>PAI</option>
+                                    <option value='' ng-disabled='true'>NENHUM</option>
+                                </select><br>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 col-md-offset-1">CPF</label>
+                            <div class="col-md-2">
+                                <input type="text" data-mask="999.999.999-99" ng-model='acolhido.dtNasc' class="form-control">
+                            </div>
+
+                            <label class="col-md-1">RG</label>
+                            <div class="col-md-2">
+                                <input type="text" data-mask="99.999.999-w" ng-model='acolhido.dtNasc' class="form-control">
+                            </div>
+                            <!-- Órgão emissor -->
+                            <label class="col-md-1 ">SSP</label>
+                            <div class="col-md-2">
+                                <input type="text" ng-model='acolhido.dtNasc' class="form-control">
+                            </div>
+                        </div><br>
+
+                        <div class="form-group">
+                            <label class="col-md-2 col-md-offset-1">Renda bruta mensal</label>
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon">R$</span><input type="text" ng-model='acolhido.dtNasc' class="form-control">
+                                </div>
+                            </div>
+
+                            <label class="col-md-2">Renda líquida mensal</label>
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon">R$</span><input type="text" ng-model='acolhido.dtNasc' class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <label class="col-md-10 col-md-offset-1"><h3>Residência atual</h3><hr></label>
+                        <div class="form-group">
+                            
+                            <label class="col-md-2 col-md-offset-1">Endereço</label>
+                            <div class="col-md-5">
+                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                            </div>
+
+                            <label class="col-md-1">Número</label>
+                            <div class="col-md-2">
+                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 col-md-offset-1">Complemento</label>
+                            <div class="col-md-2">
+                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                            </div>
+
+                            <label class="col-md-1 col-md-offset-1">Bairro</label>
+                            <div class="col-md-4">
+                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 col-md-offset-1">Cidade</label>
+                            <div class="col-md-5">
+                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                            </div>
+
+                            <label class="col-md-1">UF</label>
+                            <div class="col-md-2">
+                                <select class='form-control' ng-model='acolhido.uf' ng-options='uf.nome for uf in ufs'>
+                                    <option value='' ng-disabled='true'>UF</option>
+                                </select><br>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-md-2 col-md-offset-1">CEP</label>
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <input type="text" data-mask="99999-999" ng-model='acolhido.nomeMae' class="form-control">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-default btn-input-group" type="button">
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- A partir do CEP, buscar IDH do local e definir grau de risco -->
+                            <label class="col-md-2 col-md-offset-1">Grau de risco</label>
+                            <div class="col-md-2">
+                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <label class="col-md-10 col-md-offset-1"><h3>Local de trabalho</h3><hr></label>
+                        
+                        <div class="form-group">
+                            <label class="col-md-2 col-md-offset-1">Nome do local</label>
+                            <div class="col-md-4">
+                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                            </div>
+
+                            <label class="col-md-1">Função</label>
+                            <div class="col-md-3">
+                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 col-md-offset-1">CEP</label>
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <input type="text" data-mask="99999-999" ng-model='acolhido.nomeMae' class="form-control">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-default btn-input-group" type="button">
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <label class="col-md-1 col-md-offset-1">Salário</label>
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon">R$</span><input type="text" ng-model='acolhido.dtNasc' class="form-control">
+                                </div>
+                            </div>
+                        </div><br>
+
+                        <div class="form-group">
+                            <label class="col-md-2 col-md-offset-1">Endereço</label>
+                            <div class="col-md-5">
+                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                            </div>
+
+                            <label class="col-md-1">Número</label>
+                            <div class="col-md-2">
+                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 col-md-offset-1">Complemento</label>
+                            <div class="col-md-2">
+                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                            </div>
+
+                            <label class="col-md-1 col-md-offset-1">Bairro</label>
+                            <div class="col-md-4">
+                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 col-md-offset-1">Cidade</label>
+                            <div class="col-md-5">
+                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                            </div>
+
+                            <label class="col-md-1">UF</label>
+                            <div class="col-md-2">
+                                <select class='form-control' ng-model='acolhido.uf' ng-options='uf.nome for uf in ufs'>
+                                    <option value='' ng-disabled='true'>UF</option>
+                                </select><br>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-offset-1 col-md-2">
-            <label>Foto</label><br>
-            <div class="fileinput fileinput-new" data-provides="fileinput">
-                <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 240px; height: 180px;"></div>
-                <div>
-                    <span class="btn btn-default btn-file">
-                                    <span class="fileinput-new">Selecione a imagem</span>
-                    <span class="fileinput-exists">Alterar</span>
-                    <input type="file" name="...">
-                    </span>
-                    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingThree">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                    <h4 class="panel-title">Dados jurídicos</h4>
+                </a>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    <br>
+                    <div class="form-group">
+                        <label class="col-md-2 col-md-offset-1">Nº do processo</label>
+                        <div class="col-md-3">
+                            <input type="text" ng-model='acolhido.nomePai' class="form-control"><br>
+                        </div>
+
+                        <label class="col-md-1">Comarca</label>
+                        <div class="col-md-4">
+                            <input type="text" ng-model='acolhido.nomePai' class="form-control"><br>
+                        </div>
+                    </div>
+                    <!-- 15ª vara de infância de Suzano, por exemplo -->
+                    <div class="form-group">
+                        <label class="col-md-2 col-md-offset-1">Nº da vara</label>
+                        <div class="col-md-2">
+                            <input type="text" ng-model='acolhido.nomePai' class="form-control"><br>
+                        </div>
+
+                        <label class="col-md-1">Vara</label>
+                        <div class="col-md-5">
+                            <input type="text" ng-model='acolhido.nomePai' class="form-control"><br>
+                        </div>                                        
+                    </div>
                 </div>
-            </div><br>
-        </div><br>
+            </div>
+        </div>
     </div>
-
+    <br><br>
     <div class="row">
-        <div class="col-md-9">
-            <label>Nome da mãe</label><br>
-            <input type="text" ng-model='acolhido.nomeMae' class="form-control">
-        </div>
-        <div class="col-md-offset-1 col-md-2">
-            <br><input type="checkbox" ng-model='acolhido.isMaeResp'>
-            <label>Responsável</label><br><br>
+        <div class="col-md-7 text-right">
+            <button class="btn btn-primary">Limpar</button>
+            <button class="btn btn-success">Salvar</button>
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-md-9">
-            <label>Nome do pai</label><br>
-            <input type="text" ng-model='acolhido.nomePai' class="form-control">
-        </div>
-        <div class="col-md-offset-1 col-md-2">
-            <br><input type="checkbox" ng-model='acolhido.isPaiResp'>
-            <label>Responsável</label><br><br>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12">
-            <label>Nome do responsável</label><br>
-            <input type="text" ng-model='acolhido.outroResp' class="form-control"><br><br>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 text-right">
-            <button class="btn-primary">Limpar</button>
-            <button class="btn-success">Salvar</button>
-        </div>
-    </div>
-    {{acolhido}}
 </form>

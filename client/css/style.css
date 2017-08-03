@@ -2,9 +2,12 @@
 @import url('https://fonts.googleapis.com/css?family=Sacramento');
 @import url('https://fonts.googleapis.com/css?family=Patrick+Hand+SC');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+@import url('https://fonts.googleapis.com/css?family=Slabo+27px');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400');
 
 body {
-   font-family: "Patrick Hand SC", Arial;
+   font-family: "Lato", times, Arial, sans-serif;
+   /*font-family: "Patrick Hand SC", Arial;*/
 }
 
 header {
@@ -15,7 +18,8 @@ header {
 }
 
 section.container {
-    font-size: 15pt;
+    /*font-size: 15pt;*/
+    font-size: 1.1em;
     padding-left: 2%;
     padding-top: 1%;
     padding-bottom: 3%;
@@ -183,3 +187,42 @@ nav li:hover {
 color: #eaeaea;
 background-color: #FF6347;
 */
+
+/* ******************************* FORMULÁRIOS ******************************* */
+
+.panel-heading {
+    /*background-color: #f5f5f5;*/
+    padding: 0px;
+}
+
+.panel-heading a {
+    text-decoration: none;
+}
+
+.panel-heading a h4 {
+    height: 100%;
+    padding: 10px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+input.form-control {
+    font-size: 1.2em;
+}
+
+select.form-control {
+    font-size: 0.9em;
+}
+
+
+fieldset {
+    border: 1px dashed black;
+}
+
+.btn {
+    font-size: 1.1em;
+}
+
+.btn-input-group {
+    font-size: 14px;
+}
