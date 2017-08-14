@@ -214,7 +214,6 @@ select.form-control {
     font-size: 0.9em;
 }
 
-
 fieldset {
     border: 1px dashed black;
 }
@@ -225,4 +224,22 @@ fieldset {
 
 .btn-input-group {
     font-size: 14px;
+}
+
+.btn-estoque {
+    font-size: 1em;
+}
+
+.tabela, .tabela th {
+    text-align: center;
+}
+
+.td-botoes {
+    width: 15%;
+}
+
+.ipt-estoque {
+    border-radius: 3px;
+    box-shadow: none;
+    margin-right: 5%;
 }

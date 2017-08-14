@@ -1,93 +1,154 @@
 <h1>Cadastro de Doadores</h1>
 <hr><br>
-<form>
-    <div class="row">
-        <div class="col-md-8">
-            <label>Nome completo</label><br>
-            <input type="text" class="form-control" ng-model='doador.nome'><br>
-            <div class="row">
-                <div class="col-md-5">
-                    <label>Data de entrada</label><br>
-                    <input type="date" class="form-control" ng-model='doador.data' ng-required='true'>
-                </div>
-                <div class="col-md-offset-1 col-md-6">
-                    <label>Tipo</label><br>
-                    <select class='form-control' ng-model='doador.tipo'>
-                        <option value="" ng-disabled='true'>Selecione o tipo</option>
-                        <option value='Pessoa Fisica'>Pessoa Física</option>
-                        <option value='Pessoa Jurídica'>Pessora Jurídica</option>
-                    </select><br>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <label>Endereço</label><br>
-                    <input type="text" class="form-control" ng-model='doador.endereco'><br>
-                </div>
-                <div class="col-md-3">
-                    <label>Número</label><br>
-                    <input type="number" class="form-control" ng-model='doador.numero'>
-                </div>
-                <div class="col-md-3">
-                    <label>Complemento</label><br>
-                    <input type="text" class="form-control" ng-model='doador.complemento'><br>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-offset-1 col-md-2">
+
+<div class="form-group">
+    <label class="col-md-2 col-md-offset-1">Tipo de doador</label>
+    <div class="col-md-2">
+        <select class='form-control' ng-model='doador.tipo'>
+            <option value="" ng-disabled='true'>Selecione o tipo</option>
+            <option value="pf">Pessoa Física</option>
+            <option value="pj">Pessoa Jurídica</option>
+        </select><br>
+    </div>
+</div>
+<br><hr>
+
+<form ng-show="doador.tipo != null" name="doadorForm" class="form-horizontal">
+    <div class="row text-center">
+        <div class="col-md-12">
             <label>Foto</label><br>
             <div class="fileinput fileinput-new" data-provides="fileinput">
                 <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 240px; height: 180px;"></div>
                 <div>
-                    <span class="btn btn-default btn-file">
-                            <span class="fileinput-new">Selecione a imagem</span>
-                    <span class="fileinput-exists">Alterar</span>
-                    <input type="file" name="...">
+                    <span class="btn btn-default btn-block btn-file">
+                        <span class="fileinput-new">Selecione a imagem</span>
+                        <span class="fileinput-exists">Alterar</span>
+                        <input type="file" name="...">
                     </span>
-                    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
+                    <a href="#" class="btn btn-default btn-block fileinput-exists" data-dismiss="fileinput">Remover</a>
                 </div>
             </div><br>
         </div><br>
+    </div><br>
+
+    <div ng-show="doador.tipo == 'pj'" id="pessoaJuridica">
+        <div class="form-group">
+            <label class="col-md-2 col-md-offset-1">Razão Social</label>
+            <div class="col-md-8">
+                <input type="text" class="form-control" ng-model='doador.razao'><br>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 col-md-offset-1">CNPJ</label>
+            <div class="col-md-8">
+                <input type="text" class="form-control" ng-model='doador.cnpj'><br>
+            </div>
+        </div>
+        <hr><br>
     </div>
 
-    <div class="row">
+    <div class="form-group">
+        <label ng-show="doador.tipo != 'pj'" class="col-md-2 col-md-offset-1">Nome completo</label>
+        <label ng-show="doador.tipo == 'pj'" class="col-md-2 col-md-offset-1">Nome do contato</label>
+        <div class="col-md-8">
+            <input type="text" class="form-control" ng-model='doador.nome'><br>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 col-md-offset-1">Data de entrada</label>
         <div class="col-md-3">
-            <label>Bairro</label>
-            <input type="text" class="form-control" ng-model='doador.bairro'>
+            <input type="text" class="form-control" ng-model='doador.data'><br>
         </div>
-        <div class="col-md-offset-1 col-md-5">
-            <label>Cidade</label><br>
-            <input type="text" class="form-control" ng-model='doador.cidade'>
+
+        <label class="col-md-1">E-mail</label>
+        <div class="col-md-4">
+            <input type="text" class="form-control" ng-model='doador.email'><br>
         </div>
-        <div class="col-md-offset-1 col-md-2">
-            <label>UF</label><br>
-            <select class="form-control" ng-model='doador.uf' ng-options='uf.nome for uf in ufs'>
-                <option value="" ng-disabled='true'>Selecione o Estado</option>
-            </select>
-            <br>
+    </div>
+    <hr><br>
+    <div class="form-group">    
+        <label class="col-md-2 col-md-offset-1">Endereço</label>
+        <div class="col-md-5">
+            <input type="text" ng-model='doador.endereco' class="form-control"><br>
+        </div>
+
+        <label class="col-md-1">Número</label>
+        <div class="col-md-2">
+            <input type="text" ng-model='doador.numero' class="form-control"><br>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-4">
-            <label>Telefone residencial</label><br>
-            <input type="tel" class="form-control" ng-model='doador.telRes'><br>
+    <div class="form-group">
+        <label class="col-md-2 col-md-offset-1">Complemento</label>
+        <div class="col-md-2">
+            <input type="text" ng-model='doador.complemento' class="form-control"><br>
         </div>
+
+        <label class="col-md-1 col-md-offset-1">Bairro</label>
         <div class="col-md-4">
-            <label>Celular</label><br>
+            <input type="text" ng-model='doador.bairro' class="form-control"><br>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 col-md-offset-1">Cidade</label>
+        <div class="col-md-5">
+            <input type="text" ng-model='doador.cidade' class="form-control"><br>
+        </div>
+
+        <label class="col-md-1">UF</label>
+        <div class="col-md-2">
+            <select class='form-control' ng-model='doador.uf' ng-options='uf.nome for uf in ufs'>
+                <option value='' ng-disabled='true'>UF</option>
+            </select><br>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 col-md-offset-1">Tel. residencial</label>
+        <div class="col-md-2">
+            <input type="text" class="form-control" ng-model='doador.telRes'><br>
+        </div>
+
+        <label class="col-md-1">Celular</label>
+        <div class="col-md-2">
             <input type="text" class="form-control" ng-model='doador.telCel'><br>
         </div>
-        <div class="col-md-4">
-            <label>Telefone comercial</label><br>
+
+        <label class="col-md-1">Comercial</label>
+        <div class="col-md-2">
             <input type="text" class="form-control" ng-model='doador.telCom'><br>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-4">
-            <label>E-mail</label><br>
-            <input type="email" class="form-control" ng-model='doador.email'>
+    <hr>
+
+    <div class="form-group">
+        <label class="col-md-2 col-md-offset-1">Tipos de doação</label>
+        <label class="col-md-1">Voluntário</label>
+        <div class="col-md-1">
+            <input type="checkbox" ng-model='doador.voluntario'><br>
         </div>
+
+        <label class="col-md-1">Financeiro</label>
+        <div class="col-md-1">
+            <input type="checkbox" ng-model='doador.financeiro'><br>
+        </div>
+
+        <label class="col-md-1">Roupas</label>
+        <div class="col-md-1">
+            <input type="checkbox" ng-model='doador.roupas'><br>
+        </div>
+
+        <label class="col-md-1">Alimentos</label>
+        <div class="col-md-1">
+            <input type="checkbox" ng-model='doador.alimentos'><br>
+        </div>
+    </div>
+
+    <div class="row">
         <!-- ????? -->
         <div class="col-md-offset-1 col-md-7 hidden">
             <label>Última doação</label><br>
@@ -98,8 +159,8 @@
     <br>
     <div class="row">
         <div class="col-md-12 text-right">
-            <button class="btn-primary">Limpar</button>
-            <button class="btn-success" ng-click="adicionarDoador( doador )">Salvar</button>
+            <button class="btn btn-primary">Limpar</button>
+            <button class="btn btn-success" ng-click="adicionarDoador( doador )">Salvar</button>
         </div>
     </div>
     {{doador}}
