@@ -2,19 +2,19 @@ module.exports = (app) => {
 
     var uf = [
         {
-            'nome': 'São Paulo'
+            nome: 'São Paulo'
         },
         {
-            'nome': 'Rio de Janeiro'
+            nome: 'Rio de Janeiro'
         },
         {  
-            'nome': 'Espirito Santo'
+            nome: 'Espirito Santo'
         },
         {
-            'nome': 'Minas Gerais'
+            nome: 'Minas Gerais'
         },
         {
-            'nome': 'Bahia'
+            nome: 'Bahia'
         }
     ];
 
