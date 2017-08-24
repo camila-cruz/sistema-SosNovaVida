@@ -40,10 +40,27 @@ module.exports = ( app ) => {
         console.log('Recebendo requisição GET em /acolhidos');
         //res.send(acolhidos).status(200);
     })
-
-    app.get('/acolhidos/:id', (req, res) => {
+    app.get('/acolhidos/pia/:id', (req, res) => {
         let id = req.params.id;
-        res.render('formPIA');
+        console.log('Recebendo requisição GET em /acolhidos/pia/' + id);
+        // Get a Postgres client from the connection pool
+        pg.connect(connectionString, (err, client, done) => {
+            // Handle connection errors
+            if(err) {
+                done();
+                console.log(err);
+                return res.status(500).json({success: false, data: err});
+            }
+            // SQL Query > Select Data
+            console.log('ID buscado: ' + id);
+            const query = client.query('SELECT * FROM acolhidos WHERE idacolhido = $1;', [id] );
+            // Stream acolhidos back one row at a time
+            query.on('row', (row) => {
+                done();
+                console.log(row);
+                return res.send(row).status(200);
+            });
+        });
     });
 
     //CREATE

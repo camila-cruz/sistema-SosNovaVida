@@ -10,10 +10,10 @@
     </tr>
     <tr ng-repeat='acolhido in acolhidos'>
         <td>{{acolhido.nome}}</td>
-        <td>{{acolhido.data_nasc | date:'dd/MM/yy'}}</td>
-        <td>{{acolhido.local_nasc}}</td>
-        <td>{{acolhido.nome_mae}}</td>
-        <td>{{acolhido.nome_pai}}</td>
-        <td><a class="btn btn-info" href="#!/consulta/pia/acolhido" role="button">Abrir PIA</a></td>
+        <td>{{acolhido.datanasc | date:'dd/MM/yy'}}</td>
+        <td>{{acolhido.cidadenatal}}</td>
+        <td>{{acolhido.nomemae}}</td>
+        <td>{{acolhido.nomepai}}</td>
+        <td><a class="btn btn-info" href="#!/consulta/pia/acolhido/{{acolhido.idacolhido}}" role="button">Abrir PIA</a></td>
     </tr>
 </table>
