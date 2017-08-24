@@ -77,17 +77,17 @@
                     <div class="form-group">
                         <label class="col-md-2 col-md-offset-1">CPF</label>
                         <div class="col-md-2">
-                            <input type="text" data-mask="999.999.999-99" ng-model='acolhido.dtNasc' class="form-control">
+                            <input type="text" data-mask="999.999.999-99" ng-model='acolhido.cpf' class="form-control">
                         </div>
 
                         <label class="col-md-1">RG</label>
                         <div class="col-md-2">
-                            <input type="text" data-mask="99.999.999-w" ng-model='acolhido.dtNasc' class="form-control">
+                            <input type="text" data-mask="99.999.999-w" ng-model='acolhido.rg' class="form-control">
                         </div>
                         <!-- Órgão emissor -->
                         <label class="col-md-1 ">SSP</label>
                         <div class="col-md-2">
-                            <input type="text" ng-model='acolhido.dtNasc' class="form-control">
+                            <input type="text" ng-model='acolhido.ssp' class="form-control">
                         </div>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
 
                             <label class="col-md-2">Grau de parentesco</label>
                             <div class="col-md-3">
-                                <select class='form-control' ng-model='acolhido.uf' ng-options='uf.nome for uf in ufs'>
+                                <select class='form-control'>
                                     <option value='' ng-disabled='true'>MÃE</option>
                                     <option value='' ng-disabled='true'>PAI</option>
                                     <option value='' ng-disabled='true'>NENHUM</option>
@@ -134,17 +134,17 @@
                         <div class="form-group">
                             <label class="col-md-2 col-md-offset-1">CPF</label>
                             <div class="col-md-2">
-                                <input type="text" data-mask="999.999.999-99" ng-model='acolhido.dtNasc' class="form-control">
+                                <input type="text" data-mask="999.999.999-99" ng-model='acolhido.cpf' class="form-control">
                             </div>
 
                             <label class="col-md-1">RG</label>
                             <div class="col-md-2">
-                                <input type="text" data-mask="99.999.999-w" ng-model='acolhido.dtNasc' class="form-control">
+                                <input type="text" data-mask="99.999.999-w" ng-model='acolhido.rg' class="form-control">
                             </div>
                             <!-- Órgão emissor -->
                             <label class="col-md-1 ">SSP</label>
                             <div class="col-md-2">
-                                <input type="text" ng-model='acolhido.dtNasc' class="form-control">
+                                <input type="text" ng-model='acolhido.ssp' class="form-control">
                             </div>
                         </div><br>
 
@@ -152,14 +152,14 @@
                             <label class="col-md-2 col-md-offset-1">Renda bruta mensal</label>
                             <div class="col-md-3">
                                 <div class="input-group">
-                                    <span class="input-group-addon">R$</span><input type="text" ng-model='acolhido.dtNasc' class="form-control">
+                                    <span class="input-group-addon">R$</span><input type="text" ng-model='acolhido.rbm' class="form-control">
                                 </div>
                             </div>
 
                             <label class="col-md-2">Renda líquida mensal</label>
                             <div class="col-md-3">
                                 <div class="input-group">
-                                    <span class="input-group-addon">R$</span><input type="text" ng-model='acolhido.dtNasc' class="form-control">
+                                    <span class="input-group-addon">R$</span><input type="text" ng-model='acolhido.rlm' class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -170,31 +170,31 @@
                             
                             <label class="col-md-2 col-md-offset-1">Endereço</label>
                             <div class="col-md-5">
-                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                                <input type="text" ng-model='acolhido.endereco' class="form-control"><br>
                             </div>
 
                             <label class="col-md-1">Número</label>
                             <div class="col-md-2">
-                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                                <input type="text" ng-model='acolhido.numero' class="form-control"><br>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-2 col-md-offset-1">Complemento</label>
                             <div class="col-md-2">
-                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                                <input type="text" ng-model='acolhido.compl' class="form-control"><br>
                             </div>
 
                             <label class="col-md-1 col-md-offset-1">Bairro</label>
                             <div class="col-md-4">
-                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                                <input type="text" ng-model='acolhido.bairro' class="form-control"><br>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-2 col-md-offset-1">Cidade</label>
                             <div class="col-md-5">
-                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                                <input type="text" ng-model='acolhido.cidade' class="form-control"><br>
                             </div>
 
                             <label class="col-md-1">UF</label>
@@ -209,7 +209,7 @@
                             <label class="col-md-2 col-md-offset-1">CEP</label>
                             <div class="col-md-3">
                                 <div class="input-group">
-                                    <input type="text" data-mask="99999-999" ng-model='acolhido.nomeMae' class="form-control">
+                                    <input type="text" data-mask="99999-999" ng-model='acolhido.cep' class="form-control">
                                     <div class="input-group-btn">
                                         <button class="btn btn-default btn-input-group" type="button">
                                             <span class="glyphicon glyphicon-search"></span>
@@ -220,7 +220,7 @@
                             <!-- A partir do CEP, buscar IDH do local e definir grau de risco -->
                             <label class="col-md-2 col-md-offset-1">Grau de risco</label>
                             <div class="col-md-2">
-                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                                <input type="text" ng-model='acolhido.grauRisco' class="form-control"><br>
                             </div>
                         </div>
 
@@ -230,12 +230,12 @@
                         <div class="form-group">
                             <label class="col-md-2 col-md-offset-1">Nome do local</label>
                             <div class="col-md-4">
-                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                                <input type="text" ng-model='acolhido.localTrab' class="form-control"><br>
                             </div>
 
                             <label class="col-md-1">Função</label>
                             <div class="col-md-3">
-                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                                <input type="text" ng-model='acolhido.funcTrab' class="form-control"><br>
                             </div>
                         </div>
 
@@ -243,7 +243,7 @@
                             <label class="col-md-2 col-md-offset-1">CEP</label>
                             <div class="col-md-3">
                                 <div class="input-group">
-                                    <input type="text" data-mask="99999-999" ng-model='acolhido.nomeMae' class="form-control">
+                                    <input type="text" data-mask="99999-999" ng-model='acolhido.cep' class="form-control">
                                     <div class="input-group-btn">
                                         <button class="btn btn-default btn-input-group" type="button">
                                             <span class="glyphicon glyphicon-search"></span>
@@ -255,7 +255,7 @@
                             <label class="col-md-1 col-md-offset-1">Salário</label>
                             <div class="col-md-3">
                                 <div class="input-group">
-                                    <span class="input-group-addon">R$</span><input type="text" ng-model='acolhido.dtNasc' class="form-control">
+                                    <span class="input-group-addon">R$</span><input type="text" ng-model='acolhido.salario' class="form-control">
                                 </div>
                             </div>
                         </div><br>
@@ -263,31 +263,31 @@
                         <div class="form-group">
                             <label class="col-md-2 col-md-offset-1">Endereço</label>
                             <div class="col-md-5">
-                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                                <input type="text" ng-model='acolhido.endereco' class="form-control"><br>
                             </div>
 
                             <label class="col-md-1">Número</label>
                             <div class="col-md-2">
-                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                                <input type="text" ng-model='acolhido.numero' class="form-control"><br>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-2 col-md-offset-1">Complemento</label>
                             <div class="col-md-2">
-                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                                <input type="text" ng-model='acolhido.compl' class="form-control"><br>
                             </div>
 
                             <label class="col-md-1 col-md-offset-1">Bairro</label>
                             <div class="col-md-4">
-                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                                <input type="text" ng-model='acolhido.bairro' class="form-control"><br>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-2 col-md-offset-1">Cidade</label>
                             <div class="col-md-5">
-                                <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                                <input type="text" ng-model='acolhido.cidade' class="form-control"><br>
                             </div>
 
                             <label class="col-md-1">UF</label>
@@ -313,24 +313,24 @@
                     <div class="form-group">
                         <label class="col-md-2 col-md-offset-1">Nº do processo</label>
                         <div class="col-md-3">
-                            <input type="text" ng-model='acolhido.nomePai' class="form-control"><br>
+                            <input type="text" ng-model='acolhido.processo' class="form-control"><br>
                         </div>
 
                         <label class="col-md-1">Comarca</label>
                         <div class="col-md-4">
-                            <input type="text" ng-model='acolhido.nomePai' class="form-control"><br>
+                            <input type="text" ng-model='acolhido.comarca' class="form-control"><br>
                         </div>
                     </div>
                     <!-- 15ª vara de infância de Suzano, por exemplo -->
                     <div class="form-group">
                         <label class="col-md-2 col-md-offset-1">Nº da vara</label>
                         <div class="col-md-2">
-                            <input type="text" ng-model='acolhido.nomePai' class="form-control"><br>
+                            <input type="text" ng-model='acolhido.numVara' class="form-control"><br>
                         </div>
 
                         <label class="col-md-1">Vara</label>
                         <div class="col-md-5">
-                            <input type="text" ng-model='acolhido.nomePai' class="form-control"><br>
+                            <input type="text" ng-model='acolhido.vara' class="form-control"><br>
                         </div>                                        
                     </div>
                 </div>
@@ -340,8 +340,8 @@
     <br><br>
     <div class="row">
         <div class="col-md-7 text-right">
-            <button class="btn btn-primary">Limpar</button>
-            <button class="btn btn-success">Salvar</button>
+            <button class="btn btn-primary" type='reset'>Limpar</button>
+            <button class="btn btn-success" ng-click='adicionarAcolhido( acolhido )'>Salvar</button>
         </div>
     </div>
 </form>
