@@ -57,12 +57,12 @@ angular.module('novaVida').config( ($routeProvider) => {
             }
         }
     });
-    $routeProvider.when('/consulta/pia/acolhido/:id', {
+    $routeProvider.when('/consulta/acolhido/pia/:id', {
         templateUrl: 'view/formPIA.html',
-        controller: 'acolhidoCtrl',
+        controller: 'piaCtrl',      //acolhidoCtrl
         resolve: {
             acolhido: (acolhidoAPI, $route) => {
-                console.log('Testando acolhido');
+                console.log('Testando pia acolhido');
                 return acolhidoAPI.getPIA( $route.current.params.id );
             }
         }

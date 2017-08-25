@@ -8,6 +8,7 @@ angular.module('novaVida').factory('acolhidoAPI', function( $http, config ) {
     };
 
     const _getPIA = ( id ) => {
+        console.log("ID na api: " + id);
         return $http.get( config.baseUrl + '/acolhidos/pia/' + id);
     };
     

@@ -243,3 +243,16 @@ fieldset {
     box-shadow: none;
     margin-right: 5%;
 }
+
+input[type='radio'] {
+    transform: scale(1.5);
+}
+
+input[type='checkbox'] {
+    transform: scale(1.5);
+}
+
+.texto-pia {
+    font-family: 'Slabo 27px', Times, serif;
+    font-size: 1.1em;
+}

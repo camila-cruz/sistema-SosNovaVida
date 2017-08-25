@@ -5,7 +5,7 @@ angular.module('novaVida').factory('timestampInterceptor', function() {
             if ( url.indexOf('view') > -1 ) return config;
             var timeStamp = new Date().getTime();
             config.url = url + "?timestamp=" + timeStamp;
-            console.log(config);
+            //console.log(config);
             return config;
         }
     };
