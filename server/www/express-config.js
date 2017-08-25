@@ -28,7 +28,8 @@ module.exports = function(){
 
   // Carrega os arquivos
   consign()
-   .include('/app/models')
+  //.include('/app/models')
+   .include('/app/routes')
    .then('/app')
    .then('/services')
    .into(app);

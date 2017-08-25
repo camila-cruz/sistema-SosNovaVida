@@ -12,8 +12,8 @@ angular.module('novaVida').factory('acolhidoAPI', function( $http, config ) {
         return $http.get( config.baseUrl + '/acolhidos/pia/' + id);
     };
     
-    const _setAcolhidos = () => {
-        return $http.post( config.baseUrl + '/acolhidos' );
+    const _setAcolhidos = ( acolhidos ) => {
+        return $http.post( config.baseUrl + '/acolhidos', acolhidos );
     };
 
     //Os métodos acima são acessados pelo retorno abaixo.

@@ -24,7 +24,6 @@ angular.module('novaVida').config( ($routeProvider) => {
         controller: 'acolhidoCtrl',
         resolve: {
             acolhido: (acolhidoAPI) => {
-                console.log('Testando acolhido');
                 return acolhidoAPI.getAcolhidos();
             },
             uf: (ufAPI) => {
@@ -64,6 +63,9 @@ angular.module('novaVida').config( ($routeProvider) => {
             acolhido: (acolhidoAPI, $route) => {
                 console.log('Testando pia acolhido');
                 return acolhidoAPI.getPIA( $route.current.params.id );
+            },
+            uf: ( ufAPI ) => {
+                return ufAPI;
             }
         }
     })
