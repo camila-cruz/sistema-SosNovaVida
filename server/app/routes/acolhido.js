@@ -4,7 +4,7 @@ const connectionString = process.env.DATABASE_URL || 'postgres://postgres:1234@l
 
 module.exports = ( app ) => {
     app.get('/acolhidos', (req, res, next) => {
-        
+        /*
         const acolhidos = [{
             id: 1,
             nome: 'José da Silva',
@@ -13,8 +13,8 @@ module.exports = ( app ) => {
             nome_mae: 'Maria da Silva',
             nome_pai: 'João da Silva'
         }];
-
-        /*
+        */
+        
         const acolhidos = [];
         // Get a Postgres client from the connection pool
         pg.connect(connectionString, (err, client, done) => {
@@ -37,10 +37,9 @@ module.exports = ( app ) => {
                 return res.json(acolhidos);
                 res.send(acolhidos).status(200);
             });
-        });*/
+        });
 
         console.log('Recebendo requisição GET em /acolhidos');
-        res.send(acolhidos).status(200);
     });
 
     app.get('/acolhidos/pia/:id', (req, res) => {
@@ -48,7 +47,7 @@ module.exports = ( app ) => {
         console.log("ID: " + id);
         //console.log(req.params);
         const acolhido = {
-            id: 1,
+            id: 14,
             nome: 'José da Silva',
             data_nasc: new Date(),
             local_nasc: 'Suzano - SP',
@@ -108,7 +107,7 @@ module.exports = ( app ) => {
                 return res.status(500).json({success: false, data: err});
             }
             // SQL Query > Insert Data
-            client.query('INSERT INTO acolhidos(nome, datanasc, dataentrada, cidadenatal, uf, nomemae, maeresp, nomepai, pairesp, nomeresp) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)',
+            client.query('INSERT INTO acolhidos(nome, data_nasc, data_entrada, local_nasc, uf, nome_mae, maeresp, nome_pai, pairesp, nomeresp) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)',
             [data.nome, data.dtNasc, data.dtEntr, data.cidNatal, data.uf.nome, data.nomeMae, data.isMaeResp, data.nomePai, data.isPaiResp, data.outroResp]);
             console.log("DATA");
             console.log(data);
