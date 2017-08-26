@@ -4,16 +4,17 @@ const connectionString = process.env.DATABASE_URL || 'postgres://postgres:1234@l
 
 module.exports = ( app ) => {
     app.get('/acolhidos', (req, res, next) => {
-        /*
+        
         const acolhidos = [{
             id: 1,
-            nome: 'Yuri',
+            nome: 'José da Silva',
             data_nasc: new Date(),
-            local_nasc: 'SP',
-            nome_mae: 'Joice',
-            nome_pai: 'Gabriel'
-        }];*/
+            local_nasc: 'Suzano - SP',
+            nome_mae: 'Maria da Silva',
+            nome_pai: 'João da Silva'
+        }];
 
+        /*
         const acolhidos = [];
         // Get a Postgres client from the connection pool
         pg.connect(connectionString, (err, client, done) => {
@@ -36,23 +37,24 @@ module.exports = ( app ) => {
                 return res.json(acolhidos);
                 res.send(acolhidos).status(200);
             });
-        });
+        });*/
 
         console.log('Recebendo requisição GET em /acolhidos');
-        //res.send(acolhidos).status(200);
-    })
+        res.send(acolhidos).status(200);
+    });
 
     app.get('/acolhidos/pia/:id', (req, res) => {
         let id = req.params.id;
         console.log("ID: " + id);
+        //console.log(req.params);
         const acolhido = {
             id: 1,
-            nome: 'Yuri',
+            nome: 'José da Silva',
             data_nasc: new Date(),
-            local_nasc: 'SP',
-            nome_mae: 'Joice',
-            nome_pai: 'Gabriel',
-            imagem: "http://animais.culturamix.com/blog/wp-content/gallery/fotos-de-capivara-1/Fotos-Capivara-1.jpeg"
+            local_nasc: 'Suzano - SP',
+            nome_mae: 'Maria da Silva',
+            nome_pai: 'João da Silva'
+            //imagem: "http://animais.culturamix.com/blog/wp-content/gallery/fotos-de-capivara-1/Fotos-Capivara-1.jpeg"
         };
         //res.json(acolhidos[id-1]);
         //res.json(acolhido);
@@ -82,7 +84,8 @@ module.exports = ( app ) => {
                 return res.send(row).status(200);
             });
         });
-    });*/
+    });
+    */
 
     //CREATE
     app.post('/acolhidos', (req, res, next) => {
