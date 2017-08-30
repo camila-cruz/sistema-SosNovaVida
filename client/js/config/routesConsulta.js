@@ -2,8 +2,8 @@
     Arquivo que guarda as rotas da aplicação
 */
 angular.module('novaVida').config( ($routeProvider) => {
-    //quando a rota for /consulta/estoque
-    $routeProvider.when('/consulta/estoque', {
+    //quando a rota for /estoque
+    $routeProvider.when('/estoque', {
         //carregará a view localizada na url abaixo
         templateUrl: 'view/consultaEstoque.html',
         //o controller da view será estoqueCtrl, declarado no arquivo /controllers/estoqueCtrl
