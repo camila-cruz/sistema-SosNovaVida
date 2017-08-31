@@ -4,7 +4,9 @@ module.exports = ( app ) => {
             nome:'Yuri Cabral',
             telRes: '(11)95334-2161',
             telCel: '(11)91234-5678',
-            email:'ycabral@br.ibm.com'
+            email:'ycabral@br.ibm.com',
+            tipo: 'pf',
+            financeiro: true
         }];
 
     app.get('/doadores', (req, res) => {
