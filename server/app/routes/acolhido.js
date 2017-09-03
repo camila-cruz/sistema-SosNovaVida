@@ -1,45 +1,21 @@
-const pg = require('pg');
+//const pg = require('pg');
 const path = require('path');
-const connectionString = process.env.DATABASE_URL || 'postgres://postgres:1234@localhost:5432/tcc';
+const con = require('../database/db-factory.js');
+//const connectionString = process.env.DATABASE_URL || 'postgres://postgres:1234@localhost:5432/tcc';
 
 module.exports = ( app ) => {
     app.get('/acolhidos', (req, res, next) => {
-        /*
-        const acolhidos = [{
-            id: 1,
-            nome: 'José da Silva',
-            data_nasc: new Date(),
-            local_nasc: 'Suzano - SP',
-            nome_mae: 'Maria da Silva',
-            nome_pai: 'João da Silva'
-        }];
-        */
-        
         const acolhidos = [];
-        // Get a Postgres client from the connection pool
-        pg.connect(connectionString, (err, client, done) => {
-            // Handle connection errors
-            if(err) {
-                done();
-                console.log(err);
-                return res.status(500).json({success: false, data: err});
-            }
-            // SQL Query > Select Data
-            const query = client.query('SELECT * FROM acolhidos ORDER BY idacolhido ASC;');
-            
-            // Stream acolhidos back one row at a time
-            query.on('row', (row) => {
-                acolhidos.push(row);
-            });
-            // After all data is returned, close connection and return acolhidos
-            query.on('end', () => {
-                done();
-                return res.json(acolhidos);
-                res.send(acolhidos).status(200);
-            });
-        });
 
-        console.log('Recebendo requisição GET em /acolhidos');
+        con.query('SELECT * FROM acolhidos ORDER BY idacolhido ASC;', null , function(err, result){
+            let linhas = result.rows[0];
+            
+            acolhidos.push(linhas);
+
+            return res.json(acolhidos);
+            res.send(acolhidos).status(200);
+            console.log('Recebendo requisição GET em /acolhidos');
+        });
     });
 
     app.get('/acolhidos/pia/:id', (req, res) => {
@@ -86,17 +62,29 @@ module.exports = ( app ) => {
     });
     */
 
-    //CREATE
-    app.post('/acolhidos', (req, res, next) => {
-        const results = [];
-        // Grab data from http request
-        /*const data = {
-            text: req.body.text,
-            complete: false
-        };*/
 
+    app.post('/acolhidos', (req, res, next) => {
         const data = req.body;
         console.log("data.nome: " + data.nome);
+
+        con.query('INSERT INTO acolhidos (nome, data_nasc, data_entrada, local_nasc, uf, nome_mae, maeresp, nome_pai, pairesp, nomeresp) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)',
+                [data.nome, data.dtNasc, data.dtEntr, data.cidNatal, data.uf.nome, data.nomeMae, data.isMaeResp, data.nomePai, data.isPaiResp, data.outroResp], function (err, result) {
+            
+            if (err) {
+                console.log(err.message);
+                return res.status(500).json({success: false, data: err});
+            } else {
+                // Fazer algo
+                //return res.redirect()
+            }
+        });
+/*
+        const results = [];
+        // Grab data from http request
+        const data = {
+            text: req.body.text,
+            complete: false
+        };
 
         // Get a Postgres client from the connection pool
         pg.connect(connectionString, (err, client, done) => {
@@ -122,7 +110,7 @@ module.exports = ( app ) => {
                 done();
                 return res.json(results);
             });
-        });
-    })
+        });*/
+    });
 
 }
