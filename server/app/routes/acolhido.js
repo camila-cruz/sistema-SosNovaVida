@@ -5,16 +5,19 @@ const con = require('../database/db-factory.js');
 
 module.exports = ( app ) => {
     app.get('/acolhidos', (req, res, next) => {
+        console.log('Recebendo requisição GET em /acolhidos');
         const acolhidos = [];
-
         con.query('SELECT * FROM acolhidos ORDER BY idacolhido ASC;', null , function(err, result){
-            let linhas = result.rows[0];
-            
-            acolhidos.push(linhas);
+            if (err) {
+                console.log(err.message);
+                return res.status(500).json({success: false, data: err});
+            } else {
+                let linhas = result.rows[0];
+                acolhidos.push(linhas);
 
-            return res.json(acolhidos);
-            res.send(acolhidos).status(200);
-            console.log('Recebendo requisição GET em /acolhidos');
+                return res.json(acolhidos);
+                res.send(acolhidos).status(200);
+            };
         });
     });
 
@@ -75,8 +78,8 @@ module.exports = ( app ) => {
                 return res.status(500).json({success: false, data: err});
             } else {
                 // Fazer algo
-                //return res.redirect()
-            }
+                return res.status(200); //Status 200 - Created. O Front-end é responsável por fazer o resto.
+            };
         });
 /*
         const results = [];

@@ -1,15 +1,32 @@
 const pg = require('pg');
 const path = require('path');
-const connectionString = process.env.DATABASE_URL || 'postgres://postgres:1234@localhost:5432/tcc';
+const conn = require('../database/db-factory');
+//const connectionString = process.env.DATABASE_URL || 'postgres://postgres:1234@localhost:5432/tcc';
 
 module.exports = ( app ) => {
+
+    app.get('/estoque', (req, res, next) => {
+        console.log('Recebendo requisição GET em /estoque');
+        
+        const produtos = [];
+        conn.query('SELECT * FROM produtos', null, (err, result) => {
+            if (err) return 'Ocorreu um erro: ' + err;
+            let linhas = result.rows[0];
+            
+            produtos.push(linhas);
+
+            return res.json(produtos);
+            res.send(produtos).status(200);
+        });
+    });
+    /*
     app.get('/estoque', (req, res, next) => {
         /*let produtos = [{
             descricao: 'Arroz',
             tipo: 'Alimento',
             qtd: 1,   
             preco_entrada: 'R$ 100,00'
-        }]*/
+        }]
         const produtos = [];
         pg.connect(connectionString, (err, client, done) => {
             // Handle connection errors
@@ -35,7 +52,7 @@ module.exports = ( app ) => {
 
         console.log('Recebendo consulta em /estoque');
         //res.send(produtos).status(200);
-    });
+    });*/
 
     app.get('/estoque/site', (req, res) => {
 
