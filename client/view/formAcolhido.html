@@ -87,7 +87,28 @@
                         <!-- Órgão emissor -->
                         <label class="col-md-1 ">SSP</label>
                         <div class="col-md-2">
-                            <input type="text" ng-model='acolhido.ssp' class="form-control">
+                            <input type="text" ng-model='acolhido.ssp' class="form-control"><br>
+                        </div>
+                    </div>
+
+                    <div class='form-group'>
+                        <label class='col-md-2 col-md-offset-1'>Alergias</label>
+                        <div class='col-md-3'>
+                            <input type='text' ng-model='acolhido.alergias' class='form-control'><br>
+                        </div>
+                        <label class='col-md-2 col-md-offset-1'>Tipo Sanguíneo</label>
+                        <div class='col-md-2'>
+                            <select class='form-control' ng-model='acolhido.tipoSanguineo'>
+                                <option value='' ng-disabled='true'>Escolha uma opção</option>
+                                <option value='A-'>A-</option>
+                                <option value='A+'>A+</option>
+                                <option value='B-'>B-</option>
+                                <option value='B-'>B+</option>
+                                <option value='AB-'>AB-</option>
+                                <option value='AB+'>AB+</option>
+                                <option value='O-'>O-</option>
+                                <option value='O+'>0+</option>
+                            </select><br>
                         </div>
                     </div>
                 </div>
