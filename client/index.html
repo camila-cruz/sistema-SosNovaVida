@@ -7,32 +7,6 @@
     <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/jasny-bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <!-- WEBPACK AQUI ASAP, PRA TIRAR ESSE BANDO DE SCRIPT SRC ZUADO-->
-    <script src="lib/angular/angular.js"></script>
-    <script src="lib/angular/angular-route.js"></script>
-    <script src="lib/jquery/jquery-2.0.3.min.js"></script>
-    <script src="lib/bootstrap/bootstrap.min.js"></script>
-    <script src="lib/bootstrap/jasny-bootstrap.min.js"></script>
-    <script src='js/app.js'></script>
-    <script src="js/controllers/acolhidoCtrl.js"></script>
-    <script src="js/controllers/piaCtrl.js"></script>
-    <script src="js/controllers/estoqueCtrl.js"></script>
-    <script src="js/controllers/doadorCtrl.js"></script>
-    <script src="js/controllers/detalhesDoadorCtrl.js"></script>
-    <script src="js/controllers/inicioCtrl.js"></script>
-    <script src="js/services/acolhidoAPI.js"></script>
-    <script src="js/services/estoqueAPI.js"></script>
-    <script src="js/services/doadorAPI.js"></script>
-    <script src="js/services/ufAPI.js"></script>
-    <script src="js/value/configValues.js"></script>
-    <script src="js/config/routesCadastro.js"></script>
-    <script src="js/config/routesConsulta.js"></script>
-    <script src="js/config/routesOutros.js"></script>
-    <script src="js/config/interceptorConfig.js"></script>
-    <script src="js/interceptors/timestampInterceptor.js"></script>
-    <script src="node_modules/chart.js/dist/Chart.min.js"></script>
-    <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
-    <script src="http://cdn.rawgit.com/MrRio/jsPDF/master/dist/jspdf.min.js"></script>
-    <script src="http://html2canvas.hertzen.com/build/html2canvas.js"></script>
 </head>
 <body ng-controller='inicioController'>
     <!-- TOP Bar -->
@@ -67,7 +41,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                <!--       <a class="navmenu-brand" href="index.html"><h3>SOS Nova Vida</h3></a> -->
+                        <!--       <a class="navmenu-brand" href="index.html"><h3>SOS Nova Vida</h3></a> -->
                     </div>
                     <div class="collapse navbar-collapse" id="collapse-navbar">
                         <ul class="nav navmenu-nav col-md-12">
@@ -111,13 +85,39 @@
         <!-- Container aonde serão colocados os views -->
         <section class='container col-md-10 col-sm-10' style='padding-left: 2%;'>
             <!-- Views devem vir aqui -->
-            <div ng-view id="renderPDF"></div><br>
-
+            <div ng-view id="renderPDF" ></div><br>
+            
             <!--<div ng-include="'view/footer.html'"></div> -->
             <!-- Mais para frente ng-include vai ser movido daqui e vai ser inserido no menu lateral
-             com informações para contato-->
-        </section>
-    </div>
-    <script src="js/sistema.js"></script>
+                com informações para contato-->
+            </section>
+        </div>
+        <script src="js/sistema.js"></script>
+        <script src="lib/angular/angular.js"></script>
+        <script src="lib/angular/angular-route.js"></script>
+        <script src="lib/jquery/jquery-2.0.3.min.js"></script>
+        <script src="lib/bootstrap/bootstrap.min.js"></script>
+        <script src="lib/bootstrap/jasny-bootstrap.min.js"></script>
+        <script src='js/app.js'></script>
+        <script src="js/controllers/acolhidoCtrl.js"></script>
+        <script src="js/controllers/piaCtrl.js"></script>
+        <script src="js/controllers/estoqueCtrl.js"></script>
+        <script src="js/controllers/doadorCtrl.js"></script>
+        <script src="js/controllers/detalhesDoadorCtrl.js"></script>
+        <script src="js/controllers/inicioCtrl.js"></script>
+        <script src="js/services/acolhidoAPI.js"></script>
+        <script src="js/services/estoqueAPI.js"></script>
+        <script src="js/services/doadorAPI.js"></script>
+        <script src="js/services/ufAPI.js"></script>
+        <script src="js/value/configValues.js"></script>
+        <script src="js/config/routesCadastro.js"></script>
+        <script src="js/config/routesConsulta.js"></script>
+        <script src="js/config/routesOutros.js"></script>
+        <script src="js/config/interceptorConfig.js"></script>
+        <script src="js/interceptors/timestampInterceptor.js"></script>
+        <script src="node_modules/chart.js/dist/Chart.min.js"></script>
+        <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
+        <script src="http://cdn.rawgit.com/MrRio/jsPDF/master/dist/jspdf.min.js"></script>
+        <script src="http://html2canvas.hertzen.com/build/html2canvas.js"></script>
 </body>
 </html>
