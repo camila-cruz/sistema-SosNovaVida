@@ -23,14 +23,14 @@ angular.module('novaVida').controller('inicioCtrl', [function() {
     }
     var chart = new Chart(ctx, datas);
 
-    var c = document.getElementById("receitas");
+    var c = document.getElementById("acolhidos");
     var ctx = c.getContext("2d");
     var datas = {
         type: 'line',   // Tipo de gráfico
         data: {
             labels: ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL"],
             datasets: [{
-                label: "Receita mensal (em milhares)",
+                label: "Quantidade de acolhidos (mensal)",
                 backgroundColor: 'rgba(32, 178, 170, 0.5)',
                 borderColor: 'rgb(32, 178, 170)',
                 data: [25, 20, 30, 20, 10, 12, 3],
