@@ -45,9 +45,9 @@ module.exports = ( app ) => {
     });
 */ 
     
-    app.get('/acolhidos/pia/:id', (req, res) => {
+    app.get('/acolhidos/:id', (req, res) => {
         let id = req.params.id;
-        console.log('Recebendo requisição GET em /acolhidos/pia/' + id);
+        console.log('Recebendo requisição GET em /acolhidos/' + id);
         // Get a Postgres client from the connection pool
         con.query('SELECT * FROM acolhidos WHERE idacolhido = $1;', [id], ( err, results ) => {
             if (err) return res.status(500).send(err);
