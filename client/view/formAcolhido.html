@@ -91,10 +91,11 @@
                         </div>
                     </div>
 
+                    <label class="col-md-10 col-md-offset-1"><h3>Ficha Médica</h3><hr></label>
                     <div class='form-group'>
                         <label class='col-md-2 col-md-offset-1'>Alergias</label>
                         <div class='col-md-3'>
-                            <input type='text' ng-model='acolhido.alergias' class='form-control'><br>
+                            <input type='text' ng-model='acolhido.alergias' class='form-control'>
                         </div>
                         <label class='col-md-2 col-md-offset-1'>Tipo Sanguíneo</label>
                         <div class='col-md-2'>
@@ -109,6 +110,29 @@
                                 <option value='O-'>O-</option>
                                 <option value='O+'>0+</option>
                             </select><br>
+                        </div>
+                    </div>
+                    <label class="col-md-10 col-md-offset-1"><h3>Vestimentas</h3><hr></label>
+                    <div class='form-group'>
+                        <label class='col-md-1 col-md-offset-1'>Camiseta</label>
+                        <div class='col-md-1'>
+                            <input type='text' ng-model='acolhido.tamCamiseta' class='form-control'>
+                        </div>
+                        <label class='col-md-1'>Calça</label>
+                        <div class='col-md-1'>
+                            <input type='text' ng-model='acolhido.tamCalca' class='form-control'>
+                        </div>
+                        <label class='col-md-1'>Roupa Intima</label>
+                        <div class='col-md-1'>
+                            <input type='text' ng-model='acolhido.tamIntima' class='form-control'>
+                        </div>
+                        <label class='col-md-1'>Meias</label>
+                        <div class='col-md-1'>
+                            <input type='text' ng-model='acolhido.tamMeias' class='form-control'>
+                        </div>
+                        <label class='col-md-1'>Calçado</label>
+                        <div class='col-md-1'>
+                            <input type='text' ng-model='acolhido.tamSapato' class='form-control'>
                         </div>
                     </div>
                 </div>
@@ -144,11 +168,22 @@
 
                             <label class="col-md-2">Grau de parentesco</label>
                             <div class="col-md-3">
-                                <select class='form-control'>
-                                    <option value='' ng-disabled='true'>MÃE</option>
-                                    <option value='' ng-disabled='true'>PAI</option>
+                                <select class='form-control' ng-model='responsavel.parentesco'><br>
+                                    <option value='mae'>MÃE</option>
+                                    <option value='pai'>PAI</option>
                                     <option value='' ng-disabled='true'>NENHUM</option>
                                 </select><br>
+                            </div>
+                        </div>
+
+                        <div class='form-group' ng-if='responsavel.parentesco === "mae"'>
+                            <label class='col-md-2'>Já sofreu aborto?</label>
+                            <div class="col-md-1">
+                                <input type="checkbox" ng-model='responsavel.aborto'><br>
+                            </div>
+                            <label class='col-md-2'>Quantos?</label>
+                            <div class='col-md-1'>
+                                <input type='text' ng-model'responsavel.qtdAbortos' class='form-control'><br>
                             </div>
                         </div>
 
