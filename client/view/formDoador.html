@@ -6,14 +6,14 @@
     <div class="form-group">
         <label class="col-md-2 col-md-offset-1">Nome completo</label>
         <div class="col-md-8">
-            <input type="text" class="form-control" ng-model='doador.nome'><br>
+            <input type="text" class="form-control" ng-model='doador.nome' ng-required='true'><br>
         </div>
     </div>
 
     <div class="form-group">
         <label class="col-md-2 col-md-offset-1">Data de entrada</label>
         <div class="col-md-3">
-            <input type="text" class="form-control" ng-model='doador.data'><br>
+            <input type="date" class="form-control" ng-model='doador.data'><br>
         </div>
 
         <label class="col-md-1">E-mail</label>
@@ -63,17 +63,17 @@
     <div class="form-group">
         <label class="col-md-2 col-md-offset-1">Tel. residencial</label>
         <div class="col-md-2">
-            <input type="text" class="form-control" ng-model='doador.telRes'><br>
+            <input type="text" class="form-control" ng-model='doador.telRes' ng-pattern='/^\(\d{2}\)\d{4}-\d{4}$/'><br>
         </div>
 
         <label class="col-md-1">Celular</label>
         <div class="col-md-2">
-            <input type="text" class="form-control" ng-model='doador.telCel'><br>
+            <input type="text" class="form-control" ng-model='doador.telCel' ng-pattern='/^\(\d{2}\)\d{4,5}-\d{4}$/'><br>
         </div>
 
         <label class="col-md-1">Comercial</label>
         <div class="col-md-2">
-            <input type="text" class="form-control" ng-model='doador.telCom'><br>
+            <input type="text" class="form-control" ng-model='doador.telCom' ng-pattern='/^\(\d{2}\)\d{4,5}-\d{4}$/'><br>
         </div>
     </div>
 
