@@ -6,17 +6,17 @@
     <tr>
         <th>Nome</th>
         <th>Data de Nascimento</th>
-        <th>Local de Nascimento</th>
+        <th>Data de Entrada</th>
         <th>Nome da Mãe</th>
         <th>Nome do Pai</th>
         <th></th>
     </tr>
     <tr ng-repeat='acolhido in acolhidos'>
         <td>{{acolhido.nome}}</td>
-        <td>{{acolhido.data_nasc | date:'dd/MM/yy'}}</td>
-        <td>{{acolhido.local_nasc}}</td>
-        <td>{{acolhido.nome_mae}}</td>
-        <td>{{acolhido.nome_pai}}</td>
+        <td>{{acolhido.datanasc | date:'dd/MM/yy'}}</td>
+        <td>{{acolhido.dataentrada | date:'dd/MM/yy'}}</td> 
+        <td>{{acolhido.nomeMae}}</td>
+        <td>{{acolhido.nomePai}}</td>
         <td><a class="btn btn-info" href="#!/consulta/acolhido/{{acolhido.idacolhido}}" role="button">Editar</a></td>
     </tr>
 </table>
