@@ -37,19 +37,19 @@
                     <div class="form-group">
                         <label class="col-md-2 col-md-offset-1">Data de nascimento</label>
                         <div class="col-md-3">
-                            <input type="date" ng-model='acolhido.dtNasc' class="form-control">
+                            <input type="date" ng-model='acolhido.dataNasc' class="form-control">
                         </div>
 
                         <label class="col-md-2">Data de entrada</label>
                         <div class="col-md-3">
-                            <input type="date" ng-model='acolhido.dtEntr' class="form-control"><br>
+                            <input type="date" ng-model='acolhido.dataEntrada' class="form-control"><br>
                         </div>
                     </div>
                     
                     <div class="form-group">
                         <label class="col-md-2 col-md-offset-1">Cidade natal</label>
                         <div class="col-md-5">
-                            <input type="text" ng-model='acolhido.cidNatal' class="form-control"><br>
+                            <input type="text" ng-model='acolhido.cidadeNatal' class="form-control"><br>
                         </div>
 
                         <label class="col-md-1">UF</label>
@@ -63,7 +63,7 @@
                     <div class="form-group">
                         <label class="col-md-2 col-md-offset-1">Nome da mãe</label>
                         <div class="col-md-8">
-                            <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+                            <input type="text" ng-model='responsavel.nome' class="form-control"><br>
                         </div>
                     </div>
 
@@ -397,7 +397,7 @@
     <div class="row">
         <div class="col-md-7 text-right">
             <button class="btn btn-primary" type='reset'>Limpar</button>
-            <button class="btn btn-success" ng-click='adicionarAcolhido( acolhido )'>Salvar</button>
+            <button class="btn btn-success" ng-click='cadastrarAcolhido( acolhido )'>Salvar</button>
         </div>
     </div>
 </form>

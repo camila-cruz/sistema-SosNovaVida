@@ -13,7 +13,7 @@
     <div class="form-group">
         <label class="col-md-2 col-md-offset-1">Data de entrada</label>
         <div class="col-md-3">
-            <input type="date" class="form-control" ng-model='doador.data'><br>
+            <input type="date" class="form-control" ng-model='doador.dataCadastro'><br>
         </div>
 
         <label class="col-md-1">E-mail</label>
@@ -61,19 +61,14 @@
     </div>
 
     <div class="form-group">
-        <label class="col-md-2 col-md-offset-1">Tel. residencial</label>
+        <label class="col-md-2 col-md-offset-1">Telefone 1</label>
         <div class="col-md-2">
-            <input type="text" class="form-control" ng-model='doador.telRes' ng-pattern='/^\(\d{2}\)\d{4}-\d{4}$/'><br>
+            <input type="text" class="form-control" ng-model='doador.tel1' ng-pattern='/^\(\d{2}\)\d{4,5}-\d{4}$/'><br>
         </div>
 
-        <label class="col-md-1">Celular</label>
+        <label class="col-md-1">Telefone 2</label>
         <div class="col-md-2">
-            <input type="text" class="form-control" ng-model='doador.telCel' ng-pattern='/^\(\d{2}\)\d{4,5}-\d{4}$/'><br>
-        </div>
-
-        <label class="col-md-1">Comercial</label>
-        <div class="col-md-2">
-            <input type="text" class="form-control" ng-model='doador.telCom' ng-pattern='/^\(\d{2}\)\d{4,5}-\d{4}$/'><br>
+            <input type="text" class="form-control" ng-model='doador.tel2' ng-pattern='/^\(\d{2}\)\d{4,5}-\d{4}$/'><br>
         </div>
     </div>
 
@@ -102,19 +97,11 @@
         </div>
     </div>
 
-    <div class="row">
-        <!-- ????? -->
-        <div class="col-md-offset-1 col-md-7 hidden">
-            <label>Última doação</label><br>
-            <input type="text" class="form-control" ng-model='doador.ultimaDoacao'>
-        </div>
-        <!-- ????? -->
-    </div>
     <br>
     <div class="row">
         <div class="col-md-12 text-right">
             <button class="btn btn-primary">Limpar</button>
-            <button class="btn btn-success" ng-click="adicionarDoador( doador )">Salvar</button>
+            <button class="btn btn-success" ng-click="cadastrarDoador( doador )">Salvar</button>
         </div>
     </div>
     {{doador}}
