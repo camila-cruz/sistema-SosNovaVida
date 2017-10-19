@@ -1,0 +1,9 @@
+Atributos faltantes nas models e suas versões atuais no código
+
+Acolhido:
+- cidade natal: cidNatal
+- uf: uf
+- cpf: cpf
+- rg: rg
+- ssp: ssp
+

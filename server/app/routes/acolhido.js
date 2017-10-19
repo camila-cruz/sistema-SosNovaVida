@@ -7,7 +7,7 @@ module.exports = ( app ) => {
     app.get('/acolhidos', (req, res, next) => {
         const acolhidos = [];
 
-        con.query('SELECT * FROM acolhidos ORDER BY idacolhido ASC;', null , function(err, result){
+        con.query('SELECT * FROM acolhidos ORDER BY idacolhido ASC;', null, function(err, result){
             let linhas = result.rows[0];
             
             acolhidos.push(linhas);
