@@ -1,4 +1,4 @@
-<h1>Cadastro de Acolhidos</h1>
+<h1>Detalhes de Acolhido</h1>
 <hr><br>
 <form class="form-horizontal">
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -37,12 +37,12 @@
                     <div class="form-group">
                         <label class="col-md-2 col-md-offset-1">Data de nascimento</label>
                         <div class="col-md-3">
-                            <input type="date" ng-model='acolhido.dataNasc' class="form-control">
+                            <input type="date" ng-model='acolhido.datanasc' class="form-control">
                         </div>
 
                         <label class="col-md-2">Data de entrada</label>
                         <div class="col-md-3">
-                            <input type="date" ng-model='acolhido.dataEntrada' class="form-control"><br>
+                            <input type="date" ng-model='acolhido.dataentrada' class="form-control"><br>
                         </div>
                     </div>
                     
@@ -63,7 +63,7 @@
                     <div class="form-group">
                         <label class="col-md-2 col-md-offset-1">Nome da mãe</label>
                         <div class="col-md-8">
-                            <input type="text" ng-model='acolhido.nome' class="form-control"><br>
+                            <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
                         </div>
                     </div>
 
@@ -146,10 +146,9 @@
             </div>
             <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                 <div class="panel-body">
-                    <ul class="nav nav-tabs" id="tabs-resp">
-                        <li role="presentation" class="active"><a href="#resp1" target="_self">Responsável 1</a></li>
+                    <ul class="nav nav-tabs">
+                        <li role="presentation" class="active"><a href="#resp1">Responsável 1</a></li>
                         <li role="presentation"><a>Responsável 2</a></li>
-                        <li role="presentation"><a role="button" href="#" target="_self" class="add-resp"><span class="glyphicon glyphicon-plus"></span></a></li>
                     </ul>
                     <div id="resp1">
                         <br><br>
@@ -164,7 +163,7 @@
                         <div class="form-group">
                             <label class="col-md-2 col-md-offset-1">Data de nascimento</label>
                             <div class="col-md-3">
-                                <input type="date" ng-model='acolhido.dtNasc' class="form-control">
+                                <input type="date" ng-model='acolhido.datanasc' class="form-control">
                             </div>
 
                             <label class="col-md-2">Grau de parentesco</label>
@@ -398,7 +397,7 @@
     <div class="row">
         <div class="col-md-7 text-right">
             <button class="btn btn-primary" type='reset'>Limpar</button>
-            <button class="btn btn-success" ng-click='cadastrarAcolhido( acolhido )'>Salvar</button>
+            <button class="btn btn-success" ng-click='alterarAcolhido( acolhido )'>Salvar</button>
         </div>
     </div>
 </form>

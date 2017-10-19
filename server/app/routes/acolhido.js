@@ -5,19 +5,27 @@ const con = require('../database/db-factory.js');
 
 module.exports = ( app ) => {
     app.get('/acolhidos', (req, res, next) => {
+        console.log('Recebendo requisição GET em /acolhidos');
         const acolhidos = [];
 
-        con.query('SELECT * FROM acolhidos ORDER BY idacolhido ASC;', null, function(err, result){
-            let linhas = result.rows[0];
-            
-            acolhidos.push(linhas);
+        con.query('SELECT * FROM acolhidos ORDER BY idacolhido ASC;', null , function(err, result){
+            if (err) {
+                console.log(err.message);
+                return res.status(500).json({success: false, data: err});
+            } else {
 
-            return res.json(acolhidos);
-            res.send(acolhidos).status(200);
-            console.log('Recebendo requisição GET em /acolhidos');
+                result.rows.forEach( (elemento) => {
+                    acolhidos.push(elemento);
+                });
+                //let linhas = result.rows[0];
+                //acolhidos.push(linhas);
+
+                return res.json(acolhidos);
+                res.send(acolhidos).status(200);
+            };
         });
     });
-
+/* tirar código chumbado. Apagar
     app.get('/acolhidos/pia/:id', (req, res) => {
         let id = req.params.id;
         console.log("ID: " + id);
@@ -36,32 +44,18 @@ module.exports = ( app ) => {
         res.send(acolhido).status(200);
         //res.render('formPIA');
     });
-
-    /*
-    app.get('/acolhidos/pia/:id', (req, res) => {
+*/ 
+    
+    app.get('/acolhidos/:id', (req, res) => {
         let id = req.params.id;
-        console.log('Recebendo requisição GET em /acolhidos/pia/' + id);
+        console.log('Recebendo requisição GET em /acolhidos/' + id);
         // Get a Postgres client from the connection pool
-        pg.connect(connectionString, (err, client, done) => {
-            // Handle connection errors
-            if(err) {
-                done();
-                console.log(err);
-                return res.status(500).json({success: false, data: err});
-            }
-            // SQL Query > Select Data
-            console.log('ID buscado: ' + id);
-            const query = client.query('SELECT * FROM acolhidos WHERE idacolhido = $1;', [id] );
-            // Stream acolhidos back one row at a time
-            query.on('row', (row) => {
-                done();
-                console.log(row);
-                return res.send(row).status(200);
-            });
+        con.query('SELECT * FROM acolhidos WHERE idacolhido = $1;', [id], ( err, results ) => {
+            if (err) return res.status(500).send(err);
+
+            return res.status(200).send(results.rows[0]);
         });
     });
-    */
-
 
     app.post('/acolhidos', (req, res, next) => {
         const data = req.body;
@@ -75,8 +69,8 @@ module.exports = ( app ) => {
                 return res.status(500).json({success: false, data: err});
             } else {
                 // Fazer algo
-                //return res.redirect()
-            }
+                return res.status(200); //Status 200 - Created. O Front-end é responsável por fazer o resto.
+            };
         });
 /*
         const results = [];

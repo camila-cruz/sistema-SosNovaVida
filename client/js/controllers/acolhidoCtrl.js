@@ -10,7 +10,7 @@ angular.module('novaVida').controller('acolhidoCtrl', function( $scope, acolhido
         });
     };
 
-    $scope.adicionarAcolhido = (acolhidos) => {
+    $scope.cadastrarAcolhido = (acolhidos) => {
         console.log("Chegou na controller");
         acolhidoAPI.setAcolhidos(acolhidos).then((response) => {
             console.log("Sucesso");

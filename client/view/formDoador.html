@@ -1,65 +1,19 @@
 <h1>Cadastro de Doadores</h1>
 <hr><br>
 
-<div class="form-group">
-    <label class="col-md-2 col-md-offset-1">Tipo de doador</label>
-    <div class="col-md-2">
-        <select class='form-control' ng-model='doador.tipo'>
-            <option value="" ng-disabled='true'>Selecione o tipo</option>
-            <option value="pf">Pessoa Física</option>
-            <option value="pj">Pessoa Jurídica</option>
-        </select><br>
-    </div>
-</div>
-<br><hr>
-
-<form ng-show="doador.tipo != null" name="doadorForm" class="form-horizontal">
-    <div class="row text-center">
-        <div class="col-md-12">
-            <label>Foto</label><br>
-            <div class="fileinput fileinput-new" data-provides="fileinput">
-                <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 240px; height: 180px;"></div>
-                <div>
-                    <span class="btn btn-default btn-block btn-file">
-                        <span class="fileinput-new">Selecione a imagem</span>
-                        <span class="fileinput-exists">Alterar</span>
-                        <input type="file" name="...">
-                    </span>
-                    <a href="#" class="btn btn-default btn-block fileinput-exists" data-dismiss="fileinput">Remover</a>
-                </div>
-            </div><br>
-        </div><br>
-    </div><br>
-
-    <div ng-show="doador.tipo == 'pj'" id="pessoaJuridica">
-        <div class="form-group">
-            <label class="col-md-2 col-md-offset-1">Razão Social</label>
-            <div class="col-md-8">
-                <input type="text" class="form-control" ng-model='doador.razao'><br>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-md-2 col-md-offset-1">CNPJ</label>
-            <div class="col-md-8">
-                <input type="text" class="form-control" ng-model='doador.cnpj'><br>
-            </div>
-        </div>
-        <hr><br>
-    </div>
+<form name="doadorForm" class="form-horizontal">
 
     <div class="form-group">
-        <label ng-show="doador.tipo != 'pj'" class="col-md-2 col-md-offset-1">Nome completo</label>
-        <label ng-show="doador.tipo == 'pj'" class="col-md-2 col-md-offset-1">Nome do contato</label>
+        <label class="col-md-2 col-md-offset-1">Nome completo</label>
         <div class="col-md-8">
-            <input type="text" class="form-control" ng-model='doador.nome'><br>
+            <input type="text" class="form-control" ng-model='doador.nome' ng-required='true'><br>
         </div>
     </div>
 
     <div class="form-group">
         <label class="col-md-2 col-md-offset-1">Data de entrada</label>
         <div class="col-md-3">
-            <input type="text" class="form-control" ng-model='doador.data'><br>
+            <input type="date" class="form-control" ng-model='doador.dataCadastro'><br>
         </div>
 
         <label class="col-md-1">E-mail</label>
@@ -107,19 +61,14 @@
     </div>
 
     <div class="form-group">
-        <label class="col-md-2 col-md-offset-1">Tel. residencial</label>
+        <label class="col-md-2 col-md-offset-1">Telefone 1</label>
         <div class="col-md-2">
-            <input type="text" class="form-control" ng-model='doador.telRes'><br>
+            <input type="text" class="form-control" ng-model='doador.tel1' ng-pattern='/^\(\d{2}\)\d{4,5}-\d{4}$/'><br>
         </div>
 
-        <label class="col-md-1">Celular</label>
+        <label class="col-md-1">Telefone 2</label>
         <div class="col-md-2">
-            <input type="text" class="form-control" ng-model='doador.telCel'><br>
-        </div>
-
-        <label class="col-md-1">Comercial</label>
-        <div class="col-md-2">
-            <input type="text" class="form-control" ng-model='doador.telCom'><br>
+            <input type="text" class="form-control" ng-model='doador.tel2' ng-pattern='/^\(\d{2}\)\d{4,5}-\d{4}$/'><br>
         </div>
     </div>
 
@@ -148,19 +97,11 @@
         </div>
     </div>
 
-    <div class="row">
-        <!-- ????? -->
-        <div class="col-md-offset-1 col-md-7 hidden">
-            <label>Última doação</label><br>
-            <input type="text" class="form-control" ng-model='doador.ultimaDoacao'>
-        </div>
-        <!-- ????? -->
-    </div>
     <br>
     <div class="row">
         <div class="col-md-12 text-right">
             <button class="btn btn-primary">Limpar</button>
-            <button class="btn btn-success" ng-click="adicionarDoador( doador )">Salvar</button>
+            <button class="btn btn-success" ng-click="cadastrarDoador( doador )">Salvar</button>
         </div>
     </div>
     {{doador}}
