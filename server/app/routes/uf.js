@@ -2,19 +2,52 @@ module.exports = (app) => {
 
     var uf = [
         {
-            nome: 'São Paulo'
+            nome: 'SP'
         },
         {
-            nome: 'Rio de Janeiro'
+            nome: 'RJ'
         },
         {  
-            nome: 'Espirito Santo'
+            nome: 'ES'
         },
         {
-            nome: 'Minas Gerais'
+            nome: 'MG'
         },
         {
-            nome: 'Bahia'
+            nome: 'BA'
+        },
+        {
+            nome: 'PE'
+        },
+        {
+            nome: 'TO'
+        },
+        {
+            nome: 'GO'
+        },
+        {
+            nome: 'DF'
+        },
+        {
+            nome: 'AM'
+        },
+        {
+            nome: 'PR'
+        },
+        {
+            nome: 'SC'
+        },
+        {
+            nome: 'RS'
+        },
+        {
+            nome: 'RN'
+        },
+        {
+            nome: 'MS'
+        },
+        {
+            nome: 'MT'
         }
     ];
 
