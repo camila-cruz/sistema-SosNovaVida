@@ -15,10 +15,24 @@ module.exports = ( app ) => {
             
             produtos.push(linhas);
 
-            return res.json(produtos);
-            res.send(produtos).status(200);
+            return res.json(produtos); 
         });
+        res.send(produtos).status(200);
     });
+
+
+    app.post('/estoque', ( req, res ) => {
+        console.log('Recebendo requisição POST em /estoque');
+
+        const produto = req.body;
+
+        conn.query( 'INSERT INTO ESTOQUE ( descricao, qtd ) VALUES ($1, $2)', [ produto.descricao, produto.qtd ], ( err, result ) => { 
+            if ( err ) return 'Ocorreu um erro: ' + err
+        })
+
+        return res.statusCode( 200 );
+    });
+
     /*
     app.get('/estoque', (req, res, next) => {
         /*let produtos = [{
