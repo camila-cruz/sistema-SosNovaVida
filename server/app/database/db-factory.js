@@ -1,5 +1,5 @@
 const pg = require('pg');
-const connectionString = 'postgres://postgres:1234@localhost:5432/tcc';
+const connectionString = 'postgres://postgres:1234@localhost:5432/bd_sosnovavida';
 
 module.exports = {  
     getConnection: function() {
