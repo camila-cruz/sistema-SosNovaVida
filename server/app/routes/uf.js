@@ -1,6 +1,6 @@
 module.exports = (app) => {
 
-    var uf = [
+    const uf = [
         {
             nome: 'SP'
         },
