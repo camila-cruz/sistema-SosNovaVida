@@ -235,14 +235,10 @@ fieldset {
     text-align: center;
 }
 
-.td-botoes {
-    width: 15%;
-}
-
 .ipt-estoque {
     border-radius: 3px;
     box-shadow: none;
-    margin-right: 5%;
+    /*margin-right: 5%;*/
 }
 
 input[type='radio'] {

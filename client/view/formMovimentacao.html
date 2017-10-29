@@ -1,35 +1,24 @@
-<h1>Movimentação</h1>
-<hr><br>
-<form action="post_mov/" method="post">
-    <div class="row">
-        <div class="col-md-12">
-            <label>Descrição</label><br>
-            <br>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3">
-            <label>Quantidade</label><br>
-            <br>
-        </div>
-        <div class="col-md-3">
-            <label>Valor</label><br>
-            <br>
-        </div>
-        <div class="col-md-3">
-            <label>Data</label><br>
-            <br>
-        </div>
-        <div class="col-md-3">
-            <label>Tipo</label><br>
-        </div>
-    </div>
-
-    <br>
-    <div class="row">
-        <div class="col-md-12 text-right">
-            <button class="btn btn-primary" type="reset">Limpar</button>
-            <button class="btn btn-success" type="submit">Salvar</button>
-        </div>
-    </div>
-</form>
+<h1>Movimentações no Estoque</h1>
+<hr>
+<input type="text" class="form-control" placeholder="Pesquise uma movimentação">
+<hr>
+<table class="table table-bordered">
+    <tr>
+        <th class="col-md-2">Tipo</th>
+        <th class="col-md-6">Descrição</th>
+        <th class="col-md-2">Quantidade</th>
+        <th class="col-md-2">Data</th>
+    </tr>
+    <tr class="success">
+        <td>ENTRADA</td>
+        <td>Arroz</td>
+        <td>20</td>
+        <td>29/10/2017 17:43</td>
+    </tr>
+    <tr class="danger">
+        <td>SAÍDA</td>
+        <td>Arroz</td>
+        <td>20</td>
+        <td>29/10/2017 17:43</td>
+    </tr>
+</table>

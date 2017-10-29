@@ -19,6 +19,23 @@ angular.module('novaVida').config( ($routeProvider) => {
             }
         }
     });
+
+    $routeProvider.when('/movimentacao', {
+        templateUrl: 'view/formMovimentacao.html'
+    });
+    
+/*
+    // Rota para as movimentações no estoque
+    $routeProvider.when('/movimentacao', {
+        templateUrl: 'view/formMovimentacao.html',
+        controller: 'movimentacaoCtrl',
+        resolve: {
+            movimentacao: (movimentacaoAPI) => {
+                return movimentacaoAPI.getMovimentacao();
+            }
+        }
+    });*/
+
     $routeProvider.when('/consulta/acolhido', {
         templateUrl: 'view/consultaAcolhido.html',
         controller: 'acolhidoCtrl',
