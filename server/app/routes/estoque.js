@@ -9,8 +9,10 @@ module.exports = ( app ) => {
         console.log('Recebendo requisição GET em /estoque');
         
         const produtos = [];
-        conn.query('SELECT * FROM produtos', null, (err, result) => {
-            if (err) return 'Ocorreu um erro: ' + err;
+        conn.query('SELECT * FROM estoque', null, (err, result) => {
+            if (err) {
+                return 'Ocorreu um erro: ' + err;
+            }
             let linhas = result.rows[0];
             
             produtos.push(linhas);

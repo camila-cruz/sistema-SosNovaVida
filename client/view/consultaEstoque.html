@@ -3,10 +3,10 @@
         <hr>
         <input type="text" class="form-control" placeholder="Pesquise um produto">
         <hr>
-        <a role="button" class="btn btn-primary" href="#">Criar lista</a></li>
-        <a role="button" class="btn btn-default" href="#">Visualizar listas</a></li>
-        <!-- <a role="button" class="btn btn-default" href="#">Cadastrar produto</a></li> -->
-        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalCadastraProduto">Cadastrar Produto</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mdlCriarLista" ng-click="modoDeAbertura = 'criar'">Criar lista</button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#mdlViewLista">Visualizar listas</button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#mdlCadastraProduto">Cadastrar produto</button>
+        <a role="button" class="btn btn-warning pull-right" href="#!/movimentacoes">Consultar movimentações</a>
         <hr>
         <table class="table table-striped table-bordered table-condensed tabela">
             <tr>
@@ -17,7 +17,6 @@
                 <th>Quantidade</th>
                 <th>Unidade</th>
                 <th></th>
-                
             </tr>
             <tr ng-repeat='produto in produtos'>
                 <td><input type="checkbox"></td>
@@ -35,29 +34,169 @@
                         <span class="glyphicon glyphicon-minus"></span>
                     </a>
                 </td>
-                
             </tr>
         </table>
     </section>
 </div>
 
-<div class="modal fade" id="modalCadastraProduto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- MODAL PARA CRIAR LISTAS -->
+<div class="modal fade" id="mdlCriarLista" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">Cadastro de Produto</h4>
-            </div>
+                <h3 class="modal-title" ng-if="modoDeAbertura == 'criar'">Criar uma nova lista</h3>
+                <h3 class="modal-title" ng-if="modoDeAbertura == 'editar'">Editar lista</h3>
+            </div> 
+            <!-- ///////////////////////////////////// -->
             <div class="modal-body">
-                <label>Teste</label>
-                <input type='text' placeholder=''>
-            </div>
+                <form>
+                    <label>Escolha um nome</label><br>
+                    <input type="text" class="form-control"><br>
+
+                    <label>Itens presentes na lista</label>
+                    <table class="table table-bordered">
+                        <tr>
+                            <th class="col-md-9">Item</th>
+                            <th class="col-md-2">Quantidade</th>
+                            <th class="col-md-1"></th>
+                        </tr>
+                        
+                        <tr ng-repeat='item in selecionados'>
+                            <td>{{item.descricao}}</td>
+                            <td>{{item.qtd}}</td>
+                            <td class="text-center"><button type="button" class="close" style="float:none;"><span>&times;</span></button></td>
+                        </tr>
+                    </table>
+
+                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#maisItens">Adicionar mais itens</button>
+                    <div class="collapse" id="maisItens">
+                        <br>
+                        <fieldset>
+                            <label>Digite mais um item</label><br>
+                            <input type="text" class="form-control"><br>
+    
+                            <label>Digite a quantidade desse item</label><br>
+                            <input type="text" class="form-control"><br>
+    
+                            <button type="button" class="btn btn-info">Adicionar</button>
+                        </fieldset>
+                    </div>
+                </form>
+            </div> 
+            <!-- ///////////////////////////////////// -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Salvar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-if="modoDeAbertura == 'criar'">Cancelar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#mdlViewLista" ng-if="modoDeAbertura == 'editar'">Voltar</button>                
+                <button type="button" class="btn btn-success">Salvar</button>
             </div>
-        </div>
-    </div>
-</div>
+        </div> <!-- modal content -->
+    </div> <!-- modal dialog -->
+</div> <!-- modal fade -->
+
+
+<!-- MODAL PARA VISUALIZAR LISTAS -->
+<div class="modal fade" id="mdlViewLista" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+                <h3 class="modal-title">Visualizar listas</h3>
+            </div> 
+            <!-- ///////////////////////////////////// -->
+            <div class="modal-body">
+                <table class="table">
+                    <tr>
+                        <th class="col-md-10">Nome da lista</th>
+                        <th class="col-md-1"></th>
+                        <th class="col-md-1"></th>
+                    </tr>
+                    <tr ng-repeat='lista in listas'>
+                        <td>{{lista.nome}}</td>
+                        <td><button type="button" class="close" style="float:none;" data-dismiss="modal" data-toggle="modal" data-target="#mdlCriarLista" ng-click="modoDeAbertura = 'editar'"><span class="glyphicon glyphicon-pencil"></span></button></td>
+                        <td><button type="button" class="close" style="float:none;"><span>&times;</span></button></td>
+                    </tr>
+                </table>
+            </div> 
+            <!-- ///////////////////////////////////// -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div> <!-- modal content -->
+    </div> <!-- modal dialog -->
+</div> <!-- modal fade -->
+
+
+<!-- MODAL PARA CADASTRAR PRODUTO -->
+<div class="modal fade" id="mdlCadastraProduto" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+                <h3 class="modal-title">Cadastro de Produto</h4>
+            </div> 
+            <!-- ///////////////////////////////////// -->
+            <div class="modal-body">
+                <form>
+                    <label>Descrição</label><br>
+                    <input type="text" class="form-control"><br>
+
+                    <label>Tipo</label><br>
+                    <select class="form-control">
+                        <option value="" ng-disabled="true">Selecione um tipo</option>
+                        <option value="alimento">ALIMENTO</option>
+                        <option value="limpeza">PRODUTO DE LIMPEZA</option>
+                    </select><br>
+
+                    <label>Unidade</label><br>
+                    <input type="text" class="form-control"><br>
+
+                    <label>Quantidade inicial</label><br>
+                    <input type="text" class="form-control"><br>
+                </form>
+            </div> 
+            <!-- ///////////////////////////////////// -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success">Salvar</button>
+            </div>
+        </div> <!-- modal content -->
+    </div> <!-- modal dialog -->
+</div> <!-- modal fade -->
+
+    <!-- 
+        <form>
+            <div class="form-group">
+                <label class="col-md-6">Descrição</label><br>
+                <div class="col-md-12">
+                    <input type="text" class="form-control"><br>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="col-md-6">Tipo</label><br>
+                <div class="col-md-12">
+                    <input type="text" class="form-control"><br>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-6">Unidade</label>
+                <label class="col-md-6">Quantidade inicial</label><br>
+
+                <div class="col-md-6">
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control"><br>
+                </div>
+            </div>
+        </form>
+        <br><br><br><br><br>
+    -->

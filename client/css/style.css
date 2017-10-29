@@ -215,7 +215,8 @@ select.form-control {
 }
 
 fieldset {
-    border: 1px dashed black;
+    border: 1px solid rgba(128, 128, 128, 0.32);
+    padding: 2%;
 }
 
 .btn {

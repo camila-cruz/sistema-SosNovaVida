@@ -1,4 +1,4 @@
-const conn = require('../database/db-factory');
+const con = require('../database/db-factory');
 
 module.exports = ( app ) => {
 
@@ -6,10 +6,14 @@ module.exports = ( app ) => {
         console.log('Recebendo requisição GET em /doadores');
         const doadores = [];
 
-        con.query('SELECT * FROM DOADOR ORDER BY id ASC;', null , function(err, result){
+        con.query('SELECT * FROM DOADOR ORDER BY id ASC;', null, function(err, result){
             if (err) {
                 console.log(err.message);
-                return res.status(500).json({success: false, data: err});
+                //return res.status(500).json({success: false, data: err});
+
+                // Renderiza a página corretamente apesar do erro
+                return res.json(doadores);
+                res.send(doadores).status(200);
             } else {
 
                 result.rows.forEach( (elemento) => {
@@ -48,6 +52,7 @@ module.exports = ( app ) => {
                 return res.status(200); //Status 200 - Created. O Front-end é responsável por fazer o resto.
             };
         });
+        // Falta um return
     });
 
 };

@@ -8,22 +8,31 @@ module.exports = ( app ) => {
         console.log('Recebendo requisição GET em /acolhidos');
         const acolhidos = [];
 
-        con.query('SELECT * FROM acolhidos ORDER BY idacolhido ASC;', null , function(err, result){
-            if (err) {
-                console.log(err.message);
-                return res.status(500).json({success: false, data: err});
-            } else {
+        try {
+            con.query('SELECT * FROM acolhido ORDER BY id ASC;', null, function(err, result){
+                if (err) {
+                    console.log(err.message);
+                    //return res.status(500).json({success: false, data: err});
 
-                result.rows.forEach( (elemento) => {
-                    acolhidos.push(elemento);
-                });
-                //let linhas = result.rows[0];
-                //acolhidos.push(linhas);
-
-                return res.json(acolhidos);
-                res.send(acolhidos).status(200);
-            };
-        });
+                    // Renderiza a página corretamente apesar do erro
+                    return res.json(acolhidos);
+                    res.send(acolhidos).status(200);
+                } else {
+                    result.rows.forEach( (elemento) => {
+                        acolhidos.push(elemento);
+                    });
+                    //let linhas = result.rows[0];
+                    //acolhidos.push(linhas);
+    
+                    return res.json(acolhidos);
+                    res.send(acolhidos).status(200);
+                };
+            });
+        }
+        catch (err) {
+            return res.json(acolhidos);
+            res.send(acolhidos).status(200);
+        }
     });
     
     app.get('/acolhidos/:id', (req, res) => {
@@ -53,6 +62,7 @@ module.exports = ( app ) => {
                 return res.status(200); //Status 200 - Created. O Front-end é responsável por fazer o resto.
             };
         });
+        // Falta um return
     });
 
 }
