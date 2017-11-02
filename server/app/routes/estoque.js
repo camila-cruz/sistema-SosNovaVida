@@ -13,13 +13,11 @@ module.exports = ( app ) => {
             if (err) {
                 return 'Ocorreu um erro: ' + err;
             }
-            let linhas = result.rows[0];
+            result.rows.forEach( linha => produtos.push( linha ) );
             
-            produtos.push(linhas);
+            res.json(produtos).status(200);
 
-            return res.json(produtos); 
         });
-        res.send(produtos).status(200);
     });
 
 
