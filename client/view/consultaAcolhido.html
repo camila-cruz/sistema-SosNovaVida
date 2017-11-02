@@ -1,6 +1,6 @@
 <h1>Consulta de Acolhidos</h1>
 <hr>
-<input type="text" class="form-control" placeholder="Pesquise um acolhido">
+<input type="text" class="form-control" ng-model='criterioDeBusca' placeholder="Pesquise um acolhido">
 <hr>
 <table class="table">
     <tr>
@@ -11,7 +11,7 @@
         <th>Nome do Pai</th>
         <th></th>
     </tr>
-    <tr ng-repeat='acolhido in acolhidos'>
+    <tr ng-repeat='acolhido in acolhidos | filter: { nome: criterioDeBusca } '>
         <td>{{acolhido.nome}}</td>
         <td>{{acolhido.datanasc | date:'dd/MM/yy'}}</td>
         <td>{{acolhido.dataentrada | date:'dd/MM/yy'}}</td> 

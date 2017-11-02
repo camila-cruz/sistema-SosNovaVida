@@ -1,6 +1,6 @@
 <h1>Consulta de Doadores</h1>
 <hr>
-<input type="text" class="form-control" placeholder="Pesquise um doador">
+<input type="text" class="form-control" ng-model='criterioDeBusca' placeholder="Pesquise um doador">
 <hr>
 <table class="table table-striped">
     <tr>
@@ -12,7 +12,7 @@
         <th>E-mail</th>
         <th></th>
     </tr>
-    <tr ng-repeat='doador in doadores'>
+    <tr ng-repeat='doador in doadores | filter: { nome: criterioDeBusca }'>
         <td><input type='checkbox' ng-model='doador.selecionado' /></td>
         <td>{{doador.id}}</td>
         <td>{{doador.nome}}</td>

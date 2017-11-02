@@ -1,7 +1,7 @@
 <div>
     <h1>Controle de Estoque</h1>
         <hr>
-        <input type="text" class="form-control" placeholder="Pesquise um produto">
+        <input type="text" class="form-control" ng-model='criterioDeBusca' placeholder="Pesquise um produto">
         <hr>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mdlCriarLista" ng-click="modoDeAbertura = 'criar'">Criar lista</button>
         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#mdlViewLista">Visualizar listas</button>
@@ -17,23 +17,7 @@
                 <th class="col-md-1">Unidade</th>
                 <th class="col-md-2"></th>
             </tr>
-            <tr>
-                <td><input type="checkbox"></td>
-                <td>Paçoca</td>
-                <td>Alimento</td>
-                <td>500</td>
-                <td>Rolha</td>
-                <td class="td-botoes">
-                    <a href="#" class="btn btn-danger btn-xs btn-estoque pull-left" role="button">
-                        <span class="glyphicon glyphicon-minus"></span>
-                    </a>
-                    <input type="text" class="ipt-estoque" size="8">
-                    <a href="#" class="btn btn-success btn-xs btn-estoque pull-right" role="button">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </a>
-                </td>
-            </tr>
-            <tr ng-repeat='produto in produtos'>
+            <tr ng-repeat='produto in produtos | filter: { descricao: criterioDeBusca } | orderBy: quantidade'>
                 <td><input type="checkbox"></td>
                 <td>{{produto.descricao}}</td>
                 <td>{{produto.tipo}}</td>
