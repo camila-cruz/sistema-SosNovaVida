@@ -14,7 +14,7 @@ module.exports = ( app ) => {
                 return 'Ocorreu um erro: ' + err;
             }
             result.rows.forEach( linha => produtos.push( linha ) );
-            
+
             res.json(produtos).status(200);
 
         });
@@ -28,9 +28,36 @@ module.exports = ( app ) => {
 
         conn.query( 'INSERT INTO ESTOQUE ( descricao, qtd ) VALUES ($1, $2)', [ produto.descricao, produto.qtd ], ( err, result ) => { 
             if ( err ) return 'Ocorreu um erro: ' + err
+            return res.sendStatus( 200 );
         })
 
-        return res.statusCode( 200 );
+    });
+
+    app.put('/estoque/:id', ( req, res ) => {
+        const produtoId = req.params.id;
+        const produto = req.body;
+
+        console.log('Recebendo requisição PUT em /estoque/' + produtoId);
+
+        let query = '';
+        let metodo = '';
+
+        if ( produto.metodo == 1 ) {
+            produto.qtd += parseInt( produto.qtdAlterar );
+            tipo = 'ENTRADA';
+        } else if ( produto.metodo == -1 ) {
+            produto.qtd -= parseInt( produto.qtdAlterar );
+            tipo = 'SAIDA'
+        }
+        
+        conn.query( 'UPDATE estoque SET qtd=$1 where descricao=$2', [ produto.qtd, produto.descricao ], ( err ) => {
+            if ( err ) return 'Ocorreu um erro ' + err;
+        });
+
+        conn.query( 'INSERT INTO movimentacao ( idProduto, tipo, qtd, dataMov ) VALUES ( $1, $2, $3, $4 )', [produtoId, tipo, produto.qtdAlterar, new Date()], ( err ) => {
+            if ( err ) return 'Ocorreu um erro: ' + err;
+            return res.send( produto ).status( 202 );
+        });
     });
 
     /*

@@ -17,20 +17,20 @@
                 <th class="col-md-1">Unidade</th>
                 <th class="col-md-2"></th>
             </tr>
-            <tr ng-repeat='produto in produtos | filter: { descricao: criterioDeBusca } | orderBy: quantidade'>
+            <tr ng-repeat='produto in produtos | filter: { descricao: criterioDeBusca } | orderBy: qtd'>
                 <td><input type="checkbox"></td>
                 <td>{{produto.descricao}}</td>
                 <td>{{produto.tipo}}</td>
                 <td>{{produto.qtd}}</td>
                 <td>{{produto.unidade}}</td>
                 <td class="td-botoes">
-                    <a href="#" class="btn btn-danger btn-xs btn-estoque pull-left" role="button">
+                    <button class="btn btn-danger btn-xs btn-estoque pull-left" ng-click='movimentaEstoque( produto, -1 )'>
                         <span class="glyphicon glyphicon-minus"></span>
-                    </a>
-                    <input type="text" class="ipt-estoque" size="8">
-                    <a href="#" class="btn btn-success btn-xs btn-estoque pull-right" role="button">
+                    </button>
+                    <input type="text" class="ipt-estoque" ng-model='produto.qtdAlterar' size="8">
+                    <button class="btn btn-success btn-xs btn-estoque pull-right" ng-click='movimentaEstoque( produto, 1 )' >
                         <span class="glyphicon glyphicon-plus"></span>
-                    </a>
+                    </button>
                 </td>
             </tr>
         </table>

@@ -4,12 +4,17 @@ angular.module('novaVida').factory('estoqueAPI', function( $http, config ) {
         return $http.get( config.baseUrl + '/estoque' );
     };
 
-    const _setEstoque = () => {
+    const _postEstoque = () => {
         return $http.post( config.baseUrl + '/estoque' );
+    }
+
+    const _putEstoque = ( produto ) => {
+        return $http.put( config.baseUrl + '/estoque/' + produto.id, produto )
     }
     
     return {
         getEstoque: _getEstoque,
-        setEstoque: _setEstoque
+        postEstoque: _postEstoque,
+        putEstoque: _putEstoque
     }
 });
