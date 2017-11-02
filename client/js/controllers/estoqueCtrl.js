@@ -14,4 +14,17 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
           .catch( err => console.log(err) );
 
     }
+
+    $scope.adicionaProduto = ( produto ) => {
+        estoqueAPI.postEstoque( produto )
+          .then(   () => {
+              atualizaProdutos()
+              $scope.novoProduto = '';
+            } )
+          .catch( err => console.log('Erro: ' + err ) );
+    }
+
+    const atualizaProdutos = () => {
+        estoqueAPI.getEstoque().then( results => $scope.produtos = results.data );
+    }
 });

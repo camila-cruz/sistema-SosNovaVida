@@ -12,17 +12,13 @@
             <tr>
                 <th class="col-sm-1"></th>
                 <th class="col-md-6">Descrição</th>
-                <th class="col-md-1">Tipo</th>
                 <th class="col-md-1">Quantidade</th>
-                <th class="col-md-1">Unidade</th>
                 <th class="col-md-2"></th>
             </tr>
             <tr ng-repeat='produto in produtos | filter: { descricao: criterioDeBusca } | orderBy: qtd'>
-                <td><input type="checkbox"></td>
+                <td><input type="checkbox" ng-model='produto.selecionado'></td>
                 <td>{{produto.descricao}}</td>
-                <td>{{produto.tipo}}</td>
                 <td>{{produto.qtd}}</td>
-                <td>{{produto.unidade}}</td>
                 <td class="td-botoes">
                     <button class="btn btn-danger btn-xs btn-estoque pull-left" ng-click='movimentaEstoque( produto, -1 )'>
                         <span class="glyphicon glyphicon-minus"></span>
@@ -130,7 +126,7 @@
 
 
 <!-- MODAL PARA CADASTRAR PRODUTO -->
-<div class="modal fade" id="mdlCadastraProduto" tabindex="-1" role="dialog">
+<div class="modal fade" id="mdlCadastraProduto" tabindex="-1" role="dialog" >
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -143,58 +139,17 @@
             <div class="modal-body">
                 <form>
                     <label>Descrição</label><br>
-                    <input type="text" class="form-control"><br>
-
-                    <label>Tipo</label><br>
-                    <select class="form-control">
-                        <option value="" ng-disabled="true">Selecione um tipo</option>
-                        <option value="alimento">ALIMENTO</option>
-                        <option value="limpeza">PRODUTO DE LIMPEZA</option>
-                    </select><br>
-
-                    <label>Unidade</label><br>
-                    <input type="text" class="form-control"><br>
+                    <input type="text" class="form-control" ng-model='novoProduto.descricao'><br>
 
                     <label>Quantidade inicial</label><br>
-                    <input type="text" class="form-control"><br>
+                    <input type="text" class="form-control" ng-model='novoProduto.qtd'><br>
                 </form>
             </div> 
             <!-- ///////////////////////////////////// -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-success">Salvar</button>
+                <button type="button" class="btn btn-success" ng-click='adicionaProduto( novoProduto )' data-dismiss='modal'>Salvar</button>
             </div>
         </div> <!-- modal content -->
     </div> <!-- modal dialog -->
 </div> <!-- modal fade -->
-
-    <!-- 
-        <form>
-            <div class="form-group">
-                <label class="col-md-6">Descrição</label><br>
-                <div class="col-md-12">
-                    <input type="text" class="form-control"><br>
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label class="col-md-6">Tipo</label><br>
-                <div class="col-md-12">
-                    <input type="text" class="form-control"><br>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-md-6">Unidade</label>
-                <label class="col-md-6">Quantidade inicial</label><br>
-
-                <div class="col-md-6">
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-md-6">
-                    <input type="text" class="form-control"><br>
-                </div>
-            </div>
-        </form>
-        <br><br><br><br><br>
-    -->

@@ -25,7 +25,7 @@ module.exports = ( app ) => {
         console.log('Recebendo requisição POST em /estoque');
 
         const produto = req.body;
-
+        console.log( produto );
         conn.query( 'INSERT INTO ESTOQUE ( descricao, qtd ) VALUES ($1, $2)', [ produto.descricao, produto.qtd ], ( err, result ) => { 
             if ( err ) return 'Ocorreu um erro: ' + err
             return res.sendStatus( 200 );

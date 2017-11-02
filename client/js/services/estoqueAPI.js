@@ -4,8 +4,8 @@ angular.module('novaVida').factory('estoqueAPI', function( $http, config ) {
         return $http.get( config.baseUrl + '/estoque' );
     };
 
-    const _postEstoque = () => {
-        return $http.post( config.baseUrl + '/estoque' );
+    const _postEstoque = ( produto ) => {
+        return $http.post( config.baseUrl + '/estoque', produto );
     }
 
     const _putEstoque = ( produto ) => {
