@@ -79,7 +79,7 @@ angular.module('novaVida').config( ($routeProvider) => {
         resolve: {
             acolhido: (acolhidoAPI, $route) => {
                 console.log('Testando detalhes acolhido');
-                return acolhidoAPI.getAcolhidoID( $route.current.params.id );
+                return acolhidoAPI.getAcolhidoByID( $route.current.params.id );
             },
             uf: ( ufAPI ) => {
                 return ufAPI;

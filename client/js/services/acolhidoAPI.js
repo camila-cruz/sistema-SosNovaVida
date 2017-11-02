@@ -7,7 +7,7 @@ angular.module('novaVida').factory('acolhidoAPI', function( $http, config ) {
         return $http.get( config.baseUrl + '/acolhidos' );
     };
 
-    const _getAcolhidoID = ( id ) => {
+    const _getAcolhidoByID = ( id ) => {
         console.log("ID na api: " + id);
         return $http.get( config.baseUrl + '/acolhidos/' + id);
     };
@@ -21,7 +21,7 @@ angular.module('novaVida').factory('acolhidoAPI', function( $http, config ) {
         // para acessar a função _getAcolhidos(), deve ser chamado getAcolhidos()
         // como é feito em config/routesConsulta.js
         getAcolhidos: _getAcolhidos,
-        getAcolhidoID: _getAcolhidoID,
+        getAcolhidoByID: _getAcolhidoByID,
         setAcolhidos: _setAcolhidos
     }
 });
