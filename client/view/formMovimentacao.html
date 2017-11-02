@@ -1,6 +1,6 @@
 <h1>Movimentações no Estoque</h1>
 <hr>
-<input type="text" class="form-control" placeholder="Pesquise uma movimentação">
+<input type="text" class="form-control" placeholder="Pesquise uma movimentação" ng-model='criterioDeBusca'>
 <hr>
 <table class="table table-bordered">
     <tr>
@@ -9,16 +9,11 @@
         <th class="col-md-2">Quantidade</th>
         <th class="col-md-2">Data</th>
     </tr>
-    <tr class="success">
-        <td>ENTRADA</td>
-        <td>Arroz</td>
-        <td>20</td>
-        <td>29/10/2017 17:43</td>
-    </tr>
-    <tr class="danger">
-        <td>SAÍDA</td>
-        <td>Arroz</td>
-        <td>20</td>
-        <td>29/10/2017 17:43</td>
+    
+    <tr ng-class='{ success: movimentacao.tipo=="ENTRADA", danger: movimentacao.tipo=="SAIDA" }'ng-repeat='movimentacao in movimentacoes | filter: criterioDeBusca  | orderBy: "descproduto"'>
+        <td>{{movimentacao.tipo}}</td>
+        <td>{{movimentacao.descproduto}}</td>
+        <td>{{movimentacao.qtd}}</td>
+        <td>{{movimentacao.datamov | date:'dd/MM/yy'}}</td>
     </tr>
 </table>

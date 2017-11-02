@@ -54,7 +54,7 @@ module.exports = ( app ) => {
             if ( err ) return 'Ocorreu um erro ' + err;
         });
 
-        conn.query( 'INSERT INTO movimentacao ( idProduto, tipo, qtd, dataMov ) VALUES ( $1, $2, $3, $4 )', [produtoId, tipo, produto.qtdAlterar, new Date()], ( err ) => {
+        conn.query( 'INSERT INTO movimentacao ( descProduto, tipo, qtd, dataMov ) VALUES ( $1, $2, $3, $4 )', [produto.descricao, tipo, produto.qtdAlterar, new Date()], ( err ) => {
             if ( err ) return 'Ocorreu um erro: ' + err;
             return res.send( produto ).status( 202 );
         });

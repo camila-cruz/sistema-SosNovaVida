@@ -20,11 +20,6 @@ angular.module('novaVida').config( ($routeProvider) => {
         }
     });
 
-    $routeProvider.when('/movimentacao', {
-        templateUrl: 'view/formMovimentacao.html'
-    });
-    
-/*
     // Rota para as movimentações no estoque
     $routeProvider.when('/movimentacao', {
         templateUrl: 'view/formMovimentacao.html',
@@ -34,7 +29,7 @@ angular.module('novaVida').config( ($routeProvider) => {
                 return movimentacaoAPI.getMovimentacao();
             }
         }
-    });*/
+    });
 
     $routeProvider.when('/consulta/acolhido', {
         templateUrl: 'view/consultaAcolhido.html',

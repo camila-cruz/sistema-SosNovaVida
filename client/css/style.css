@@ -239,6 +239,7 @@ fieldset {
     border-radius: 3px;
     box-shadow: none;
     /*margin-right: 5%;*/
+    text-align: center;
 }
 
 input[type='radio'] {
