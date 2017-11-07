@@ -7,16 +7,14 @@
         <th>Nome</th>
         <th>Data de Nascimento</th>
         <th>Data de Entrada</th>
-        <th>Nome da Mãe</th>
-        <th>Nome do Pai</th>
+        <th>Tipo sanguíneo</th>
         <th></th>
     </tr>
     <tr ng-repeat='acolhido in acolhidos | filter: { nome: criterioDeBusca } '>
         <td>{{acolhido.nome}}</td>
         <td>{{acolhido.datanasc | date:'dd/MM/yy'}}</td>
         <td>{{acolhido.dataentrada | date:'dd/MM/yy'}}</td> 
-        <td>{{acolhido.nomeMae}}</td>
-        <td>{{acolhido.nomePai}}</td>
+        <td>{{acolhido.nomeMae}}</td> <!-- Atualizar de acordo com a doc -->
         <td><a class="btn btn-info" href="#!/consulta/acolhido/{{acolhido.idacolhido}}" role="button">Editar</a></td>
     </tr>
 </table>
