@@ -7,13 +7,15 @@ module.exports = ( app ) => {
 
     app.get('/estoque', (req, res, next) => {
         console.log('Recebendo requisição GET em /estoque');
-        
         const produtos = [];
+        
         conn.query('SELECT * FROM estoque', null, (err, result) => {
             if (err) {
-                return 'Ocorreu um erro: ' + err;
+                // Renderiza a página corretamente apesar do erro
+                return res.json(produtos);
+                res.send(produtos).status(200);
             }
-            result.rows.forEach( linha => produtos.push( linha ) );
+            result.rows.forEach(linha => produtos.push(linha));
 
             res.json(produtos).status(200);
 

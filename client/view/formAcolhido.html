@@ -278,8 +278,8 @@
                                 <select class='form-control' ng-model='responsavel.parentesco'><br>
                                     <option value='mae'>MÃE</option>
                                     <option value='pai'>PAI</option>
-                                    <option value='pai'>FILHO(A)</option>
-                                    <option value='pai'>SOBRINHO(A)</option>
+                                    <option value='filho'>FILHO(A)</option>
+                                    <option value='sobrinho'>SOBRINHO(A)</option>
                                     <option value='' ng-disabled='true'>NENHUM</option>
                                 </select><br>
                             </div>
@@ -355,11 +355,11 @@
 
                             <label class='col-md-2 text-right'>Já fez aborto?</label>
                             <div class="col-md-1">
-                                <input type="checkbox">&nbsp
+                                <input type="checkbox">&nbsp;
                                 <label> Sim</label>
                             </div>
                             <div class="col-md-1">
-                                <input type="checkbox">&nbsp
+                                <input type="checkbox">&nbsp;
                                 <label> Não</label>
                             </div>
                             
@@ -436,7 +436,7 @@
     <div class="row">
         <div class="col-md-7 text-right">
             <button class="btn btn-primary" type='reset'>Limpar</button>
-            <button class="btn btn-success" ng-click='cadastrarAcolhido( acolhido )'>Salvar</button>
+            <button class="btn btn-success" ng-click='cadastrarAcolhido(acolhido)'>Salvar</button>
         </div>
     </div>
 </form>
