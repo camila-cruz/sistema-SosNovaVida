@@ -48,14 +48,17 @@
                         </div>
                     </div>
 
-                    <div class='form-group' ng-if='responsavel.parentesco === "mae"'>
-                        <label class='col-md-2'>Já sofreu aborto?</label>
-                        <div class="col-md-1">
-                            <input type="checkbox" ng-model='responsavel.aborto'><br>
+                    <div class="form-group">
+                        <label class="col-md-2 col-md-offset-1">Nome da mãe</label>
+                        <div class="col-md-8">
+                            <input type="text" ng-model='acolhido.nome' class="form-control"><br>
                         </div>
-                        <label class='col-md-2'>Quantos?</label>
-                        <div class='col-md-1'>
-                            <input type='text' ng-model'responsavel.qtdAbortos' class='form-control'><br>
+                    </div>
+    
+                    <div class="form-group">
+                        <label class="col-md-2 col-md-offset-1">Nome do pai</label>
+                        <div class="col-md-8">
+                            <input type="text" ng-model='acolhido.nomePai' class="form-control"><br>
                         </div>
                     </div>
 
@@ -77,18 +80,91 @@
                     </div><br>
 
                     <div class="form-group">
-                        <label class="col-md-2 col-md-offset-1">Renda bruta mensal</label>
+                        <label class="col-md-2 col-md-offset-1">Renda mensal</label>
                         <div class="col-md-3">
                             <div class="input-group">
-                                <span class="input-group-addon">R$</span><input type="text" ng-model='acolhido.rbm' class="form-control">
+                                <span class="input-group-addon">R$</span><input type="text" ng-model='acolhido.renda' class="form-control">
                             </div>
                         </div>
 
-                        <label class="col-md-2">Renda líquida mensal</label>
+                        <label class="col-md-1 col-md-offset-1">Sexo</label>
                         <div class="col-md-3">
-                            <div class="input-group">
-                                <span class="input-group-addon">R$</span><input type="text" ng-model='acolhido.rlm' class="form-control">
+                            <input type="radio">&nbsp;
+                            <label> Feminino</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="radio">&nbsp;
+                            <label> Masculino</label>
+                        </div>
+                    </div>
+
+                    <label class="col-md-10 col-md-offset-1"><h3>Ficha Médica</h3><hr></label>
+                    <div class='form-group'>
+                        <label class='col-md-2 col-md-offset-1'>Alergias</label>
+                        <div class='col-md-8'>
+                            <textarea ng-model='acolhido.alergias' class='form-control'></textarea>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='col-md-2 col-md-offset-1'>Tipo Sanguíneo</label>
+                        <div class='col-md-2'>
+                            <select class='form-control' ng-model='acolhido.tipoSanguineo'>
+                                <option value='desconhecido'>Desconhecido</option>
+                                <option value='A-'>A-</option>
+                                <option value='A+'>A+</option>
+                                <option value='B-'>B-</option>
+                                <option value='B-'>B+</option>
+                                <option value='AB-'>AB-</option>
+                                <option value='AB+'>AB+</option>
+                                <option value='O-'>O-</option>
+                                <option value='O+'>O+</option>
+                            </select><br>
+                        </div>
+
+                        <label class='col-md-2 text-right'>Já fez aborto?</label>
+                        <div class="col-md-1">
+                            <input type="radio">&nbsp;
+                            <label> Sim</label>
+                        </div>
+                        <div class="col-md-1">
+                            <input type="radio">&nbsp;
+                            <label> Não</label>
+                        </div>
+
+                        <!--<div class='form-group' ng-if='responsavel.parentesco === "mae"'>
+                            <label class='col-md-2'>Já sofreu aborto?</label>
+                            <div class="col-md-1">
+                                <input type="checkbox" ng-model='responsavel.aborto'><br>
                             </div>
+                            <label class='col-md-2'>Quantos?</label>
+                            <div class='col-md-1'>
+                                <input type='text' ng-model'responsavel.qtdAbortos' class='form-control'><br>
+                            </div>
+                        </div> -->
+
+                        
+                        <label class='col-md-1 text-right'>Quantos?</label>
+                        <div class="col-md-1">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+
+                    <label class="col-md-10 col-md-offset-1"><h3>Vestimentas</h3><hr></label>
+                    <div class='form-group'>
+                        <label class='col-md-1 col-md-offset-1'>Camiseta</label>
+                        <div class='col-md-1'>
+                            <input type='text' ng-model='acolhido.tamCamiseta' class='form-control'>
+                        </div>
+                        <label class='col-md-1'>Calça</label>
+                        <div class='col-md-1'>
+                            <input type='text' ng-model='acolhido.tamCalca' class='form-control'>
+                        </div>
+                        <label class='col-md-2'>Roupa íntima</label>
+                        <div class='col-md-1'>
+                            <input type='text' ng-model='acolhido.tamIntima' class='form-control'>
+                        </div>
+                        <label class='col-md-1'>Calçado</label>
+                        <div class='col-md-1'>
+                            <input type='text' ng-model='acolhido.tamSapato' class='form-control'>
                         </div>
                     </div>
 
@@ -144,11 +220,6 @@
                                     </button>
                                 </div>
                             </div>
-                        </div>
-                        <!-- A partir do CEP, buscar IDH do local e definir grau de risco -->
-                        <label class="col-md-2 col-md-offset-1">Grau de risco</label>
-                        <div class="col-md-2">
-                            <input type="text" ng-model='acolhido.grauRisco' class="form-control"><br>
                         </div>
                     </div>
 
@@ -329,6 +400,17 @@
                                 <input type="text" ng-model='acolhido.ssp' class="form-control"><br>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 col-md-offset-1">Sexo</label>
+                            <div class="col-md-3">
+                                <input type="radio">&nbsp;
+                                <label> Feminino</label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="radio">&nbsp;
+                                <label> Masculino</label>
+                            </div>
+                        </div>
         
                         <label class="col-md-10 col-md-offset-1"><h3>Ficha Médica</h3><hr></label>
                         <div class='form-group'>
@@ -355,11 +437,11 @@
 
                             <label class='col-md-2 text-right'>Já fez aborto?</label>
                             <div class="col-md-1">
-                                <input type="checkbox">&nbsp;
+                                <input type="radio">&nbsp;
                                 <label> Sim</label>
                             </div>
                             <div class="col-md-1">
-                                <input type="checkbox">&nbsp;
+                                <input type="radio">&nbsp;
                                 <label> Não</label>
                             </div>
                             
@@ -379,13 +461,9 @@
                             <div class='col-md-1'>
                                 <input type='text' ng-model='acolhido.tamCalca' class='form-control'>
                             </div>
-                            <label class='col-md-1'>Roupa íntima</label>
+                            <label class='col-md-2'>Roupa íntima</label>
                             <div class='col-md-1'>
                                 <input type='text' ng-model='acolhido.tamIntima' class='form-control'>
-                            </div>
-                            <label class='col-md-1'>Meias</label>
-                            <div class='col-md-1'>
-                                <input type='text' ng-model='acolhido.tamMeias' class='form-control'>
                             </div>
                             <label class='col-md-1'>Calçado</label>
                             <div class='col-md-1'>
