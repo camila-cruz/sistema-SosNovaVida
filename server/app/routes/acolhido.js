@@ -23,7 +23,7 @@ module.exports = ( app ) => {
                     });
                     //let linhas = result.rows[0];
                     //acolhidos.push(linhas);
-    
+                    console.log(acolhidos);
                     return res.json(acolhidos);
                     res.send(acolhidos).status(200);
                 };

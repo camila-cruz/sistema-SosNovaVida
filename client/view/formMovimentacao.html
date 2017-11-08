@@ -1,6 +1,24 @@
 <h1>Movimentações no Estoque</h1>
 <hr>
 <input type="text" class="form-control" placeholder="Pesquise uma movimentação" ng-model='criterioDeBusca'>
+
+<button data-toggle="collapse" data-target="#buscaPersonalizada">Busca personalizada</button>
+<div class="collapse" id="buscaPersonalizada">
+    <br>
+    <label>Palavra-chave</label><br>
+    <input type="text" class="form-control"><br>
+
+    <label>Tipo</label><br>
+    <input type="checkbox"> Entrada
+    <input type="checkbox"> Saída<br>
+
+    <label>De </label>
+    <input type="text" class="form-control" placeholder="aqui vai uma data">
+    <label> Até </label>
+    <input type="text" class="form-control" placeholder="aqui vai outra data">
+
+</div>
+
 <hr>
 <table class="table table-bordered">
     <tr>

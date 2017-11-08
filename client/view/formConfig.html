@@ -1,4 +1,50 @@
-<div>
-    <h1>Tá funcionando aqui também!</h1>
-    <p>Modelar algum conteúdo aqui dentro!</p>
-</div>
+<h1>Configurações</h1>
+<hr>
+<br>
+<form class="form-horizontal">
+    <div class="row">
+        <div class="col-md-offset-4 col-md-7">
+            <label>Alterar Foto</label><br>
+            <div class="fileinput fileinput-new" data-provides="fileinput">
+                <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 240px; height: 180px;"></div>
+                <div>
+                    <span class="btn btn-default btn-block btn-file">
+                        <span class="fileinput-new">Selecione a imagem</span>
+                        <span class="fileinput-exists">Alterar</span>
+                        <input type="file" name="...">
+                    </span>
+                    <a href="#" class="btn btn-default btn-block fileinput-exists" data-dismiss="fileinput">Remover</a>
+                </div>
+            </div><br>
+        </div><br>
+    </div>
+    <br><br>
+    <div class="form-group">
+        <label class="col-md-3 col-md-offset-1">Alterar nome de usuário</label>
+        <div class="col-md-4">
+            <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-3 col-md-offset-1">Alterar senha</label>
+        <div class="col-md-4">
+            <input type="password" ng-model='acolhido.nomeMae' class="form-control"><br>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-3 col-md-offset-1">Confirmar senha</label>
+        <div class="col-md-4">
+            <input type="password" ng-model='acolhido.nomeMae' class="form-control"><br>
+        </div>
+    </div>
+
+    <br><br>
+    <div class="row">
+        <div class="col-md-11 text-right">
+            <button class="btn btn-primary" type='reset'>Limpar</button>
+            <button class="btn btn-success">Salvar</button>
+        </div>
+    </div>
+</form>

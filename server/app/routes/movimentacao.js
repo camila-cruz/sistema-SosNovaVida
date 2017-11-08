@@ -8,7 +8,8 @@ module.exports = (app) => {
         
         conn.query('SELECT * FROM movimentacao', null, (err, result) => {
             if (err) {
-                return 'Ocorreu um erro: ' + err;
+                return res.json(movimentacoes);
+                res.send(movimentacoes).status(200);
             }
             result.rows.forEach( linha => movimentacoes.push( linha ) );
 
