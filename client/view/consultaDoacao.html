@@ -1,0 +1,33 @@
+<h1>Doações</h1>
+<hr>
+<button class="btn btn-warning" data-toggle="collapse" data-target="#buscaPersonalizada">Busca personalizada</button>
+<div class="collapse" id="buscaPersonalizada">
+    <br>
+    <div class="form-group">
+        <label>Busque pelo nome</label><br>
+        <input type="text" class="form-control"><br>
+    </div>
+
+    <div class="form-group">
+        <label>De </label>
+        <input type="text" class="form-control" placeholder="aqui vai uma data">
+        <label> Até </label>
+        <input type="text" class="form-control" placeholder="aqui vai outra data">
+    </div>
+</div>
+<hr>
+
+<table class="table table-striped table-bordered table-condensed tabela">
+    <tr>
+        <th class="col-sm-1"></th>
+        <th class="col-md-6">Descrição</th>
+        <th class="col-md-1">Quantidade</th>
+        <th class="col-md-2">Doador</th>
+    </tr>
+    <tr ng-repeat='produto in produtos | filter: { descricao: criterioDeBusca } | orderBy: qtd'>
+        <td><input type="checkbox" ng-model='produto.selecionado'></td>
+        <td>{{doacao.descricao}}</td>
+        <td>{{doacao.qtd}}</td>
+        <td>{{doacao.doador}}</td>
+    </tr>
+</table>
