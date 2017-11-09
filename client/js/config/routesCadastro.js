@@ -23,4 +23,7 @@ angular.module('novaVida').config( function( $routeProvider ) {
             }
         }
     });
+    $routeProvider.when('/cadastro/doacao', {
+        templateUrl: 'view/formDoacao.html'
+    });
 });

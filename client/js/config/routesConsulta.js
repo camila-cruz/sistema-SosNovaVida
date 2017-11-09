@@ -79,5 +79,8 @@ angular.module('novaVida').config( ($routeProvider) => {
                 return ufAPI;
             }
         }
-    })
+    });
+    $routeProvider.when('/consulta/doacao', {
+        templateUrl: 'view/consultaDoacao.html',
+    });
 });
