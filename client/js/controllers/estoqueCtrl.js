@@ -34,15 +34,15 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
 
     $scope.criarLista = ( produtos ) => {
         $scope.modoDeAbertura = "criar";
+        $scope.lista = {
+            itens: []
+        }
 
         produtos.filter( ( produto ) => {
             if ( produto.selecionado ) {
-                $scope.selecionados.push( produto );
                 $scope.lista.itens.push( produto );
             }; 
         });
-
-        console.log( $scope.selecionados );
     }
 
     $scope.salvarLista = () => console.log('Salvar lista.');
@@ -51,4 +51,17 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
         $scope.lista.itens.push( novoItem );
         $scope.novoItem = {};
     }
+
+    $scope.cancelarLista = () => {
+        $scope.lista = {};
+    };
+
+    $scope.removeItem = ( item ) => {
+        $scope.lista.itens = $scope.lista.itens.filter( ( itemLista ) => {
+            console.log('Descricao do item na lista', itemLista.descricao );
+            console.log('Item selecionado', item.descricao);
+            if ( itemLista.descricao !== item.descricao ) return itemLista ; 
+        })
+    }
+
 });

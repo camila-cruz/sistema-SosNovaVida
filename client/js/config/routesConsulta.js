@@ -13,7 +13,6 @@ angular.module('novaVida').config( ($routeProvider) => {
         resolve: {
             // este nome 'estoque' é o nome do que deve ser injetado no controller
             estoque: (estoqueAPI) => {
-                console.log('Testando!');
                 //aqui é invocado o método _getEstoque() de estoqueAPI.
                 return estoqueAPI.getEstoque();
             }

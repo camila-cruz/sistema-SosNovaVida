@@ -82,7 +82,7 @@
             </div> 
             <!-- ///////////////////////////////////// -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" ng-if="modoDeAbertura == 'criar'">Cancelar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-if="modoDeAbertura == 'criar'" ng-click='cancelarLista()'>Cancelar</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#mdlViewLista" ng-if="modoDeAbertura == 'editar'">Voltar</button>                
                 <button type="button" class="btn btn-success" ng-click=' salvarLista( lista ) '>Salvar</button>
             </div>
