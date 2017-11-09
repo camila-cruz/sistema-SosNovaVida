@@ -21,3 +21,103 @@
         <td><a class="btn btn-info" href="#!/consulta/acolhido/{{acolhido.idacolhido}}" role="button">Editar</a></td>
     </tr>
 </table>
+
+<!-- MODAL PARA CRIAR LISTAS -->
+<div class="modal fade" id="mdlCriarLista" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+                <h3 class="modal-title" ng-if="modoDeAbertura == 'criar'">Criar uma nova lista</h3>
+                <h3 class="modal-title" ng-if="modoDeAbertura == 'editar'">Editar lista</h3>
+            </div> 
+            <!-- ///////////////////////////////////// -->
+            <div class="modal-body">
+                <form>
+                    <label>Escolha um nome</label><br>
+                    <input type="text" class="form-control" ng-model='lista.nome'><br>
+
+                    <label>Acolhidos presentes na lista</label>
+                    <table class="table table-bordered">
+                        <tr>
+                            <th class="col-md-4">Nome</th>
+                            <th class="col-md-3">Data de nascimento</th>
+                            <th class="col-md-1">Camiseta</th>
+                            <th class="col-md-1">Calça</th>
+                            <th class="col-md-1">Roupa íntima</th>
+                            <th class="col-md-1">Calçado</th>
+                            <th class="col-md-1"></th>
+                        </tr>
+                        
+                        <tr>
+                            <td>João</td>
+                            <td>23/05/2005</td>
+                            <td>10</td>
+                            <td>12</td>
+                            <td>12</td>
+                            <td>33</td>
+                            <td class="text-center"><button type="button" class="close" style="float:none;" ng-click=' removeItem( item )' ><span>&times;</span></button></td>
+                        </tr>
+
+                        <tr ng-repeat='item in lista.itens'>
+                            <td>{{acolhido.nome}}</td>
+                            <td>{{acolhido.data_nasc}}</td>
+                            <td>10</td>
+                            <td>12</td>
+                            <td>12</td>
+                            <td>33</td>
+                            <td class="text-center"><button type="button" class="close" style="float:none;" ng-click=' removeItem( item )' ><span>&times;</span></button></td>
+                        </tr>
+                    </table>
+                </form>
+            </div> 
+            <!-- ///////////////////////////////////// -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-if="modoDeAbertura == 'criar'" ng-click='cancelarLista()'>Cancelar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#mdlViewLista" ng-if="modoDeAbertura == 'editar'">Voltar</button>                
+                <button type="button" class="btn btn-success" ng-click=' salvarLista( lista ) '>Salvar</button>
+            </div>
+        </div> <!-- modal content -->
+    </div> <!-- modal dialog -->
+</div> <!-- modal fade -->
+
+
+<!-- MODAL PARA VISUALIZAR LISTAS -->
+<div class="modal fade" id="mdlViewLista" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+                <h3 class="modal-title">Visualizar listas</h3>
+            </div> 
+            <!-- ///////////////////////////////////// -->
+            <div class="modal-body">
+                <table class="table">
+                    <tr>
+                        <th class="col-md-10">Nome da lista</th>
+                        <th class="col-md-1"></th>
+                        <th class="col-md-1"></th>
+                    </tr>
+                    <tr>
+                        <td>Lista de natal</td>
+                        <td><button type="button" class="close" style="float:none;" data-dismiss="modal" data-toggle="modal" data-target="#mdlCriarLista" ng-click="modoDeAbertura = 'editar'"><span class="glyphicon glyphicon-pencil"></span></button></td>
+                        <td><button type="button" class="close" style="float:none;"><span>&times;</span></button></td>
+                    </tr>
+                    <tr ng-repeat='lista in listas'>
+                        <td>Lista de natal</td>
+                        <td><button type="button" class="close" style="float:none;" data-dismiss="modal" data-toggle="modal" data-target="#mdlCriarLista" ng-click="modoDeAbertura = 'editar'"><span class="glyphicon glyphicon-pencil"></span></button></td>
+                        <td><button type="button" class="close" style="float:none;"><span>&times;</span></button></td>
+                    </tr>
+                </table>
+            </div> 
+            <!-- ///////////////////////////////////// -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div> <!-- modal content -->
+    </div> <!-- modal dialog -->
+</div> <!-- modal fade -->

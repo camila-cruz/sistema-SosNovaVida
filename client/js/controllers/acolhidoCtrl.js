@@ -1,6 +1,7 @@
 angular.module('novaVida').controller('acolhidoCtrl', function( $scope, acolhido, acolhidoAPI, uf ){ 
     $scope.acolhidos = acolhido.data;
     $scope.ufs = uf.data;
+    $scope.modoDeAbertura = "criar";
 
     $scope.carregarAcolhidos = () => {
         acolhidoAPI.getAcolhidos().then((response) => {
