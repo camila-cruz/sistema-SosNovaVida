@@ -9,22 +9,21 @@
 </head>
 <body ng-controller='inicioController'>
     <!-- MELHORAR ISSO -->
-    <div ng-if='!isLogado'>
+    <div ng-show='!isLogado' ng-cloak>
         <div class="container">
             <form class="form-signin" method='post'>
                 <h2 class="form-signin-heading">Entrar</h2>
                 <label for="inputUsuario" class="sr-only">Usuário</label>
-                    <input type="email" id="inputUsuario" class="form-control" ng-model='usuario.login'placeholder="Usuário" required autofocus>
+                    <input type="text" id="inputUsuario" class="form-control" ng-model='usuario.nomeusuario'placeholder="Usuário" required autofocus>
                     <label for="inputPassword" class="sr-only">Senha</label>
                     <input type="password" id="inputPassword" class="form-control" ng-model='usuario.senha'placeholder="Senha" required>
                     <div class="checkbox"></div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click='loga()'>Entrar</button>
+                <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click='loga( usuario )'>Entrar</button>
             </form>
         </div>
     </div>
-     
 
-    <div ng-if='isLogado'>
+    <div ng-show='isLogado' ng-cloak>
     <!-- TOP Bar -->
     <header class="col-md-12 col-sm-12">
         <div class="text-left col-md-2 col-sm-2 home-button">
@@ -35,7 +34,7 @@
         </div>
         <div class="text-right col-md-10 col-sm-10 user-cont dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown">
-                <h3>{{user}} <span class="glyphicon glyphicon-user"></span></h3>
+                <h3>{{usuario.nomeusuario}}<span class="glyphicon glyphicon-user"></span></h3>
             </a>
             <ul class="dropdown-menu">
                 <li><a><span class="glyphicon glyphicon-cog"></span> Configurações</a></li>
@@ -119,12 +118,15 @@
         <script src='js/app.js'></script>
         <script src="js/controllers/acolhidoCtrl.js"></script>
         <script src="js/controllers/estoqueCtrl.js"></script>
+        <script src="js/controllers/configCtrl.js"></script>
         <script src="js/controllers/doadorCtrl.js"></script>
         <script src="js/controllers/detalhesAcolhidoCtrl.js"></script>
         <script src="js/controllers/detalhesDoadorCtrl.js"></script>
         <script src='js/controllers/movimentacaoCtrl.js'></script>
         <script src="js/controllers/inicioCtrl.js"></script>
+        <script src="js/services/loginAPI.js"></script>
         <script src="js/services/acolhidoAPI.js"></script>
+        <script src="js/services/configAPI.js"></script>
         <script src="js/services/estoqueAPI.js"></script>
         <script src="js/services/doadorAPI.js"></script>
         <script src="js/services/ufAPI.js"></script>

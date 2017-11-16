@@ -22,29 +22,29 @@
     <div class="form-group">
         <label class="col-md-3 col-md-offset-1">Alterar nome de usuário</label>
         <div class="col-md-4">
-            <input type="text" ng-model='acolhido.nomeMae' class="form-control"><br>
+            <input type="text" ng-model='usuario.nomeUsuario' class="form-control"><br>
         </div>
     </div>
 
     <div class="form-group">
         <label class="col-md-3 col-md-offset-1">Alterar senha</label>
         <div class="col-md-4">
-            <input type="password" ng-model='acolhido.nomeMae' class="form-control"><br>
+            <input type="password" ng-model='usuario.senha' class="form-control"><br>
         </div>
     </div>
 
     <div class="form-group">
         <label class="col-md-3 col-md-offset-1">Confirmar senha</label>
         <div class="col-md-4">
-            <input type="password" ng-model='acolhido.nomeMae' class="form-control"><br>
+            <input type="password" ng-model='usuario.confSenha' class="form-control"><br>
         </div>
     </div>
 
     <br><br>
     <div class="row">
         <div class="col-md-11 text-right">
-            <button class="btn btn-primary" type='reset'>Limpar</button>
-            <button class="btn btn-success">Salvar</button>
+            <button class="btn btn-primary" type='reset' ng-click='limpar()'>Limpar</button>
+            <button class="btn btn-success" ng-disabled='usuario.senha !== usuario.confSenha' ng-click='alterarUsuario( usuario )'>Salvar</button>
         </div>
     </div>
 </form>

@@ -4,17 +4,23 @@ module.exports = ( app ) => {
     app.post('/login', ( req, res ) => {
         console.log('Recebendo requisição POST em /login.');
 
-        const dados = req.body;
+        const usuario = req.body;
 
-        conn.query( 'SELECT senha FROM CONFIGS WHERE NOMEUSUARIO = $1', [ dados.nomeUsuario ], ( err, results ) => {
+        conn.query( 'SELECT * FROM usuario WHERE NOMEUSUARIO = $1', [ usuario.nomeusuario ], ( err, results ) => {
             if (err) return res.send( err );
+            
+            if ( results.rows.length === 0 ) return res.sendStatus( 404 );
+            // Significa que não achou no banco
 
+            
+            const login = results.rows[0].nomeusuario
             const senha = results.rows[0].senha; 
-            if ( dados.senha != senha ) {
-                return res.send('Senha incorreta').statusCode( 401 );
+
+            if ( senha !== usuario.senha ) {
+                return res.sendStatus( 401 ); // Significa que a senha está errada.
             }
-            return res.statusCode( 202 );
+             
+            res.sendStatus( 202 );
         });
-        return;
     })
 };
