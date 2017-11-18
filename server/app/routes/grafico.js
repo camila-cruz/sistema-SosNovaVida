@@ -2,16 +2,19 @@ const con = require('../database/db-factory.js');
 
 module.exports = (app) => {
   app.get( '/grafico/estoque', ( req, res ) => {
+    console.log( 'Recebendo requisição GET em /grafico/estoque');
+
     const produtos = [];
-    con.query('SELECT * FROM estoque', null, ( err, results ) => {
-      //   alterar    ^ para o nome dos campos que guardam o produto e a quantidade no estoque.
+    con.query('SELECT descricao, qtd FROM estoque order by qtd desc LIMIT 5', null, ( err, results ) => {
       if (err) return res.status(500);
 
       results.rows.forEach( ( element ) => {
         produtos.push( element ); 
       });
 
-      return res.status(200).send( estoque )
+      console.log( produtos );
+
+      return res.status(200).send( produtos );
     });
   });
 

@@ -4,10 +4,13 @@ angular.module('novaVida').config( function( $routeProvider ) {
         controller: 'configController'
     });
     $routeProvider.when('/index', {
-        templateUrl: 'view/inicio.html'
-    });
-    $routeProvider.when('/login', {
-        templateUrl: 'view/login.html'
+        templateUrl: 'view/inicio.html',
+        controller: 'inicioCtrl',
+        resolve: {
+            graficoEstoque: ( graficosAPI ) => {
+                return graficosAPI.getGraficoEstoque();
+            }
+        }
     });
     $routeProvider.otherwise({ redirectTo: '/index'});
 });

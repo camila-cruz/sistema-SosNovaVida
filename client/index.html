@@ -9,7 +9,7 @@
 </head>
 <body ng-controller='inicioController'>
     <!-- MELHORAR ISSO -->
-    <div ng-show='!isLogado' ng-cloak>
+    <div ng-if='!isLogado' ng-cloak>
         <div class="container">
             <form class="form-signin" method='post'>
                 <h2 class="form-signin-heading">Entrar</h2>
@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    <div ng-show='isLogado' ng-cloak>
+    <div ng-if='isLogado' ng-cloak>
     <!-- TOP Bar -->
     <header class="col-md-12 col-sm-12">
         <div class="text-left col-md-2 col-sm-2 home-button">
@@ -125,6 +125,7 @@
         <script src='js/controllers/movimentacaoCtrl.js'></script>
         <script src="js/controllers/inicioCtrl.js"></script>
         <script src="js/services/loginAPI.js"></script>
+        <script src="js/services/graficosAPI.js"></script>
         <script src="js/services/acolhidoAPI.js"></script>
         <script src="js/services/configAPI.js"></script>
         <script src="js/services/estoqueAPI.js"></script>
