@@ -5,8 +5,6 @@ angular.module('novaVida').controller('inicioCtrl', function( graficoEstoque ) {
     graficoEstoque.data.forEach( produto => nomeProdutos.push( produto.descricao ) );
     const qtdProdutos = [];
     graficoEstoque.data.forEach( produto => qtdProdutos.push( produto.qtd ) );
-    console.log( 'Nome dos produtos', nomeProdutos );
-    console.log( 'Quantidade dos produtos', qtdProdutos );
 
     var c = document.getElementById("produtos");
     var ctx = c.getContext("2d");

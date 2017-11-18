@@ -12,8 +12,6 @@ module.exports = (app) => {
         produtos.push( element ); 
       });
 
-      console.log( produtos );
-
       return res.status(200).send( produtos );
     });
   });
