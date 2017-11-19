@@ -2,7 +2,7 @@
 angular.module('novaVida').controller('inicioCtrl', function( graficoEstoque ) {
 
     const nomeProdutos = [];
-    graficoEstoque.data.forEach( produto => nomeProdutos.push( produto.descricao ) );
+    graficoEstoque.data.forEach( produto => nomeProdutos.push( produto.descproduto ) );
     const qtdProdutos = [];
     graficoEstoque.data.forEach( produto => qtdProdutos.push( produto.qtd ) );
 
@@ -44,10 +44,12 @@ angular.module('novaVida').controller('inicioCtrl', function( graficoEstoque ) {
             }]
         },
         options: {
+            responsive: true,
             legend: {
                 display: true,
                 position: 'top'
-            }
+            },
+            scales: { yAxes: [{ ticks: { beginAtZero:true } }] }
         }
     }
     var chart = new Chart(ctx, datas);

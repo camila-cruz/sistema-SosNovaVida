@@ -5,7 +5,7 @@ module.exports = (app) => {
     console.log( 'Recebendo requisição GET em /grafico/estoque');
 
     const produtos = [];
-    con.query('SELECT descricao, qtd FROM estoque order by qtd desc LIMIT 5', null, ( err, results ) => {
+    con.query('SELECT descproduto, SUM(qtd) AS qtd FROM movimentacao WHERE tipo=$1 GROUP BY descproduto ORDER BY qtd desc limit 5', ['SAIDA'], ( err, results ) => {
       if (err) return res.status(500);
 
       results.rows.forEach( ( element ) => {
