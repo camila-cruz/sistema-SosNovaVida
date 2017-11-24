@@ -27,12 +27,21 @@ module.exports = ( app ) => {
         console.log('Recebendo requisição POST em /estoque');
 
         const produto = req.body;
-        console.log( produto );
-        conn.query( 'INSERT INTO ESTOQUE ( descricao, qtd ) VALUES ($1, $2)', [ produto.descricao, produto.qtd ], ( err, result ) => { 
-            if ( err ) return 'Ocorreu um erro: ' + err
-            return res.sendStatus( 200 );
-        })
 
+        conn.query( 'INSERT INTO ESTOQUE ( descricao, qtd ) VALUES ($1, $2)', [ produto.descricao, produto.qtd ], ( err ) => { 
+            if ( err ) return 'Ocorreu um erro: ' + err;
+
+            conn.query( 'SELECT id FROM estoque where DESCRICAO = $1', [produto.descricao], ( erro, result ) => {
+                if ( erro ) return 'Ocorreu um erro: ' + erro;
+                produto.id = result.rows[0].id;
+
+                conn.query( 'INSERT INTO movimentacao ( descricao, tipo, qtd, data, id_produto ) VALUES ( $1, $2, $3, $4, $5 )', [produto.descricao, 'ENTRADA', produto.qtd, new Date(), produto.id ], ( erro2 ) => {
+                    if ( erro2 ) return 'Ocorreu um erro: ' + erro2;
+                    return res.send( produto ).status( 202 );
+                });
+            })
+
+        })
     });
 
     app.put('/estoque/:id', ( req, res ) => {
@@ -56,7 +65,7 @@ module.exports = ( app ) => {
             if ( err ) return 'Ocorreu um erro ' + err;
         });
 
-        conn.query( 'INSERT INTO movimentacao ( descProduto, tipo, qtd, dataMov ) VALUES ( $1, $2, $3, $4 )', [produto.descricao, tipo, produto.qtdAlterar, new Date()], ( err ) => {
+        conn.query( 'INSERT INTO movimentacao ( descricao, tipo, qtd, data, id_produto ) VALUES ( $1, $2, $3, $4, $5 )', [produto.descricao, tipo, produto.qtdAlterar, new Date(), produto.id ], ( err ) => {
             if ( err ) return 'Ocorreu um erro: ' + err;
             return res.send( produto ).status( 202 );
         });

@@ -4,12 +4,18 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
     $scope.selecionados = [];
     $scope.lista = {
         itens: []
-    }
+    };
+
+    $scope.ordenarPor = ( campo ) => {
+        $scope.criterioDeOrdenacao = campo;
+        $scope.direcaoDaOrdenacao = !$scope.direcaoDaOrdenacao
+    };
 
     $scope.movimentaEstoque = ( produto, metodo ) => {
         produto.metodo = metodo
-        
-        console.log( produto );
+        console.log( 'Produto', produto );
+        if ( produto.metodo === -1 && produto.qtd - parseInt(produto.qtdAlterar) < 0 ) return alert('Operação não permitida.\nQuantidade de saída maior do que quantidade atual em estoque.')
+
         estoqueAPI.putEstoque( produto )
           .then( result => {
               produto.qtd = result.data.qtd;
@@ -17,7 +23,7 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
             } )
           .catch( err => console.log(err) );
 
-    }
+    };
 
     $scope.adicionaProduto = ( produto ) => {
         estoqueAPI.postEstoque( produto )
@@ -26,11 +32,11 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
               $scope.novoProduto = '';
             } )
           .catch( err => console.log('Erro: ' + err ) );
-    }
+    };
 
     const atualizaProdutos = () => {
         estoqueAPI.getEstoque().then( results => $scope.produtos = results.data );
-    }
+    };
 
     $scope.criarLista = ( produtos ) => {
         $scope.modoDeAbertura = "criar";
@@ -43,14 +49,14 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
                 $scope.lista.itens.push( produto );
             }; 
         });
-    }
+    };
 
     $scope.salvarLista = () => console.log('Salvar lista.');
 
     $scope.adicionarItemNaLista = ( novoItem ) => {
         $scope.lista.itens.push( novoItem );
         $scope.novoItem = {};
-    }
+    };
 
     $scope.cancelarLista = () => {
         $scope.lista = {};
@@ -62,6 +68,6 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
             console.log('Item selecionado', item.descricao);
             if ( itemLista.descricao !== item.descricao ) return itemLista ; 
         })
-    }
+    };
 
 });

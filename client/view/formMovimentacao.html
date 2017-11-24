@@ -7,20 +7,23 @@
     <br>
     <div class="form-group">
         <label>Busque pelo nome</label><br>
-        <input type="text" class="form-control"><br>
+        <input type="text" ng-model='buscaNome' class="form-control"><br>
     </div>
     <div class="form-group">
         <label>Tipo</label><br>
-        <input type="checkbox"> Entrada
-        <input type="checkbox"> Saída<br>
+        <input type="checkbox" ng-model='buscaEntrada' value='ENTRADA'> Entrada<br><br>
+        <input type="checkbox" ng-model='buscaSaida' value='SAIDA'> Saída<br>
     </div>
     <div class="form-group">
         <label>De </label>
-        <input type="text" class="form-control" placeholder="aqui vai uma data">
-        <label> Até </label>
-        <input type="text" class="form-control" placeholder="aqui vai outra data">
+        <input type="text" class="form-control" ng-model='buscaDataInicial' ui-date placeholder="Data inicial">
+        <label>Até </label>
+        <input type="text" class="form-control" ng-model='buscaDataFinal' ui-date placeholder="Data final">
     </div>
 </div>
+
+{{buscaDataInicial}}
+{{buscaDataFinal}}
 
 <hr>
 <table class="table table-bordered">
@@ -31,10 +34,16 @@
         <th class="col-md-2">Data</th>
     </tr>
     
-    <tr ng-class='{ success: movimentacao.tipo=="ENTRADA", danger: movimentacao.tipo=="SAIDA" }'ng-repeat='movimentacao in movimentacoes | filter: criterioDeBusca  | orderBy: "descproduto"'>
+    <tr ng-class='{ success: movimentacao.tipo=="ENTRADA", danger: movimentacao.tipo=="SAIDA" }'
+        ng-repeat='movimentacao in movimentacoes | 
+                    filter: { 
+                        descricao: buscaNome, 
+                        tipo: buscaEntrada && buscaSaida ? "" : buscaEntrada ? "ENTRADA" : buscaSaida ? "SAIDA" : ""
+                    } | 
+                    orderBy: "descricao"' >
         <td>{{movimentacao.tipo}}</td>
-        <td>{{movimentacao.descproduto}}</td>
+        <td>{{movimentacao.descricao}}</td>
         <td>{{movimentacao.qtd}}</td>
-        <td>{{movimentacao.datamov | date:'dd/MM/yy'}}</td>
+        <td>{{movimentacao.data}}</td>
     </tr>
 </table>

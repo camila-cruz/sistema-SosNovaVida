@@ -12,10 +12,11 @@
             <tr>
                 <th class="col-sm-1"></th>
                 <th class="col-md-6">Descrição</th>
-                <th class="col-md-1">Quantidade</th>
+                <th class="col-md-1"><a href='' ng-click='ordenarPor( qtd )'>Quantidade</a></th>
                 <th class="col-md-2"></th>
             </tr>
-            <tr ng-repeat='produto in produtos | filter: { descricao: criterioDeBusca } | orderBy: qtd'>
+            <tr ng-repeat='produto in produtos | filter: { descricao: criterioDeBusca } | orderBy: criterioDeOrdenacao:direcaoDaOrdenacao'
+                ng-class='{ success: produto.qtd > 5, danger: produto.qtd < 5 }'>
                 <td><input type="checkbox" ng-model='produto.selecionado'></td>
                 <td>{{produto.descricao}}</td>
                 <td>{{produto.qtd}}</td>
