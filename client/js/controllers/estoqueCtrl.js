@@ -14,6 +14,17 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
             produto.qtdAlterar = 1;
             return alert('Valor deve ser maior do que 1.', 'AE');
         }
+    };
+
+    $scope.ordenarPor = ( campo ) => {
+        $scope.criterioDeOrdenacao = campo;
+        $scope.direcaoDaOrdenacao = !$scope.direcaoDaOrdenacao
+    };
+
+    $scope.movimentaEstoque = ( produto, metodo ) => {
+        produto.metodo = metodo
+        console.log( 'Produto', produto );
+        if ( produto.metodo === -1 && produto.qtd - parseInt(produto.qtdAlterar) < 0 ) return alert('Operação não permitida.\nQuantidade de saída maior do que quantidade atual em estoque.')
 
         estoqueAPI.putEstoque( produto )
           .then( result => {
@@ -22,7 +33,7 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
             } )
           .catch( err => console.log(err) );
 
-    }
+    };
 
     $scope.adicionaProduto = ( produto ) => {
         estoqueAPI.postEstoque( produto )
@@ -31,11 +42,11 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
               $scope.novoProduto = '';
             } )
           .catch( err => console.log('Erro: ' + err ) );
-    }
+    };
 
     const atualizaProdutos = () => {
         estoqueAPI.getEstoque().then( results => $scope.produtos = results.data );
-    }
+    };
 
     $scope.criarLista = ( produtos ) => {
         $scope.modoDeAbertura = "criar";
@@ -48,14 +59,14 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
                 $scope.lista.itens.push( produto );
             }; 
         });
-    }
+    };
 
     $scope.salvarLista = () => console.log('Salvar lista.');
 
     $scope.adicionarItemNaLista = ( novoItem ) => {
         $scope.lista.itens.push( novoItem );
         $scope.novoItem = {};
-    }
+    };
 
     $scope.cancelarLista = () => {
         $scope.lista = {};
@@ -65,6 +76,6 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
         $scope.lista.itens = $scope.lista.itens.filter( ( itemLista ) => {
             if ( itemLista.descricao !== item.descricao ) return itemLista; 
         })
-    }
+    };
 
 });
