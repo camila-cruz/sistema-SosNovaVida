@@ -5,15 +5,20 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
     $scope.lista = {
         itens: []
     }
+    $scope.produto = {};
 
     $scope.movimentaEstoque = ( produto, metodo ) => {
         produto.metodo = metodo
         
-        console.log( produto );
+        if ( produto.qtdAlterar < 1 ) {
+            produto.qtdAlterar = 1;
+            return alert('Valor deve ser maior do que 1.', 'AE');
+        }
+
         estoqueAPI.putEstoque( produto )
           .then( result => {
               produto.qtd = result.data.qtd;
-              produto.qtdAlterar = ''
+              produto.qtdAlterar = '1'
             } )
           .catch( err => console.log(err) );
 
@@ -58,9 +63,7 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
 
     $scope.removeItem = ( item ) => {
         $scope.lista.itens = $scope.lista.itens.filter( ( itemLista ) => {
-            console.log('Descricao do item na lista', itemLista.descricao );
-            console.log('Item selecionado', item.descricao);
-            if ( itemLista.descricao !== item.descricao ) return itemLista ; 
+            if ( itemLista.descricao !== item.descricao ) return itemLista; 
         })
     }
 

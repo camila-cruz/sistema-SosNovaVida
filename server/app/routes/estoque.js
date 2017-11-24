@@ -30,8 +30,12 @@ module.exports = ( app ) => {
         console.log( produto );
         conn.query( 'INSERT INTO ESTOQUE ( descricao, qtd ) VALUES ($1, $2)', [ produto.descricao, produto.qtd ], ( err, result ) => { 
             if ( err ) return 'Ocorreu um erro: ' + err
-            return res.sendStatus( 200 );
         })
+
+        conn.query( 'INSERT INTO movimentacao ( descProduto, tipo, qtd, dataMov ) VALUES ( $1, $2, $3, $4 )', [produto.descricao, "ENTRADA", produto.qtd, new Date()], ( err ) => {
+            if ( err ) return 'Ocorreu um erro: ' + err;
+            return res.send( produto ).status( 202 );
+        });
 
     });
 

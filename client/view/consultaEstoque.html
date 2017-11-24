@@ -23,7 +23,7 @@
                     <button class="btn btn-danger btn-xs btn-estoque pull-left" ng-click='movimentaEstoque( produto, -1 )'>
                         <span class="glyphicon glyphicon-minus"></span>
                     </button>
-                    <input type="text" class="ipt-estoque" ng-model='produto.qtdAlterar' size="8">
+                    <input type="text" class="ipt-estoque" ng-model='produto.qtdAlterar' ng-init='produto.qtdAlterar=1'>
                     <button class="btn btn-success btn-xs btn-estoque pull-right" ng-click='movimentaEstoque( produto, 1 )' >
                         <span class="glyphicon glyphicon-plus"></span>
                     </button>

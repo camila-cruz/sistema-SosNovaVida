@@ -27,7 +27,7 @@ angular.module('novaVida').controller('configController', function( $scope, conf
         .putUsuario( usuario )
         .then( () => { 
           $scope.usuario = {};
-          return alert('Usuario alterado com sucesso'); 
+          return alert('Usuario e senha alterados com sucesso'); 
         })
         .catch( err => { return console.log( err ) } )
     }
