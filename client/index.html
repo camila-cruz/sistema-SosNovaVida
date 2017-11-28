@@ -6,19 +6,19 @@
     <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/jasny-bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type='text/css' href="css/login.css">
 </head>
-<body ng-controller='inicioController'>
+<body ng-controller='inicioController' ng-class='{ login: !isLogado }'>
     <!-- MELHORAR ISSO -->
     <div ng-show='!isLogado' ng-cloak>
-        <div class="container">
-            <form class="form-signin" method='post'>
-                <h2 class="form-signin-heading">Entrar</h2>
-                <label for="inputUsuario" class="sr-only">Usuário</label>
-                    <input type="text" id="inputUsuario" class="form-control" ng-model='usuario.nomeusuario'placeholder="Usuário" required autofocus>
-                    <label for="inputPassword" class="sr-only">Senha</label>
-                    <input type="password" id="inputPassword" class="form-control" ng-model='usuario.senha'placeholder="Senha" required>
-                    <div class="checkbox"></div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click='loga( usuario )'>Entrar</button>
+        <div class="caixa">
+            <h1>SOS Nova Vida</h1>
+            <form>
+                <label>Login</label><br>
+                <input type="text" ng-model='usuario.nomeusuario'><br>
+                <label>Senha</label><br>
+                <input type="password" ng-model='usuario.senha'><br><br>
+                <button type='submit' ng-click='loga( usuario )'>Entrar</button>
             </form>
         </div>
     </div>
@@ -118,6 +118,7 @@
         <script src='js/app.js'></script>
         <script src="js/directives/uiDateDirective.js"></script>
         <script src="js/directives/uiDateFilter.js"></script>
+        <script src="js/directives/uiTelefone.js"></script>
         <script src="js/controllers/acolhidoCtrl.js"></script>
         <script src="js/controllers/estoqueCtrl.js"></script>
         <script src="js/controllers/configCtrl.js"></script>
