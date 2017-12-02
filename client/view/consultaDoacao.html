@@ -26,28 +26,11 @@
 		<th class="col-md-1">Valor</th>
         <th class="col-md-2">Doador</th>
     </tr>
-    <tr ng-repeat='produto in produtos | filter: { descricao: criterioDeBusca } | orderBy: qtd'>
-        <td><input type="checkbox" ng-model='produto.selecionado'></td>
+    <tr ng-repeat='doacao in doacoes | filter: { descricao: criterioDeBusca } | orderBy: qtd'>
+        <td><input type="checkbox" ng-model='doacao.selecionado'></td>
         <td>{{doacao.descricao}}</td>
 		<td>{{doacao.tipo}}</td>
         <td>{{doacao.qtd}}</td>
 		<td>{{doacao.valor}}</td>
-        <td>{{doacao.doador}}</td>
-    </tr>
-	<tr>
-        <td><input type="checkbox" ng-model='produto.selecionado'></td>
-        <td>LEITE 1L</td>
-		<td>ALIMENTO</td>
-        <td>10</td>
-		<td></td>
-        <td>MARIA</td>
-    </tr>
-		<tr>
-        <td><input type="checkbox" ng-model='produto.selecionado'></td>
-        <td>200 REAIS</td>
-		<td>DINHEIRO</td>
-        <td></td>
-		<td>R$ 200,00</td>
-        <td>JOSÉ</td>
-    </tr>
+        <td>{{doacao.nome}}</td>
 </table>
