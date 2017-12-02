@@ -7,18 +7,19 @@
     <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/jasny-bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type='text/css' href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/sweetalert2/dist/sweetalert2.min.css">
 </head>
 <body ng-controller='inicioController' ng-class='{ login: !isLogado }'>
     <!-- MELHORAR ISSO -->
     <div ng-show='!isLogado' ng-cloak>
         <div class="caixa">
             <h1>SOS Nova Vida</h1>
-            <form>
+            <form name="formLogin">
                 <label>Login</label><br>
-                <input type="text" ng-model='usuario.nomeusuario'><br>
+                <input type="text" ng-model='usuario.nomeusuario' ng-required="true"><br><br>
                 <label>Senha</label><br>
-                <input type="password" ng-model='usuario.senha'><br><br>
-                <button type='submit' ng-click='loga( usuario )'>Entrar</button>
+                <input type="password" ng-model='usuario.senha' ng-required="true"><br><br>
+                <button class="btn btn-info" ng-click='loga(usuario)' ng-disabled="formLogin.$invalid">Entrar</button>
             </form>
         </div>
     </div>
@@ -145,6 +146,7 @@
         <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
         <script src="http://cdn.rawgit.com/MrRio/jsPDF/master/dist/jspdf.min.js"></script>
         <script src="http://html2canvas.hertzen.com/build/html2canvas.js"></script>
+        <script src="node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
         <script src="js/sistema.js"></script>
 </body>
 </html>
