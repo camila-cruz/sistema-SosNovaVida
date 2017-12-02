@@ -16,7 +16,7 @@
                 <th class="col-md-2"></th>
             </tr>
             <tr ng-repeat='produto in produtos | filter: { descricao: criterioDeBusca } | orderBy: criterioDeOrdenacao:direcaoDaOrdenacao'
-                ng-class='{ success: produto.qtd > 5, danger: produto.qtd < 5 }'>
+            ng-class='{ success: produto.qtd > 5, danger: produto.qtd < 5 }'>
                 <td><input type="checkbox" ng-model='produto.selecionado'></td>
                 <td>{{produto.descricao}}</td>
                 <td>{{produto.qtd}}</td>
@@ -24,7 +24,7 @@
                     <button class="btn btn-danger btn-xs btn-estoque pull-left" ng-click='movimentaEstoque( produto, -1 )'>
                         <span class="glyphicon glyphicon-minus"></span>
                     </button>
-                    <input type="text" class="ipt-estoque" ng-model='produto.qtdAlterar' ng-init='produto.qtdAlterar=1'>
+                    <input type="text" class="ipt-estoque" ng-model='produto.qtdAlterar' ng-init='produto.qtdAlterar=1' size="8" >
                     <button class="btn btn-success btn-xs btn-estoque pull-right" ng-click='movimentaEstoque( produto, 1 )' >
                         <span class="glyphicon glyphicon-plus"></span>
                     </button>
@@ -110,8 +110,10 @@
                         <th class="col-md-1"></th>
                         <th class="col-md-1"></th>
                     </tr>
-                    <tr ng-repeat='lista in listas'>
-                        <td>{{lista.nome}}</td>
+                    <!--<tr ng-repeat='lista in listas'>
+                        <td>{{lista.nome}}</td>-->
+                    <tr>
+                        <td>Fechamento Outubro-2017</td>
                         <td><button type="button" class="close" style="float:none;" data-dismiss="modal" data-toggle="modal" data-target="#mdlCriarLista" ng-click="modoDeAbertura = 'editar'"><span class="glyphicon glyphicon-pencil"></span></button></td>
                         <td><button type="button" class="close" style="float:none;"><span>&times;</span></button></td>
                     </tr>
