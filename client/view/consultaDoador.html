@@ -7,19 +7,17 @@
         <th></th>
         <th>ID</th>
         <th>Nome</th>
-        <th>Telefone Residencial</th>
-        <th>Telefone Celular</th>
+        <th>Telefone</th>
         <th>E-mail</th>
         <th></th>
     </tr>
-    <tr ng-repeat='doador in doadores | filter: { nome: criterioDeBusca }'>
+    <tr ng-repeat='doador in doadores | filter:criterioDeBusca'>
         <td><input type='checkbox' ng-model='doador.selecionado' /></td>
         <td>{{doador.id}}</td>
         <td>{{doador.nome}}</td>
         <td>{{doador.tel1}}</td>
-        <td>{{doador.tel2}}</td>
         <td>{{doador.email}}</td>
         <td><a href='#!/consulta/doador/{{doador.id}}' class='btn btn-primary'>Editar</a></td>
     </tr>
 </table>
-<button class='btn btn-danger'>Excluir Selecionados</button>
+<button class='btn btn-danger' ng-click='excluirSelecionados( doadores )'>Excluir Selecionados</button>

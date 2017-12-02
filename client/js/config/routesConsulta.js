@@ -46,7 +46,7 @@ angular.module('novaVida').config( ($routeProvider) => {
         templateUrl: 'view/consultaDoador.html',
         controller: 'doadorCtrl',
         resolve: {
-            doadorAPI: (doadorAPI) => {
+            doadorGet: (doadorAPI) => {
                 return doadorAPI.getDoadores();
             },
             uf: (ufAPI) => {
@@ -58,8 +58,7 @@ angular.module('novaVida').config( ($routeProvider) => {
         templateUrl: 'view/detalhesDoador.html',
         controller: 'detalhesDoadorCtrl',
         resolve: {
-            doadorAPI: (doadorAPI, $route) => {
-                console.log($route.current.params.id);
+            doadorGet: (doadorAPI, $route) => {
                 return doadorAPI.getDoadorById( $route.current.params.id );
             },
             uf: (ufAPI) => {

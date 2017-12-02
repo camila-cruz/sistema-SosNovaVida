@@ -1,19 +1,29 @@
 angular.module('novaVida').factory('doadorAPI', function( $http, config ) {
-    let _getDoadores = () => {
+    const _getDoadores = () => {
         return $http.get( config.baseUrl + '/doadores' );
     };
 
-    let _getDoadorById = (id) => {
+    const _getDoadorById = (id ) => {
         return $http.get( config.baseUrl + '/doadores/' + id);
     };
 
-    let _setDoador = ( doador ) => {
+    const _postDoador = ( doador ) => {
         return $http.post( config.baseUrl + '/doadores', doador );
+    }
+
+    const _putDoador = ( doador, id ) => {
+        return $http.put( config.baseUrl + '/doadores/' + id, doador );
+    }
+
+    const _deleteDoador = ( doadores ) => {
+        return $http.delete( config.baseUrl + '/doadores', { data: doadores , headers: { 'Content-type': 'application/json;charset=utf-8' } } );
     }
 
     return {
         getDoadores: _getDoadores,
         getDoadorById: _getDoadorById,
-        setDoador: _setDoador
+        postDoador: _postDoador,
+        putDoador: _putDoador,
+        deleteDoador: _deleteDoador
     };
 });

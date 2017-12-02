@@ -3,7 +3,7 @@ angular.module('novaVida').config( function( $routeProvider ) {
         templateUrl: 'view/formDoador.html',
         controller: 'doadorCtrl',
         resolve: {
-            doador: ( doadorAPI ) => {
+            doadorGet: ( doadorAPI ) => {
                 return doadorAPI;
             },
             uf: function(ufAPI){
