@@ -22,9 +22,6 @@
     </div>
 </div>
 
-{{buscaDataInicial}}
-{{buscaDataFinal}}
-
 <hr>
 <table class="table table-bordered">
     <tr>
@@ -44,6 +41,6 @@
         <td>{{movimentacao.tipo}}</td>
         <td>{{movimentacao.descricao}}</td>
         <td>{{movimentacao.qtd}}</td>
-        <td>{{movimentacao.data}}</td>
+        <td>{{movimentacao.data | date:'dd/MM/yy' }}</td>
     </tr>
 </table>
