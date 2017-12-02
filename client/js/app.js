@@ -24,4 +24,8 @@ angular.module('novaVida').controller('inicioController', function( $scope, logi
     $scope.limpa = () => {
         $scope.usuario = {};
     }
+
+    $scope.desloga = () => {
+        $scope.isLogado = false;
+    }
 });
