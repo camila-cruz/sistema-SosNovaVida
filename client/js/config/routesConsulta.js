@@ -71,7 +71,6 @@ angular.module('novaVida').config( ($routeProvider) => {
         controller: 'detalhesAcolhidoCtrl',      //acolhidoCtrl
         resolve: {
             acolhido: (acolhidoAPI, $route) => {
-                console.log('Testando detalhes acolhido');
                 return acolhidoAPI.getAcolhidoByID( $route.current.params.id );
             },
             uf: ( ufAPI ) => {
@@ -81,5 +80,11 @@ angular.module('novaVida').config( ($routeProvider) => {
     });
     $routeProvider.when('/consulta/doacao', {
         templateUrl: 'view/consultaDoacao.html',
+        controller: 'consultaDoacoesCtrl',
+        resolve: {
+            doacoes: ( doacaoAPI ) => {
+                return doacaoAPI.getDoacoes();
+            }
+        }
     });
 });

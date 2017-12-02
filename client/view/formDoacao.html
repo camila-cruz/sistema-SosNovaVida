@@ -5,29 +5,34 @@
     <div class="form-group">
         <label class="col-md-2 col-md-offset-1">Descrição</label>
         <div class="col-md-7">
-            <input type="text" class="form-control" ng-model='novoProduto.descricao'><br>
+            <input type="text" class="form-control" ng-model='doacao.descricao'><br>
         </div>
     </div>
 
     <div class="form-group">
         <label class="col-md-2 col-md-offset-1">Tipo de doação</label>
         <div class="col-md-2">
-			<select class="form-control">
-				<option>DINHEIRO</option>
-				<option>ALIMENTO</option>
-				<option>ROUPA</option>
+			<select class="form-control" ng-model='doacao.tipo'>
+				<option value='Dinheiro'>DINHEIRO</option>
+				<option value='Alimento'>ALIMENTO</option>
+				<option value='Roupa'>ROUPA</option>
 			</select>
         </div>
         
 		<label class="col-md-2 text-right">Doador</label>
         <div class="col-md-3">
             <div class="input-group">
-                <input type="text" class="form-control" ng-model='novoProduto.descricao'>
+                <input type="text" class="form-control" ng-keyup='filtra( doacao.nomeDoador )' autocomplete="off" ng-model='doacao.nomeDoador'>
                 <div class="input-group-btn">
                     <button class="btn btn-default btn-input-group" type="button">
                         <span class="glyphicon glyphicon-search"></span>
                     </button>
                 </div>
+            </div>
+            <div ng-show="buscando">
+                <li ng-repeat="dica in dicas">
+                    <a ng-click='adicionaDoador( dica )' href=''>{{dica.nome}}</a>
+                </li>
             </div>
         </div>
     </div>
@@ -35,20 +40,20 @@
 	<div class="form-group">
         <label class="col-md-2 col-md-offset-1 disabled">Quantidade</label>
         <div class="col-md-2">
-            <input type="text" class="form-control" ng-model='novoProduto.descricao'><br>
+            <input type="number" class="form-control" ng-model='doacao.qtd'><br>
         </div>
         
 		<label class="col-md-1 col-md-offset-1">Valor</label>
         <div class="col-md-3">
 			<div class="input-group">
-				<span class="input-group-addon">R$</span><input type="text" ng-model='acolhido.renda' class="form-control">
+				<span class="input-group-addon">R$</span><input type="number" step='any' ng-model='doacao.valor' class="form-control">
 			</div>
 		</div>
     </div>
     <br><br>
     <div class="row">
         <div class="col-md-10 text-right">
-            <button class="btn btn-primary" type='reset'>Limpar</button>
+            <button class="btn btn-primary" ng-click='limpar()'>Limpar</button>
             <button class="btn btn-success" ng-click='cadastrarDoacao(doacao)'>Salvar</button>
         </div>
     </div>

@@ -26,6 +26,17 @@ module.exports = ( app ) => {
         });
     });
 
+    app.get('/doadores/doacao/:nome', ( req, res ) => {
+        const doador = req.params.nome;
+        console.log('Recebendo requisição GET em /doadores/doacao/' + doador);
+
+        con.query("SELECT id,nome FROM doador WHERE UPPER(nome) LIKE UPPER( $1 || '%')", [ doador ], ( err, result ) => {
+            if ( err ) return res.send( err );
+
+            return res.send( result.rows );
+        })
+    });
+
     app.get('/doadores/:id', (req, res) => {
         const id = req.params.id;
         console.log('Recebendo requisição GET em /doadores/' + id);

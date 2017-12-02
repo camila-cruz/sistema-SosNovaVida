@@ -38,8 +38,8 @@
                 <h3>{{usuario.nomeusuario}}<span class="glyphicon glyphicon-user"></span></h3>
             </a>
             <ul class="dropdown-menu">
-                <li><a><span class="glyphicon glyphicon-cog"></span> Configurações</a></li>
-                <li><a><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
+                <li><a href='#!/config'><span class="glyphicon glyphicon-cog"></span> Configurações</a></li>
+                <li><a ng-click='desloga()'><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
             </ul>
         </div>
     </header>
@@ -128,12 +128,15 @@
         <script src="js/controllers/detalhesDoadorCtrl.js"></script>
         <script src='js/controllers/movimentacaoCtrl.js'></script>
         <script src="js/controllers/inicioCtrl.js"></script>
+        <script src="js/controllers/doacaoCtrl.js"></script>
+        <script src="js/controllers/consultaDoacoesCtrl.js"></script>
         <script src="js/services/loginAPI.js"></script>
         <script src="js/services/graficosAPI.js"></script>
         <script src="js/services/acolhidoAPI.js"></script>
         <script src="js/services/configAPI.js"></script>
         <script src="js/services/estoqueAPI.js"></script>
         <script src="js/services/doadorAPI.js"></script>
+        <script src="js/services/doacaoAPI.js"></script>
         <script src="js/services/ufAPI.js"></script>
         <script src='js/services/movimentacaoAPI.js'></script>
         <script src="js/value/configValues.js"></script>

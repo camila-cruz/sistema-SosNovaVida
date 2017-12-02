@@ -7,6 +7,10 @@ angular.module('novaVida').factory('doadorAPI', function( $http, config ) {
         return $http.get( config.baseUrl + '/doadores/' + id);
     };
 
+    const _getDoadorByNome = ( nome ) => {
+        return $http.get( config.baseUrl + '/doadores/doacao/' + nome);
+    };
+
     const _postDoador = ( doador ) => {
         return $http.post( config.baseUrl + '/doadores', doador );
     }
@@ -22,6 +26,7 @@ angular.module('novaVida').factory('doadorAPI', function( $http, config ) {
     return {
         getDoadores: _getDoadores,
         getDoadorById: _getDoadorById,
+        getDoadorByNome: _getDoadorByNome,
         postDoador: _postDoador,
         putDoador: _putDoador,
         deleteDoador: _deleteDoador
