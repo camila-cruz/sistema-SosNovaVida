@@ -25,7 +25,16 @@ angular.module('novaVida').controller('inicioCtrl', function( graficoEstoque ) {
                 display: true,
                 position: 'top'
             },
-            scales: { yAxes: [{ ticks: { beginAtZero:true, callback: ( value ) => { if (value % 1 === 0 ) return value; } } }] }
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        callback: ( value ) => {
+                            if (value % 1 === 0 ) return value;
+                        }
+                    }
+                }]
+            }
         }
     }
     var chart = new Chart(ctx, datas);
@@ -49,7 +58,13 @@ angular.module('novaVida').controller('inicioCtrl', function( graficoEstoque ) {
                 display: true,
                 position: 'top'
             },
-            scales: { yAxes: [{ ticks: { beginAtZero:true } }] }
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
         }
     }
     var chart = new Chart(ctx, datas);
