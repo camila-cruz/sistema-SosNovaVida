@@ -1,6 +1,7 @@
 angular.module('novaVida').controller('doacaoCtrl', function( $scope, doadorAPI, doacaoAPI ) {
 
     $scope.doacao = {};
+    $scope.doacao.doador = {};
 
     $scope.limpar = () => {
         $scope.doacao = {}

@@ -91,6 +91,8 @@ create table doador(
     check (voluntario = true or financeiro = true or vestuario = true or alimenticio = true)
 );
 
+insert into doador (id, nome, tel1, voluntario, financeiro, alimenticio, vestuario) values ( '-1', 'Desconhecido', 'Desconhecido', true, true, true, true );
+
 
 --------------DOAÇÕES
 
@@ -98,6 +100,7 @@ create table doacao(
     id smallserial primary key,
     tipo varchar(15) not null,
     valor decimal(7,2),
+    quantidade int,
     descricao varchar(300),
     data date not null,
     id_doador int references doador(id),
