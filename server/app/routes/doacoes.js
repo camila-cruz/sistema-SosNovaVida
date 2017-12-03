@@ -20,9 +20,11 @@ module.exports = ( app ) => {
 
   app.post('/doacoes', ( req, res ) => {
     const doacao = req.body;
-    console.log( 'Recebendo requisicao POST em /doador' );
+    console.log( 'Recebendo requisicao POST em /doacoes' );
+    
+    if ( doacao.nomeDoador === '' ) doacao.doador.id = -1;
 
-    con.query('INSERT INTO DOACAO ( tipo, valor, descricao, data, id_doador ) values ( $1, $2, $3, $4, $5 )', [ doacao.tipo, doacao.valor, doacao.descricao, new Date(), doacao.doador.id ], ( err ) => {
+    con.query('INSERT INTO DOACAO ( tipo, valor, qtd, descricao, data, id_doador ) values ( $1, $2, $3, $4, $5, $6 )', [ doacao.tipo, doacao.valor, doacao.qtd, doacao.descricao, new Date(), doacao.doador.id ], ( err ) => {
       if ( err ) return res.send( err ).status( 500 );
 
       return res.sendStatus( 200 );
