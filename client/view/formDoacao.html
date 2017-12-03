@@ -13,9 +13,9 @@
         <label class="col-md-2 col-md-offset-1">Tipo de doação</label>
         <div class="col-md-2">
 			<select class="form-control" ng-model='doacao.tipo'>
-				<option value='Dinheiro'>DINHEIRO</option>
-				<option value='Alimento'>ALIMENTO</option>
-				<option value='Roupa'>ROUPA</option>
+				<option value='dinheiro'>DINHEIRO</option>
+				<option value='alimento'>ALIMENTO</option>
+				<option value='roupa'>ROUPA</option>
 			</select>
         </div>
         
@@ -38,18 +38,20 @@
     </div>
 	<br>
 	<div class="form-group">
-        <label class="col-md-2 col-md-offset-1 disabled">Quantidade</label>
+        <label class="col-md-2 col-md-offset-1">Quantidade</label>
         <div class="col-md-2">
             <input type="number" class="form-control" ng-model='doacao.qtd'><br>
         </div>
         
-		<label class="col-md-1 col-md-offset-1">Valor</label>
-        <div class="col-md-3">
+		<label class="col-md-1 col-md-offset-1" ng-if="doacao.tipo == 'dinheiro'">Valor</label>
+        <div class="col-md-3" ng-show="doacao.tipo == 'dinheiro'">
 			<div class="input-group">
-				<span class="input-group-addon">R$</span><input type="number" step='any' ng-model='doacao.valor' class="form-control">
+                <span class="input-group-addon">R$</span>
+                <input type="number" step='any' ng-model='doacao.valor' class="form-control">
 			</div>
 		</div>
     </div>
+    {{doacao}}
     <br><br>
     <div class="row">
         <div class="col-md-10 text-right">
