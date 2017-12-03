@@ -12,7 +12,7 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
         
         if ( produto.qtdAlterar < 1 ) {
             produto.qtdAlterar = 1;
-            return alert('Valor deve ser maior do que 1.', 'AE');
+            return swal("Atenção", "A quantidade inserida deve ser maior que 1", "warning");
         }
     };
 
@@ -27,21 +27,27 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
         if ( produto.metodo === -1 && produto.qtd - parseInt(produto.qtdAlterar) < 0 ) return alert('Operação não permitida.\nQuantidade de saída maior do que quantidade atual em estoque.')
 
         estoqueAPI.putEstoque( produto )
-          .then( result => {
-              produto.qtd = result.data.qtd;
-              produto.qtdAlterar = '1'
-            } )
-          .catch( err => console.log(err) );
+            .then( result => {
+                produto.qtd = result.data.qtd;
+                produto.qtdAlterar = '1'
+            })
+            .catch( err => {
+                swal("Opa...", "Houve um erro, tente novamente!", "error");
+                console.log(err)
+            });
 
     };
 
     $scope.adicionaProduto = ( produto ) => {
         estoqueAPI.postEstoque( produto )
-          .then(   () => {
-              atualizaProdutos()
-              $scope.novoProduto = '';
+            .then(   () => {
+                atualizaProdutos()
+                $scope.novoProduto = '';
             } )
-          .catch( err => console.log('Erro: ' + err ) );
+            .catch( err => {
+                swal("Opa...", "Houve um erro, tente novamente!", "error");
+                console.log('Erro: ' + err )
+            });
     };
 
     const atualizaProdutos = () => {
