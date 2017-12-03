@@ -16,7 +16,7 @@
             <h1>SOS Nova Vida</h1>
             <form name="formLogin">
                 <label>Login</label><br>
-                <input type="text" ng-model='usuario.nomeusuario' ng-required="true"><br><br>
+                <input type="text" ng-model='usuario.nomeusuario' ng-required="true" autofocus><br><br>
                 <label>Senha</label><br>
                 <input type="password" ng-model='usuario.senha' ng-required="true"><br><br>
                 <button class="btn btn-info" ng-click='loga(usuario)' ng-disabled="formLogin.$invalid">Entrar</button>
@@ -62,21 +62,23 @@
                     <div class="collapse navbar-collapse" id="collapse-navbar">
                         <ul class="nav navmenu-nav col-md-12">
                             <li role="presentation" class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acolhidos <span class="caret"></span></a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <span class="glyphicon glyphicon-heart-empty"></span>&nbsp;&nbsp;&nbsp; Acolhidos<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#!/cadastro/acolhido">Cadastrar</a></li>
                                     <li><a href="#!/consulta/acolhido">Consultar</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Doadores <span class="caret"></span></a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;&nbsp;&nbsp; Doadores <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#!/cadastro/doador">Cadastrar</a></li>
                                     <li><a href="#!/consulta/doador">Consultar</a></li>
                                 </ul>
                             </li>
                             
-                            <li><a href="#!/estoque">Estoque</a></li>
+                            <li><a href="#!/estoque"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;&nbsp; Estoque</a></li>
                             <!-- <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Estoque <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
@@ -87,13 +89,14 @@
                             </li> -->
                             
                             <li class='dropdown'>
-                                <a class='dropdown-toggle' data-toggle='dropdown' role="button" aria-haspopup="true" aria-expanded="false">Doações <span class='caret'></span></a>
+                                <a class='dropdown-toggle' data-toggle='dropdown' role="button" aria-haspopup="true" aria-expanded="false">
+                                    <span class="glyphicon glyphicon-gift"></span>&nbsp;&nbsp;&nbsp;Doações <span class='caret'></span></a>
                                 <ul class='dropdown-menu'>
                                     <li><a href='#!/cadastro/doacao'>Cadastrar</a></li>
                                     <li><a href='#!/consulta/doacao'>Consultar</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#!/config">Configurações</a></li>
+                            <li><a href="#!/config"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;&nbsp;Configurações</a></li>
                         </ul>
                     </div>
                 </div>
