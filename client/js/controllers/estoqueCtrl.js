@@ -23,7 +23,7 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
 
     $scope.movimentaEstoque = ( produto, metodo ) => {
         produto.metodo = metodo
-        console.log( 'Produto', produto );
+        if ( produto.qtdAlterar <= 0 ) return alert('Operação não permitida.\nQuantidade de movimentação deve ser maior do que 0.');
         if ( produto.metodo === -1 && produto.qtd - parseInt(produto.qtdAlterar) < 0 ) return alert('Operação não permitida.\nQuantidade de saída maior do que quantidade atual em estoque.')
 
         estoqueAPI.putEstoque( produto )
