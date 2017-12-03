@@ -7,15 +7,6 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
     }
     $scope.produto = {};
 
-    $scope.movimentaEstoque = ( produto, metodo ) => {
-        produto.metodo = metodo
-        
-        if ( produto.qtdAlterar < 1 ) {
-            produto.qtdAlterar = 1;
-            return alert('Valor deve ser maior do que 1.', 'AE');
-        }
-    };
-
     $scope.ordenarPor = ( campo ) => {
         $scope.criterioDeOrdenacao = campo;
         $scope.direcaoDaOrdenacao = !$scope.direcaoDaOrdenacao
@@ -36,6 +27,7 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
     };
 
     $scope.adicionaProduto = ( produto ) => {
+        if ( produto.descricao === '' ) return alert('Operação não permitida.\nVocê deve inserir o nome do produto.');
         estoqueAPI.postEstoque( produto )
           .then(   () => {
               atualizaProdutos()

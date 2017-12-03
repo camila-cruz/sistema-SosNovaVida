@@ -31,6 +31,8 @@ module.exports = ( app ) => {
         conn.query( 'INSERT INTO ESTOQUE ( descricao, qtd ) VALUES ($1, $2)', [ produto.descricao, produto.qtd ], ( err ) => { 
             if ( err ) return 'Ocorreu um erro: ' + err;
 
+            if ( produto.qtd <= 0 ) return res.send( produto ).status( 200 );
+            
             conn.query( 'SELECT id FROM estoque where DESCRICAO = $1', [produto.descricao], ( erro, result ) => {
                 if ( erro ) return 'Ocorreu um erro: ' + erro;
                 produto.id = result.rows[0].id;
