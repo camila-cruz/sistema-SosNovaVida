@@ -7,9 +7,11 @@ angular.module('novaVida').controller('configController', function( $scope, conf
         .putLogin( usuario )
         .then( () => { 
           $scope.usuario = {};
-          return alert('Login alterado com sucesso.');
+          return swal("Sucesso!", "Login alterado com sucesso!", "success");
         })
-        .catch( err => { return console.log( err ) } )
+        .catch( err => {
+            swal("Opa...", "Houve um erro, tente novamente!", "error");
+        })
 
     } else if ( usuario.nomeUsuario == null && usuario.senha !== null ) {
       //Se a login não foi preenchido, altera só a senha
@@ -17,9 +19,11 @@ angular.module('novaVida').controller('configController', function( $scope, conf
         .putSenha( usuario )
         .then( () => { 
           $scope.usuario = {};
-          return alert('Senha alterada com sucesso');
+          return swal("Sucesso!", "Senha alterada com sucesso!", "success");
         })
-        .catch( err => { return console.log( err ) } )
+        .catch( err => { 
+            swal("Opa...", "Houve um erro, tente novamente!", "error");
+        })
 
     } else if ( usuario.nomeUsuario !== null && usuario.senha !== null ) {
       //Se a senha E o login foram preenchidos, altera os dois.
@@ -27,9 +31,11 @@ angular.module('novaVida').controller('configController', function( $scope, conf
         .putUsuario( usuario )
         .then( () => { 
           $scope.usuario = {};
-          return alert('Usuario e senha alterados com sucesso'); 
+          return swal("Sucesso!", "Usuário e senha alterados com sucesso!", "success");
         })
-        .catch( err => { return console.log( err ) } )
+        .catch( err => {
+            swal("Opa...", "Houve um erro, tente novamente!", "error");
+        })
     }
   };
 
