@@ -8,11 +8,11 @@ create table acolhido(
     data_nasc date not null,
     sexo varchar(1) not null,
     data_entrada date not null,
-    cid_natal varchar(40) not null,
-    uf varchar(2) not null,
+    cid_natal varchar(40),
+    uf varchar(2),
     cpf varchar(11),
-    rg varchar(13) not null,
-    ssp varchar(2) not null,
+    rg varchar(13),
+    ssp varchar(2),
     nome_mae varchar(100),
     nome_pai varchar(100),
     alergias varchar(100),
@@ -70,9 +70,9 @@ create table juridico(
 create table lista_acolhidos(
     id smallserial primary key,
     nome varchar(40) not null,
-    id_acolhido int not null references acolhido(id),
+    id_acolhido int array not null, --array guarda o ID dos acolhidos que foram adicionados na lista, formato '{1,2,3}'
     data date not null,
-    check (data >= current_date),
+    check (data >= current_date)
 );
 
 --------------DOADORES
@@ -125,12 +125,11 @@ create table movimentacao(
 create table lista_produtos(
     id smallserial primary key,
     nome varchar(30) not null,
-    produtos int array not null,
-    qtd int array not null,
-    check (array_length(produtos, 1) = array_length(qtd, 1))
+    produtos int array not null,    --array guarda o ID dos produtos  que foram adicionados na lista, formato '{1,2,3}'
+    qtd int array not null,         --array guarda a quantidade respectiva dos produtos adicionados na lista, formato '{1,2,3}'
+    check (array_length(produtos, 1) = array_length(qtd, 1))    --checa se os arrays de produtos e quantidades são de tamanhos iguais
 );
-insert into lista_produtos values (default, 'lista teste 1', '{1, 2, 5}', '{4, 4, 3}');
-insert into lista_produtos values (default, 'lista teste 1', '{1, 2, 5, 8, 4, 9}', '{4, 7, 15, 8, 9, 10}');
+
 
 
 --------------USUARIO
@@ -160,11 +159,21 @@ create table usuario(
 insert into acolhido values (default, 'pafuncio', '25-12-2006', 'M', current_date, 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, null);
 insert into acolhido values (default, 'Moquidésia', '17-10-2009', 'F', current_date, 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'AB+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, null);
 
+
 insert into doador values (default, 'Batman', '11963656869', null, 'bat@man.com', true, true, false, false);
 insert into doador values (default, 'Iron Man', '11967235458', null, null, true, true, false, false);
 insert into doador values (default, 'Robin', null, null, 'robin@bat.com', true, false, false, false);
 insert into doador values (default, 'Peter Parker', null, null, 'peter@spider.com', true, false, true, false);
 
 
+insert into lista_produtos values (default, 'lista teste 1', '{1, 2, 5}', '{4, 4, 3}');
+insert into lista_produtos values (default, 'lista teste 2', '{1, 2, 4, 7}', '{4, 7, 15, 8}');
 
 
+insert into estoque values (default, 'Leite B 1L', 7);
+insert into estoque values (default, 'Arroz 5Kg', 5);
+insert into estoque values (default, 'Feijão 1Kg', 12);
+insert into estoque values (default, 'Macarrão 500g', 9);
+insert into estoque values (default, 'Farinha 1Kg', 7);
+insert into estoque values (default, 'Açúcar 1Kg', 6);
+insert into estoque values (default, 'Achocolatado 500g', 5);
