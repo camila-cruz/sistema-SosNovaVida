@@ -5,7 +5,7 @@
     <br>
     <div class="form-group">
         <label>Busque pelo nome</label><br>
-        <input type="text" class="form-control"><br>
+        <input type="text" class="form-control" ng-model='criterioDeBusca'><br>
     </div>
 
     <div class="form-group">
@@ -26,7 +26,7 @@
 		<th class="col-md-1">Valor</th>
         <th class="col-md-2">Doador</th>
     </tr>
-    <tr ng-repeat='doacao in doacoes | filter: { descricao: criterioDeBusca } | orderBy: qtd'>
+    <tr ng-repeat='doacao in doacoes | filter: criterioDeBusca | orderBy: qtd'>
         <td><input type="checkbox" ng-model='doacao.selecionado'></td>
         <td>{{doacao.descricao}}</td>
 		<td>{{doacao.tipo}}</td>

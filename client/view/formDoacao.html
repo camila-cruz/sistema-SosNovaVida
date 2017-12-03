@@ -22,7 +22,7 @@
 		<label class="col-md-2 text-right">Doador</label>
         <div class="col-md-3">
             <div class="input-group">
-                <input type="text" class="form-control" ng-keyup='filtra( doacao.nomeDoador )' autocomplete="off" ng-model='doacao.nomeDoador'>
+                <input type="text" class="form-control" ng-keyup='filtra( doacao.nomeDoador )' autocomplete="off" ng-model='doacao.nomeDoador' ng-init='doacao.nomeDoador="Desconhecido"'>
                 <div class="input-group-btn">
                     <button class="btn btn-default btn-input-group" type="button">
                         <span class="glyphicon glyphicon-search"></span>
