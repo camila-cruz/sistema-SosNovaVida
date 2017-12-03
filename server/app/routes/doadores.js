@@ -17,7 +17,7 @@ module.exports = ( app ) => {
             } else {
 
                 result.rows.forEach( (elemento) => {
-                    doadores.push(elemento);
+                    if ( elemento.nome != 'Desconhecido' ) doadores.push(elemento);
                 });
 
                 return res.json(doadores);
