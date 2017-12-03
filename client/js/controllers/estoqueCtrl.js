@@ -15,7 +15,10 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
     $scope.movimentaEstoque = ( produto, metodo ) => {
         produto.metodo = metodo
         if ( produto.qtdAlterar <= 0 ) return swal("Atenção", "A quantidade inserida deve ser maior que 0", "warning");
-        if ( produto.metodo === -1 && produto.qtd - parseInt(produto.qtdAlterar) < 0 ) return alert('Operação não permitida.\nQuantidade de saída maior do que quantidade atual em estoque.')
+
+        if ( produto.metodo === -1 && produto.qtd - parseInt(produto.qtdAlterar) < 0 ) {
+            return swal("Atenção", "Quantidade de saída maior do que a disponível em estoque", "warning");
+        }
 
         estoqueAPI.putEstoque( produto )
             .then( result => {
@@ -30,7 +33,9 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
     };
 
     $scope.adicionaProduto = ( produto ) => {
-        if ( produto.descricao === '' ) return alert('Operação não permitida.\nVocê deve inserir o nome do produto.');
+        if ( produto.descricao === '' ) {
+            return swal("Atenção", "O nome do produto não pode ser deixado em branco!", "warning");
+        }
         estoqueAPI.postEstoque( produto )
             .then(   () => {
                 atualizaProdutos()
@@ -59,7 +64,10 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
         });
     };
 
-    $scope.salvarLista = () => console.log('Salvar lista.');
+    $scope.salvarLista = () => {
+        console.log('Salvar lista.');
+        return swal("Sucesso!", "Lista salva com sucesso!", "success");
+    }
 
     $scope.adicionarItemNaLista = ( novoItem ) => {
         $scope.lista.itens.push( novoItem );
@@ -67,6 +75,7 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
     };
 
     $scope.cancelarLista = () => {
+        // Adicionar rotina de confirmação
         $scope.lista = {};
     };
 
