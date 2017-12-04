@@ -5,11 +5,11 @@ create database bd_sosnovavida;
 create table acolhido(
     id smallserial primary key,
     nome varchar(100) not null,
-    data_nasc date not null,
-    sexo varchar(1) not null,
-    data_entrada date not null,
-    cid_natal varchar(40),
-    uf varchar(2),
+    data_nasc date,
+    sexo varchar(1),
+    data_entrada date,
+    ---cid_natal varchar(40),
+    --uf varchar(2),
     cpf varchar(11),
     rg varchar(13),
     ssp varchar(2),
@@ -34,36 +34,36 @@ create table acolhido(
 
 create table residencia(
     id smallserial not null,
-    cep varchar(8) not null,
-    logradouro varchar(40) not null,
-    numero varchar(7) not null,
-    complemento varchar(40) not null,
-    bairro varchar(40) not null,
-    cidade varchar(40) not null,
-    uf varchar(2) not null,
+    cep varchar(8),
+    logradouro varchar(40),
+    numero varchar(7),
+    complemento varchar(40),
+    bairro varchar(40),
+    cidade varchar(40),
+    uf varchar(2),
     id_acolhido int not null references acolhido(id)
 );
 
 create table trabalho(
-    id smallserial primary key,
-    empresa varchar(50) not null,
-    cargo varchar(20) not null,
-    salario decimal(6,2) not null,
-    cep varchar(8) not null,
-    logradouro varchar(40) not null,
-    numero varchar(7) not null,
-    complemento varchar(40) not null,
-    bairro varchar(40) not null,
-    cidade varchar(40) not null,
-    uf varchar(2) not null,
+    id smallserial primary key not null,
+    empresa varchar(50),
+    cargo varchar(20),
+    salario decimal(6,2),
+    cep varchar(8),
+    logradouro varchar(40),
+    numero varchar(7),
+    complemento varchar(40),
+    bairro varchar(40),
+    cidade varchar(40),
+    uf varchar(2),
     id_acolhido int not null references acolhido(id)
 );
 
 create table juridico(
     processo varchar(20) primary key,
-    comarca varchar(30) not null,
-    nro_vara varchar(4) not null,
-    vara varchar(30) not null,
+    comarca varchar(30),
+    nro_vara varchar(4),
+    vara varchar(30),
     id_acolhido int not null references acolhido(id)
 );
 
@@ -91,6 +91,8 @@ create table doador(
     check (voluntario = true or financeiro = true or vestuario = true or alimenticio = true)
 );
 
+insert into doador (id, nome, tel1, voluntario, financeiro, alimenticio, vestuario) values ( '-1', 'Desconhecido', 'Desconhecido', true, true, true, true );
+
 
 --------------DOAÇÕES
 
@@ -98,6 +100,7 @@ create table doacao(
     id smallserial primary key,
     tipo varchar(15) not null,
     valor decimal(7,2),
+    quantidade int,
     descricao varchar(300),
     data date not null,
     id_doador int references doador(id),
@@ -125,7 +128,7 @@ create table movimentacao(
 create table lista_produtos(
     id smallserial primary key,
     nome varchar(30) not null,
-    produtos int array not null,    --array guarda o ID dos produtos  que foram adicionados na lista, formato '{1,2,3}'
+    produtos varchar(30) array not null,    --array guarda o ID dos produtos  que foram adicionados na lista, formato '{1,2,3}'
     qtd int array not null,         --array guarda a quantidade respectiva dos produtos adicionados na lista, formato '{1,2,3}'
     check (array_length(produtos, 1) = array_length(qtd, 1))    --checa se os arrays de produtos e quantidades são de tamanhos iguais
 );
@@ -138,7 +141,7 @@ create table usuario(
     id smallserial primary key,
     nomeusuario varchar(20) not null,
     senha varchar(20) not null,
-    foto varchar(100) not null
+    foto varchar(100)
 );
 
 --------------EVENTOS
@@ -156,8 +159,15 @@ create table usuario(
 
 
 --------------INSERTS
-insert into acolhido values (default, 'pafuncio', '25-12-2006', 'M', current_date, 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, null);
-insert into acolhido values (default, 'Moquidésia', '17-10-2009', 'F', current_date, 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'AB+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, null);
+insert into acolhido values (default, 'Pafuncio', '25-12-2006', 'M', '21-10-2017', 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '15-11-2017');
+insert into acolhido values (default, 'Moquidesia', '17-10-2009', 'F', '22-08-2017', 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'AB+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '19-11-2017');
+insert into acolhido values (default, 'Clementino', '7-12-2011', 'M', '23-05-2017', 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '04-08-2017');
+insert into acolhido values (default, 'Epitafio', '17-5-2014', 'M', '22-06-2016', 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '27-12-2016');
+insert into acolhido values (default, 'Robervaldo', '12-9-2013', 'M', '17-11-2016', 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '01-11-2017');
+insert into acolhido values (default, 'Acheropita', '14-11-2015', 'F', '29-08-2016', 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '15-08-2017');
+insert into acolhido values (default, 'Aleteia', '4-9-2014', 'F', '02-12-2017', 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '03-12-2017');
+insert into acolhido values (default, 'Valdomiro', '9-11-2014', 'M', '15-11-2017', 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '03-12-2017');
+
 
 
 insert into doador values (default, 'Batman', '11963656869', null, 'bat@man.com', true, true, false, false);
@@ -177,3 +187,24 @@ insert into estoque values (default, 'Macarrão 500g', 9);
 insert into estoque values (default, 'Farinha 1Kg', 7);
 insert into estoque values (default, 'Açúcar 1Kg', 6);
 insert into estoque values (default, 'Achocolatado 500g', 5);
+
+
+
+----------------------------------------------------------------
+/*
+quantidade de acolhidos do mês anterior:
+conta se
+mes e ano de saida é >= mês passado do ano atual
+e se
+mes e ano de entrada é <= mes passado do ano atual
+
+*/
+
+select count(*)
+from acolhido
+where date_part('month', data_entrada) <= date_part('month', current_date)-1
+and date_part('year', data_entrada) <= date_part('year', current_date)
+and date_part('month', data_saida) >= date_part('month', current_date)-1
+and date_part('year', data_saida) = date_part('year', current_date);
+
+insert into usuario values (default, 'buda', '123', null);

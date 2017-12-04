@@ -13,16 +13,16 @@
         <label class="col-md-2 col-md-offset-1">Tipo de doação</label>
         <div class="col-md-2">
 			<select class="form-control" ng-model='doacao.tipo'>
-				<option value='dinheiro'>DINHEIRO</option>
-				<option value='alimento'>ALIMENTO</option>
-				<option value='roupa'>ROUPA</option>
+				<option value='Dinheiro'>DINHEIRO</option>
+				<option value='Alimento'>ALIMENTO</option>
+				<option value='Roupa'>ROUPA</option>
 			</select>
         </div>
         
 		<label class="col-md-2 text-right">Doador</label>
         <div class="col-md-3">
             <div class="input-group">
-                <input type="text" class="form-control" ng-keyup='filtra( doacao.nomeDoador )' autocomplete="off" ng-model='doacao.nomeDoador' ng-init='doacao.nomeDoador="Desconhecido"'>
+                <input type="text" class="form-control" ng-keyup='filtra( doacao.nomeDoador )' autocomplete="off" ng-model='doacao.nomeDoador' ng-init='doacao.nomeDoador=""'>
                 <div class="input-group-btn">
                     <button class="btn btn-default btn-input-group" type="button">
                         <span class="glyphicon glyphicon-search"></span>
@@ -38,13 +38,13 @@
     </div>
 	<br>
 	<div class="form-group">
-        <label class="col-md-2 col-md-offset-1">Quantidade</label>
-        <div class="col-md-2">
+        <label class="col-md-2 col-md-offset-1" ng-if='doacao.tipo != "Dinheiro"' >Quantidade</label>
+        <div class="col-md-2" ng-if='doacao.tipo != "Dinheiro"'>
             <input type="number" class="form-control" ng-model='doacao.qtd'><br>
         </div>
         
-		<label class="col-md-1 col-md-offset-1" ng-if="doacao.tipo == 'dinheiro'">Valor</label>
-        <div class="col-md-3" ng-show="doacao.tipo == 'dinheiro'">
+		<label class="col-md-2 col-md-offset-1" ng-if="doacao.tipo == 'Dinheiro'">Valor</label>
+        <div class="col-md-3" ng-show="doacao.tipo == 'Dinheiro'">
 			<div class="input-group">
                 <span class="input-group-addon">R$</span>
                 <input type="number" step='any' ng-model='doacao.valor' class="form-control">

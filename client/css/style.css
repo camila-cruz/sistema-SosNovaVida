@@ -14,7 +14,8 @@ header {
     /*background-color: #9d8bff;
     background-color: #FF6347;
     color: #eaeaea;*/
-    background-color: #eaeaea;
+    /*background-color: #eaeaea;*/
+    background-color: rgb(209,223,250);
 }
 
 section.container {
@@ -72,22 +73,30 @@ section.container {
 }
 
 .botoes-inicio li {
-    padding: 5% 2%;
+    padding: 3% 2%;
     color: black;
     text-align: center;
     border: 1px;
     border-radius: 5px;
-    background-color: #eaeaea;
+    /*background-color: #eaeaea;*/
+    background-color: rgb(209,223,250);
+    
     transition: all 0.25s linear;
 }
 
 .botoes-inicio li:hover {
-    background-color: #999999;
+    /*background-color: #999999;*/
+    background-color: #6495ED;
+    color: white;
 }
 
 .botoes-inicio a {
     color: black;
     text-decoration: none;
+}
+
+.icon-inicio {
+    font-size: 3em;
 }
 
 /* ******************************* EVENTOS ******************************* */
@@ -104,10 +113,12 @@ section.container {
     top: auto;
     min-height: 100vh;
     /*width: 14%;*/
+    background-color: rgb(209,223,250);
 }
 
 .home-button a {
-    color: #eaeaea;
+    /*color: #eaeaea;*/
+    color: white;
     text-decoration: none;
 }
 
@@ -115,12 +126,14 @@ section.container {
     /*width: 16%;*/
     width: 16.6666667%;
     /*background-color: #9d8bff;*/
-    background-color: #999999;
+    /*background-color: #999999;*/
+    background-color: #6495ED;
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;   /* botão ocupa todo o seu espaco retangular */
-    border-right: 1px solid gray;
+    /*border-right: 1px solid gray;*/
+    border-right: 1px solid #6495ED;
     text-align: center;
 }
 
@@ -142,9 +155,18 @@ nav li {
     width: 100%;
 }
 
+.navmenu-default .navmenu-nav > li > a {
+    color: rgba(0, 0, 0, 0.726);
+}
+
+.navmenu-default .navmenu-nav > li > a:hover {
+    color: black;
+}
+
 nav li:hover {
     /*background-color: rgb(20,200,150);*/
-    background-color: #eaeaea;
+    /*background-color: #eaeaea;*/
+    background-color: rgb(175,200,245);
 }
 
 .navmenu {

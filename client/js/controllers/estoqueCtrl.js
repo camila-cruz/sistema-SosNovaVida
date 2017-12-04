@@ -1,9 +1,9 @@
-angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, estoqueAPI ) {
+angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, estoqueAPI, listaAPI ) {
     $scope.produtos = estoque.data;
     $scope.modoDeAbertura = "criar";
     $scope.selecionados = [];
     $scope.lista = {
-        itens: []
+        produtos: []
     }
     $scope.produto = {};
 
@@ -54,23 +54,53 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
     $scope.criarLista = ( produtos ) => {
         $scope.modoDeAbertura = "criar";
         $scope.lista = {
-            itens: []
+            produtos: []
         }
 
         produtos.filter( ( produto ) => {
             if ( produto.selecionado ) {
-                $scope.lista.itens.push( produto );
+                $scope.lista.produtos.push( produto );
             }; 
         });
     };
 
-    $scope.salvarLista = () => {
-        console.log('Salvar lista.');
-        return swal("Sucesso!", "Lista salva com sucesso!", "success");
+    $scope.salvarLista = ( lista ) => {
+        listaAPI.postListaEstoque( lista )
+        .then( () => {
+            return swal("Sucesso!", "Lista salva com sucesso!", "success");
+        })
+        .catch( err => {
+            swal("Opa...", "Houve um erro, tente novamente!", "error");
+            console.log('Erro: ' + err );
+        })
+    };
+
+    $scope.carregarListas = () => {
+        listaAPI.getListaEstoque()
+           .then( result => {
+                $scope.listas = result.data;
+           })
+           .catch( err => {
+                swal("Opa...", "Houve um erro, tente novamente!", "error");
+                console.log('Erro: ' + err );
+           })
+    };
+
+    $scope.obterLista = ( id ) => {
+        listaAPI.getListaEstoqueById( id )
+            .then( result => {
+                console.log('Data:', result.data);
+                $scope.lista = result.data;
+            })
+            .catch( err => {
+                swal("Opa...", "Houve um erro, tente novamente!", "error");
+                console.log('Erro: ' + err );
+            })
+        $scope.modoDeAbertura = 'editar';
     }
 
     $scope.adicionarItemNaLista = ( novoItem ) => {
-        $scope.lista.itens.push( novoItem );
+        $scope.lista.produtos.push( novoItem );
         $scope.novoItem = {};
     };
 
@@ -80,7 +110,7 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
     };
 
     $scope.removeItem = ( item ) => {
-        $scope.lista.itens = $scope.lista.itens.filter( ( itemLista ) => {
+        $scope.lista.produtos = $scope.lista.produtos.filter( ( itemLista ) => {
             if ( itemLista.descricao !== item.descricao ) return itemLista; 
         })
     };
