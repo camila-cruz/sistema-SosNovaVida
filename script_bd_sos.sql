@@ -128,7 +128,7 @@ create table movimentacao(
 create table lista_produtos(
     id smallserial primary key,
     nome varchar(30) not null,
-    produtos int array not null,    --array guarda o ID dos produtos  que foram adicionados na lista, formato '{1,2,3}'
+    produtos varchar(30) array not null,    --array guarda o ID dos produtos  que foram adicionados na lista, formato '{1,2,3}'
     qtd int array not null,         --array guarda a quantidade respectiva dos produtos adicionados na lista, formato '{1,2,3}'
     check (array_length(produtos, 1) = array_length(qtd, 1))    --checa se os arrays de produtos e quantidades são de tamanhos iguais
 );
