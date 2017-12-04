@@ -48,20 +48,67 @@ module.exports = ( app ) => {
     });
 
     app.post('/acolhidos', (req, res, next) => {
-        const data = req.body;
-        console.log("data.nome: " + data.nome);
+        const acolhido = req.body;
+        console.log(req.body);
+        console.log("data.nome: " + acolhido.nome);
 
-        con.query('INSERT INTO acolhidos (nome, data_nasc, data_entrada, local_nasc, uf, nome_mae, maeresp, nome_pai, pairesp, nomeresp) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)',
-                [data.nome, data.dtNasc, data.dtEntr, data.cidNatal, data.uf.nome, data.nomeMae, data.isMaeResp, data.nomePai, data.isPaiResp, data.outroResp], function (err, result) {
-            
-            if (err) {
-                console.log(err.message);
-                return res.status(500).json({success: false, data: err});
-            } else {
-                // Fazer algo
-                return res.status(200); //Status 200 - Created. O Front-end é responsável por fazer o resto.
-            };
-        });
+        try {
+            con.query('INSERT INTO acolhido (nome, data_nasc, data_entrada, cpf, rg, ssp, nome_mae, nome_pai, alergias, sangue,' + 
+                        'qtd_aborto, renda, camiseta, calca, intima, calcado) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, ' + 
+                        '$11, $12, $13, $14, $15, $16)',
+                        [acolhido.nome, acolhido.dataNasc, acolhido.dataEntrada, acolhido.cpf, acolhido.rg, acolhido.ssp, acolhido.nomeMae,
+                        acolhido.nomePai, acolhido.alergias, acolhido.tipoSanguineo, acolhido.qtdAborto, acolhido.renda,
+                        acolhido.camiseta, acolhido.calca, acolhido.intima, acolhido.calcado], function (err, result) {
+                if (err) {
+                    console.log(err.message);
+                    console.log(err);
+                    // Retorna erro que vira alert
+                    return res.status(500).json({success: false, data: err});
+                } else {
+                    con.query('INSERT INTO residencia (cep, logradouro, numero, complemento, bairro, cidade, uf, id_acolhido) values ($1, $2, $3, $4, $5, $6, $7, (SELECT MAX(ID) FROM ACOLHIDO))', 
+                                [acolhido.cep, acolhido.endereco, acolhido.numero, acolhido.compl, acolhido.bairro, acolhido.cidade, acolhido.uf.nome], function (err, result) {
+                        if (err) {
+                            console.log("Residencia" + err.message);
+                            console.log(err);
+                            // Retorna erro que vira alert
+                            return res.status(500).json({success: false, data: err});
+                        }
+                        else {
+                            con.query('INSERT INTO trabalho (empresa, cargo, salario, cep, logradouro, numero, complemento, bairro, cidade, uf, id_acolhido) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, (SELECT MAX(ID) FROM ACOLHIDO))', 
+                                [acolhido.trabalho.empresa, acolhido.trabalho.cargo, acolhido.trabalho.salario, acolhido.trabalho.cep, acolhido.trabalho.endereco,
+                                     acolhido.trabalho.numero, acolhido.trabalho.compl, acolhido.trabalho.bairro, acolhido.trabalho.cidade, acolhido.trabalho.uf.nome], function (err, result) {
+                                if (err) {
+                                    console.log("Trabalho" + err.message);
+                                    console.log(err);
+                                    // Retorna erro que vira alert
+                                    return res.status(500).json({success: false, data: err});
+                                }
+                                else {
+                                    con.query('INSERT INTO juridico (processo, comarca, nro_vara, vara, id_acolhido) values ($1, $2, $3, $4, (SELECT MAX(ID) FROM ACOLHIDO))', 
+                                        [acolhido.processo, acolhido.comarca, acolhido.numVara, acolhido.vara], function (err, result) {
+                                        if (err) {
+                                            console.log("Juridico" + err.message);
+                                            console.log(err);
+                                            // Retorna erro que vira alert
+                                            return res.status(500).json({success: false, data: err});
+                                        }
+                                        else {
+                                            return res.sendStatus(200); //Status 200 - Created. O Front-end é responsável por fazer o resto.
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        }
+        catch (err) {
+            console.log(err.message);
+            // Retorna erro que vira alert
+            return res.status(500).json({success: false, data: err});
+        }
+        // Fazer algo
         // Falta um return
     });
 

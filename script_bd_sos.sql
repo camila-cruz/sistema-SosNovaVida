@@ -5,11 +5,11 @@ create database bd_sosnovavida;
 create table acolhido(
     id smallserial primary key,
     nome varchar(100) not null,
-    data_nasc date not null,
-    sexo varchar(1) not null,
-    data_entrada date not null,
-    cid_natal varchar(40),
-    uf varchar(2),
+    data_nasc date,
+    sexo varchar(1),
+    data_entrada date,
+    ---cid_natal varchar(40),
+    --uf varchar(2),
     cpf varchar(11),
     rg varchar(13),
     ssp varchar(2),
@@ -34,36 +34,36 @@ create table acolhido(
 
 create table residencia(
     id smallserial not null,
-    cep varchar(8) not null,
-    logradouro varchar(40) not null,
-    numero varchar(7) not null,
-    complemento varchar(40) not null,
-    bairro varchar(40) not null,
-    cidade varchar(40) not null,
-    uf varchar(2) not null,
+    cep varchar(8),
+    logradouro varchar(40),
+    numero varchar(7),
+    complemento varchar(40),
+    bairro varchar(40),
+    cidade varchar(40),
+    uf varchar(2),
     id_acolhido int not null references acolhido(id)
 );
 
 create table trabalho(
-    id smallserial primary key,
-    empresa varchar(50) not null,
-    cargo varchar(20) not null,
-    salario decimal(6,2) not null,
-    cep varchar(8) not null,
-    logradouro varchar(40) not null,
-    numero varchar(7) not null,
-    complemento varchar(40) not null,
-    bairro varchar(40) not null,
-    cidade varchar(40) not null,
-    uf varchar(2) not null,
+    id smallserial primary key not null,
+    empresa varchar(50),
+    cargo varchar(20),
+    salario decimal(6,2),
+    cep varchar(8),
+    logradouro varchar(40),
+    numero varchar(7),
+    complemento varchar(40),
+    bairro varchar(40),
+    cidade varchar(40),
+    uf varchar(2),
     id_acolhido int not null references acolhido(id)
 );
 
 create table juridico(
     processo varchar(20) primary key,
-    comarca varchar(30) not null,
-    nro_vara varchar(4) not null,
-    vara varchar(30) not null,
+    comarca varchar(30),
+    nro_vara varchar(4),
+    vara varchar(30),
     id_acolhido int not null references acolhido(id)
 );
 
@@ -141,7 +141,7 @@ create table usuario(
     id smallserial primary key,
     nomeusuario varchar(20) not null,
     senha varchar(20) not null,
-    foto varchar(100) not null
+    foto varchar(100)
 );
 
 --------------EVENTOS
@@ -180,3 +180,6 @@ insert into estoque values (default, 'Macarrão 500g', 9);
 insert into estoque values (default, 'Farinha 1Kg', 7);
 insert into estoque values (default, 'Açúcar 1Kg', 6);
 insert into estoque values (default, 'Achocolatado 500g', 5);
+
+
+insert into usuario values (default, 'buda', '123', null);
