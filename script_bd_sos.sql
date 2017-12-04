@@ -208,3 +208,4 @@ and date_part('month', data_saida) >= date_part('month', current_date)-1
 and date_part('year', data_saida) = date_part('year', current_date);
 
 insert into usuario values (default, 'buda', '123', null);
+insert into usuario values (default, 'buda', '123', null);
