@@ -65,14 +65,68 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
     };
 
     $scope.salvarLista = ( lista ) => {
-        listaAPI.postListaEstoque( lista )
-        .then( () => {
-            return swal("Sucesso!", "Lista salva com sucesso!", "success");
-        })
-        .catch( err => {
-            swal("Opa...", "Houve um erro, tente novamente!", "error");
-            console.log('Erro: ' + err );
-        })
+        console.log( 'Lista', lista);
+        if ( $scope.modoDeAbertura === 'criar' ) {
+            listaAPI.postListaEstoque( lista )
+                .then( () => {
+                    $scope.lista = {
+                        produtos: []
+                    }
+                    return swal("Sucesso!", "Lista salva com sucesso!", "success");
+                })
+                .catch( err => {
+                    swal("Opa...", "Houve um erro, tente novamente!", "error");
+                    return console.log('Erro: ' + err );
+                })
+        } else {
+            listaAPI.putListaEstoque(lista)
+                .then(() => {
+                    listaAPI.getListaEstoque()
+                    .then( result => {
+                        $scope.listas = result.data;
+                        return swal("Sucesso!", "Lista editada com sucesso!", "success");
+                    })
+                    .catch( err => {
+                        swal("Opa...", "Houve um erro, tente novamente!", "error");
+                        console.log('Erro: ' + err );
+                    })
+                })
+                .catch(err => {
+                    swal("Opa...", "Houve um erro, tente novamente!", "error");
+                    return console.log('Erro: ' + err);
+                });
+        };
+    };
+
+    $scope.apagarLista = ( lista ) => {
+        swal({
+            title: 'Atenção',
+            text: "Deseja realmente excluir a lista selecionada?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Cancelar',
+            confirmButtonText: 'Sim'
+        }).then( result => {
+            if (result.value) {
+                listaAPI.deleteListaEstoque( lista.id )
+                    .then( () => {
+                        listaAPI.getListaEstoque()
+                        .then( result => {
+                            $scope.listas = result.data;
+                            return swal("Sucesso!", "Lista apagada com sucesso!", "success")
+                        })
+                        .catch( err => {
+                            swal("Opa...", "Houve um erro, tente novamente!", "error");
+                            console.log('Erro: ' + err );
+                        })
+                    })
+                    .catch( err => {
+                        swal("Opa...", "Houve um erro, tente novamente!", "error");
+                        return console.log('Erro: ' + err );
+                    });
+            }});
     };
 
     $scope.carregarListas = () => {
@@ -86,17 +140,24 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
            })
     };
 
-    $scope.obterLista = ( id ) => {
-        listaAPI.getListaEstoqueById( id )
+    $scope.obterLista = ( lista ) => {
+        $scope.lista.produtos = [];
+        listaAPI.getListaEstoqueById( lista.id )
             .then( result => {
-                console.log('Data:', result.data);
-                $scope.lista = result.data;
+                for ( i = 0; i <= result.data.produtos.length - 1; i++ ) {
+                    $scope.lista.produtos.push({
+                        descricao: result.data.produtos[i],
+                        qtdAlterar: result.data.qtd[i]
+                    });
+                };
+                $scope.lista.nome = result.data.nome;
+                $scope.lista.id = lista.id;
+                $scope.modoDeAbertura = 'editar';
             })
             .catch( err => {
                 swal("Opa...", "Houve um erro, tente novamente!", "error");
                 console.log('Erro: ' + err );
             })
-        $scope.modoDeAbertura = 'editar';
     }
 
     $scope.adicionarItemNaLista = ( novoItem ) => {

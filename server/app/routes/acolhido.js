@@ -37,13 +37,41 @@ module.exports = ( app ) => {
     
     app.get('/acolhidos/:id', (req, res) => {
         let id = req.params.id;
+        let acolhido;
+        let residencia;
+        let trabalho;
+        let juridico;
+
         console.log('Recebendo requisição GET em /acolhidos/' + id);
         // Get a Postgres client from the connection pool
-        con.query('SELECT * FROM acolhidos WHERE idacolhido = $1;', [id], ( err, results ) => {
+        con.query('SELECT * FROM acolhido WHERE id = $1;', [id], ( err, results ) => {
             if (err) return res.status(500).send(err);
+            else {
+                //console.log(results.rows[0]);
+                acolhido = results.rows[0];
 
-            console.log( results.rows[0]);
-            return res.status(200).send(results.rows[0]);
+                con.query('SELECT * FROM residencia WHERE id_acolhido = $1;', [id], ( err, results ) => {
+                    if (err) return res.status(500).send(err);
+                    else {
+                        acolhido.residencia = results.rows[0];
+        
+                        con.query('SELECT * FROM trabalho WHERE id_acolhido = $1;', [id], ( err, results ) => {
+                            if (err) return res.status(500).send(err);
+                            else {
+                                acolhido.trabalho = results.rows[0];
+
+                                con.query('SELECT * FROM juridico WHERE id_acolhido = $1;', [id], ( err, results ) => {
+                                    if (err) return res.status(500).send(err);
+                                    else {
+                                        acolhido.juridico = results.rows[0];  
+                                        return res.status(200).send(acolhido);
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            }
         });
     });
 
@@ -110,6 +138,28 @@ module.exports = ( app ) => {
         }
         // Fazer algo
         // Falta um return
+    });
+
+
+    app.post('/acolhidos/:estado', (req, res, next) => {
+        let estado = req.params.estado;
+        let acolhido = req.body;
+
+        con.query("UPDATE acolhido SET ativo=$1 WHERE id=$2", [estado, acolhido.id], (err) => {
+            if (err) {
+                return res.status(500).json({success: false, data: err});
+            }
+            else {
+                con.query("SELECT * FROM acolhido WHERE ativo=true", [], (err, result) => {
+                    if (err) {
+                        return res.status(500).json({success: false, data: err});
+                    }
+                    else {
+                        return res.status(200).send(result.rows);
+                    }
+                });
+            }
+        });        
     });
 
 }

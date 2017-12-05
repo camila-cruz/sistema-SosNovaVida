@@ -22,4 +22,25 @@ angular.module('novaVida').controller('acolhidoCtrl', function( $scope, acolhido
             console.log("O erro é: " + err);
         });
     };
+
+    $scope.desativarAcolhido = (acolhido, estado) => {
+        swal({
+            title: 'Atenção',
+            text: "Deseja realmente desativar este cadastro?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Cancelar',
+            confirmButtonText: 'Sim'
+        }).then((result) => {
+            acolhidoAPI.setAcolhidoState(acolhido, estado).then((response) => {
+                swal("Sucesso!", "Cadastro desativado com sucesso!", "success"); 
+                console.log("Sucesso");
+            }).catch((err) => {
+                swal("Opa...", "Houve um erro, tente novamente!", "error");
+                console.log("O erro é: " + err);
+            });
+        });
+    }
 });
