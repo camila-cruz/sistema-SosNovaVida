@@ -122,7 +122,7 @@ create table movimentacao(
     data date not null,
     tipo varchar(7) not null,
     id_produto int not null references estoque(id),
-    check (tipo = 'entrada' or tipo = 'saida')
+    check (tipo = 'ENTRADA' or tipo = 'SAIDA')
 );
 
 create table lista_produtos(
@@ -166,7 +166,7 @@ insert into acolhido values (default, 'Epitafio', '17-5-2014', 'M', '22-06-2016'
 insert into acolhido values (default, 'Robervaldo', '12-9-2013', 'M', '17-11-2016', 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '01-11-2017');
 insert into acolhido values (default, 'Acheropita', '14-11-2015', 'F', '29-08-2016', 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '15-08-2017');
 insert into acolhido values (default, 'Aleteia', '4-9-2014', 'F', '02-12-2017', 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '03-12-2017');
-insert into acolhido values (default, 'Valdomiro', '9-11-2014', 'M', '15-11-2017', 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '03-12-2017');
+insert into acolhido values (default, 'Valdomiro', '9-11-2014', 'M', '15-11-2017', 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '22-11-2017');
 
 
 
@@ -189,6 +189,7 @@ insert into estoque values (default, 'Açúcar 1Kg', 6);
 insert into estoque values (default, 'Achocolatado 500g', 5);
 
 
+insert into usuario values (default, 'buda', '123', null);
 
 ----------------------------------------------------------------
 /*
@@ -207,5 +208,9 @@ and date_part('year', data_entrada) <= date_part('year', current_date)
 and date_part('month', data_saida) >= date_part('month', current_date)-1
 and date_part('year', data_saida) = date_part('year', current_date);
 
-insert into usuario values (default, 'buda', '123', null);
-insert into usuario values (default, 'buda', '123', null);
+select count(*)
+from acolhido
+where date_part('month', data_entrada) <= date_part('month', current_date)
+and date_part('year', data_entrada) <= date_part('year', current_date)
+and date_part('month', data_saida) >= date_part('month', current_date)
+and date_part('year', data_saida) = date_part('year', current_date);
