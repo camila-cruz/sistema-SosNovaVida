@@ -122,13 +122,13 @@ create table movimentacao(
     data date not null,
     tipo varchar(7) not null,
     id_produto int not null references estoque(id),
-    check (tipo = 'entrada' or tipo = 'saida')
+    check (tipo = 'ENTRADA' or tipo = 'SAIDA') -- banco é case sensitive, front e back estão preparados para MAIUSCULO
 );
 
 create table lista_produtos(
     id smallserial primary key,
     nome varchar(30) not null,
-    produtos varchar(30) array not null,    --array guarda o ID dos produtos  que foram adicionados na lista, formato '{1,2,3}'
+    produtos varchar(30) array not null,    --array guarda o ID dos produtos  que foram adicionados na lista, formato '{abc,def,ghi}'
     qtd int array not null,         --array guarda a quantidade respectiva dos produtos adicionados na lista, formato '{1,2,3}'
     check (array_length(produtos, 1) = array_length(qtd, 1))    --checa se os arrays de produtos e quantidades são de tamanhos iguais
 );

@@ -24,7 +24,7 @@
                     <button class="btn btn-danger btn-xs btn-estoque pull-left" ng-click='movimentaEstoque( produto, -1 )'>
                         <span class="glyphicon glyphicon-minus"></span>
                     </button>
-                    <input type="text" class="ipt-estoque" ng-model='produto.qtdAlterar' ng-init='produto.qtdAlterar=1' size="8" >
+                    <input type="number" class="ipt-estoque" ng-model='produto.qtdAlterar' ng-init='produto.qtdAlterar=1' size="8" >
                     <button class="btn btn-success btn-xs btn-estoque pull-right" ng-click='movimentaEstoque( produto, 1 )' >
                         <span class="glyphicon glyphicon-plus"></span>
                     </button>
@@ -49,7 +49,7 @@
             <div class="modal-body">
                 <form>
                     <label>Escolha um nome</label><br>
-                    <input type="text" class="form-control" ng-model='lista.nome'><br>
+                    <input type="text" class="form-control" ng-model='lista.nome' maxlength="30"><br>
 
                     <label>Itens presentes na lista</label>
                     <table class="table table-bordered">
@@ -58,9 +58,9 @@
                             <th class="col-md-2">Quantidade</th>
                             <th class="col-md-1"></th>
                         </tr>
-                        
-                        <tr ng-repeat='produto in lista'>
-                            <td>{{produtos.descricao}}</td>
+
+                        <tr ng-repeat='produto in lista.produtos'>
+                            <td>{{produto.descricao}}</td>
                             <td>{{produto.qtdAlterar}}</td>
                             <td class="text-center"><button type="button" class="close" style="float:none;" ng-click=' removeItem( produto )' ><span>&times;</span></button></td>
                         </tr>
@@ -74,7 +74,7 @@
                             <input type="text" class="form-control" ng-model='novoItem.descricao'><br>
     
                             <label>Digite a quantidade desse item</label><br>
-                            <input type="text" class="form-control" ng-model='novoItem.qtdAlterar'><br>
+                            <input type="number" class="form-control" ng-model='novoItem.qtdAlterar'><br>
     
                             <button type="button" class="btn btn-info" ng-click='adicionarItemNaLista( novoItem )' >Adicionar</button>
                         </fieldset>
@@ -110,10 +110,10 @@
                         <th class="col-md-1"></th>
                         <th class="col-md-1"></th>
                     </tr>
-                    <tr ng-repeat='lista in listas'>
+                    <tr ng-repeat='lista in listas | orderBy: lista.id'>
                         <td>{{lista.nome}}</td>
-                        <td><button type="button" class="close" style="float:none;" data-dismiss="modal" data-toggle="modal" data-target="#mdlCriarLista" ng-click='obterLista( lista.id )'><span class="glyphicon glyphicon-pencil"></span></button></td>
-                        <td><button type="button" class="close" style="float:none;"><span>&times;</span></button></td>
+                        <td><button type="button" class="close" style="float:none;" data-dismiss="modal" data-toggle="modal" data-target="#mdlCriarLista" ng-click='obterLista( lista )'><span class="glyphicon glyphicon-pencil"></span></button></td>
+                        <td><button type="button" class="close" style="float:none;" ng-click='apagarLista( lista )'><span>&times;</span></button></td>
                     </tr>
                 </table>
             </div> 

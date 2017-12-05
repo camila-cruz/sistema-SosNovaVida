@@ -17,8 +17,8 @@ angular.module('novaVida').factory('listaAPI', function( $http, config ) {
       return $http.put( config.baseUrl + '/lista/estoque/' + lista.id, lista );
   }
 
-  const _deleteListaEstoque = ( lista ) => {
-      return $http.delete( config.baseUrl + '/lista/estoque', { data: lista , headers: { 'Content-type': 'application/json;charset=utf-8' } } );
+  const _deleteListaEstoque = ( id ) => {
+      return $http.delete( config.baseUrl + '/lista/estoque/' + id/* , { data: lista , headers: { 'Content-type': 'application/json;charset=utf-8' } } */ );
   }
 
 // ------------------------- Acolhido -----------------------
