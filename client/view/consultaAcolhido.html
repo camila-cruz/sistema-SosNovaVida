@@ -12,13 +12,16 @@
         <th>Data de Entrada</th>
         <th>Tipo sanguíneo</th>
         <th></th>
+        <th></th>
     </tr>
     <tr ng-repeat='acolhido in acolhidos | filter: { nome: criterioDeBusca } '>
         <td>{{acolhido.nome}}</td>
         <td>{{acolhido.data_nasc | date:'dd/MM/yy'}}</td>
         <td>{{acolhido.data_entrada | date:'dd/MM/yy'}}</td> 
         <td>{{acolhido.sangue}}</td> <!-- Atualizar de acordo com a doc -->
-        <td><a class="btn btn-info" href="#!/consulta/acolhido/{{acolhido.idacolhido}}" role="button">Editar</a></td>
+        <td><a class="btn btn-info" href="#!/consulta/acolhido/{{acolhido.id}}" role="button">Editar</a></td>
+        <td ng-if="acolhido.ativo == 1"><button class="btn btn-warning" ng-click="desativarAcolhido(acolhido, 0)">Desativar</button></td>
+        <td ng-if="acolhido.ativo == 0"><button class="btn btn-warning" ng-click="desativarAcolhido(acolhido, 0)">Desativar</button></td>
     </tr>
 </table>
 

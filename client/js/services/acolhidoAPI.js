@@ -11,6 +11,10 @@ angular.module('novaVida').factory('acolhidoAPI', function( $http, config ) {
         console.log("ID na api: " + id);
         return $http.get( config.baseUrl + '/acolhidos/' + id);
     };
+
+    const _setAcolhidoState = (acolhido, estado) => {
+        return $http.post(config.baseUrl + '/acolhidos/' + estado, acolhido);
+    };
     
     const _setAcolhidos = ( acolhidos ) => {
         return $http.post( config.baseUrl + '/acolhidos', acolhidos );
@@ -22,6 +26,7 @@ angular.module('novaVida').factory('acolhidoAPI', function( $http, config ) {
         // como é feito em config/routesConsulta.js
         getAcolhidos: _getAcolhidos,
         getAcolhidoByID: _getAcolhidoByID,
+        setAcolhidoState: _setAcolhidoState,
         setAcolhidos: _setAcolhidos
     }
 });
