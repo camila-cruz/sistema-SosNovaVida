@@ -150,12 +150,12 @@ module.exports = ( app ) => {
                 return res.status(500).json({success: false, data: err});
             }
             else {
-                con.query("SELECT * FROM acolhido WHERE ativo=1", (err, result) => {
+                con.query("SELECT * FROM acolhido WHERE ativo=true", [], (err, result) => {
                     if (err) {
                         return res.status(500).json({success: false, data: err});
                     }
                     else {
-                        return res.statos(200).send(result.rows);
+                        return res.status(200).send(result.rows);
                     }
                 });
             }
