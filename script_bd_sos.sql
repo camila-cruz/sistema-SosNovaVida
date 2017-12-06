@@ -60,7 +60,8 @@ create table trabalho(
 );
 
 create table juridico(
-    processo varchar(20) primary key,
+    id smallserial primary key not null,
+    processo varchar(20),
     comarca varchar(30),
     nro_vara varchar(4),
     vara varchar(30),
@@ -159,16 +160,23 @@ create table usuario(
 
 
 --------------INSERTS
-insert into acolhido values (default, 'Pafuncio', '25-12-2006', 'M', '21-10-2017', 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '15-11-2017');
+/*insert into acolhido values (default, 'Pafuncio', '25-12-2006', 'M', '21-10-2017', 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '15-11-2017');
 insert into acolhido values (default, 'Moquidesia', '17-10-2009', 'F', '22-08-2017', 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'AB+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '19-11-2017');
 insert into acolhido values (default, 'Clementino', '7-12-2011', 'M', '23-05-2017', 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '04-08-2017');
 insert into acolhido values (default, 'Epitafio', '17-5-2014', 'M', '22-06-2016', 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '27-12-2016');
 insert into acolhido values (default, 'Robervaldo', '12-9-2013', 'M', '17-11-2016', 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '01-11-2017');
 insert into acolhido values (default, 'Acheropita', '14-11-2015', 'F', '29-08-2016', 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '15-08-2017');
 insert into acolhido values (default, 'Aleteia', '4-9-2014', 'F', '02-12-2017', 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '03-12-2017');
-insert into acolhido values (default, 'Valdomiro', '9-11-2014', 'M', '15-11-2017', 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '22-11-2017');
+insert into acolhido values (default, 'Valdomiro', '9-11-2014', 'M', '15-11-2017', 'santo andre', 'sp', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '22-11-2017');*/
 
-
+insert into acolhido values (default, 'Pafuncio', '25-12-2006', 'M', '21-10-2017', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '15-11-2017');
+insert into acolhido values (default, 'Moquidesia', '17-10-2009', 'F', '22-08-2017', null, '436587456', 'sp', null, null, null, 'AB+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '19-11-2017');
+insert into acolhido values (default, 'Clementino', '7-12-2011', 'M', '23-05-2017', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '04-08-2017');
+insert into acolhido values (default, 'Epitafio', '17-5-2014', 'M', '22-06-2016', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '27-12-2016');
+insert into acolhido values (default, 'Robervaldo', '12-9-2013', 'M', '17-11-2016', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '01-11-2017');
+insert into acolhido values (default, 'Acheropita', '14-11-2015', 'F', '29-08-2016', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '15-08-2017');
+insert into acolhido values (default, 'Aleteia', '4-9-2014', 'F', '02-12-2017', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '03-12-2017');
+insert into acolhido values (default, 'Valdomiro', '9-11-2014', 'M', '15-11-2017', null, '436587456', 'sp', null, null, null, 'O+', null, 1093.20, 'p', 'p', 'p', '26', null, default, default, '22-11-2017');
 
 insert into doador values (default, 'Batman', '11963656869', null, 'bat@man.com', true, true, false, false);
 insert into doador values (default, 'Iron Man', '11967235458', null, null, true, true, false, false);

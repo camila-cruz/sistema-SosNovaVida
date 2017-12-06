@@ -9,7 +9,7 @@ module.exports = ( app ) => {
         const acolhidos = [];
 
         try {
-            con.query('SELECT * FROM acolhido ORDER BY id ASC;', null, function(err, result){
+            con.query('SELECT * FROM acolhido ORDER BY ativo DESC, id ASC;', null, function(err, result){
                 if (err) {
                     console.log(err.message);
                     //return res.status(500).json({success: false, data: err});
@@ -94,7 +94,7 @@ module.exports = ( app ) => {
                     return res.status(500).json({success: false, data: err});
                 } else {
                     con.query('INSERT INTO residencia (cep, logradouro, numero, complemento, bairro, cidade, uf, id_acolhido) values ($1, $2, $3, $4, $5, $6, $7, (SELECT MAX(ID) FROM ACOLHIDO))', 
-                                [acolhido.cep, acolhido.endereco, acolhido.numero, acolhido.compl, acolhido.bairro, acolhido.cidade, acolhido.uf.nome], function (err, result) {
+                                [acolhido.cep, acolhido.endereco, acolhido.numero, acolhido.compl, acolhido.bairro, acolhido.cidade, acolhido.uf], function (err, result) {
                         if (err) {
                             console.log("Residencia" + err.message);
                             console.log(err);
@@ -103,8 +103,8 @@ module.exports = ( app ) => {
                         }
                         else {
                             con.query('INSERT INTO trabalho (empresa, cargo, salario, cep, logradouro, numero, complemento, bairro, cidade, uf, id_acolhido) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, (SELECT MAX(ID) FROM ACOLHIDO))', 
-                                [acolhido.trabalho.empresa, acolhido.trabalho.cargo, acolhido.trabalho.salario, acolhido.trabalho.cep, acolhido.trabalho.endereco,
-                                     acolhido.trabalho.numero, acolhido.trabalho.compl, acolhido.trabalho.bairro, acolhido.trabalho.cidade, acolhido.trabalho.uf.nome], function (err, result) {
+                                [acolhido.empresa, acolhido.cargo, acolhido.salario, acolhido.Tcep, acolhido.Tendereco,
+                                     acolhido.Tnumero, acolhido.Tcompl, acolhido.Tbairro, acolhido.Tcidade, acolhido.Tuf], function (err, result) {
                                 if (err) {
                                     console.log("Trabalho" + err.message);
                                     console.log(err);
@@ -144,6 +144,8 @@ module.exports = ( app ) => {
     app.post('/acolhidos/:estado', (req, res, next) => {
         let estado = req.params.estado;
         let acolhido = req.body;
+
+        estado = estado == 1? true:false;
 
         con.query("UPDATE acolhido SET ativo=$1 WHERE id=$2", [estado, acolhido.id], (err) => {
             if (err) {
