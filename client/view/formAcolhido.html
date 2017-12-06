@@ -296,17 +296,6 @@
                                 <option value='' ng-disabled='true'>UF</option>
                             </select><br>
                         </div>
-
-                        <label class="col-md-2">Grau de parentesco</label>
-                        <div class="col-md-3">
-                            <select class='form-control' ng-model='acolhido.dependente.parentesco'><br>
-                                <option value='mae'>MÃE</option>
-                                <option value='pai'>PAI</option>
-                                <option value='filho'>FILHO(A)</option>
-                                <option value='sobrinho'>SOBRINHO(A)</option>
-                                <option value='' ng-disabled='true'>NENHUM</option>
-                            </select><br>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -525,7 +514,6 @@
     <br><br>
     <div class="row">
         <div class="col-md-7 text-right">
-            {{acolhido}}
             <button class="btn btn-primary" type='reset'>Limpar</button>
             <button class="btn btn-success" ng-click='cadastrarAcolhido(acolhido)'>Salvar</button>
         </div>
