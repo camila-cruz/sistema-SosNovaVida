@@ -166,8 +166,20 @@ angular.module('novaVida').controller('estoqueCtrl', function( $scope, estoque, 
     };
 
     $scope.cancelarLista = () => {
-        // Adicionar rotina de confirmação
-        $scope.lista = {};
+        swal({
+            title: 'Atenção',
+            text: "Deseja realmente cancelar essa operação?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Cancelar',
+            confirmButtonText: 'Sim'
+        }).then( result => {
+            if (result.value) {
+                $scope.lista = {};
+            }
+        });
     };
 
     $scope.removeItem = ( item ) => {
