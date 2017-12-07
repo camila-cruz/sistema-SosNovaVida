@@ -3,7 +3,7 @@
 <input type="text" class="form-control" ng-model='criterioDeBusca' placeholder="Pesquise um acolhido">
 <hr>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mdlCriarLista" ng-click="criarLista( acolhidos )">Criar lista</button>
-<button type="button" class="btn btn-default" data-toggle="modal" data-target="#mdlViewLista">Visualizar listas</button>
+<button type="button" class="btn btn-default" data-toggle="modal" data-target="#mdlViewLista" ng-click='carregarListas()'>Visualizar listas</button>
 <hr>
 <table class="table">
     <tr>
@@ -97,15 +97,10 @@
                         <th class="col-md-1"></th>
                         <th class="col-md-1"></th>
                     </tr>
-                    <tr>
-                        <td>Lista de natal</td>
-                        <td><button type="button" class="close" style="float:none;" data-dismiss="modal" data-toggle="modal" data-target="#mdlCriarLista" ng-click="modoDeAbertura = 'editar'"><span class="glyphicon glyphicon-pencil"></span></button></td>
-                        <td><button type="button" class="close" style="float:none;"><span>&times;</span></button></td>
-                    </tr>
                     <tr ng-repeat='lista in listas'>
-                        <td>Lista de natal</td>
+                        <td>{{lista.nome}}</td>
                         <td><button type="button" class="close" style="float:none;" data-dismiss="modal" data-toggle="modal" data-target="#mdlCriarLista" ng-click="modoDeAbertura = 'editar'"><span class="glyphicon glyphicon-pencil"></span></button></td>
-                        <td><button type="button" class="close" style="float:none;"><span>&times;</span></button></td>
+                        <td><button type="button" class="close" style="float:none;" ng-click='apagarLista( lista )'><span>&times;</span></button></td>
                     </tr>
                 </table>
             </div> 

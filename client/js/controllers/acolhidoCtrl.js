@@ -106,6 +106,7 @@ angular.module('novaVida').controller('acolhidoCtrl', function( $scope, acolhido
             confirmButtonText: 'Sim'
         }).then( result => {
             if (result.value) {
+                console.log( lista );
                 listaAPI.deleteListaAcolhido( lista.id )
                     .then( () => {
                         listaAPI.getListaAcolhido()

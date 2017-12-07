@@ -100,4 +100,30 @@ module.exports = ( app ) => {
     });
   });
 
+  app.get('/lista/acolhido', ( req, res ) => {
+    console.log('Recebendo requisição GET em /lista/acolhido');
+  
+    const listas = [];
+
+    con.query( 'SELECT nome, id FROM lista_acolhidos;', [], ( err, results ) => {
+      if (err) return res.sendStatus( 500 );
+
+      results.rows.forEach( lista => listas.push( lista ) );
+
+      return res.send( listas );
+    })
+  });
+
+  app.delete( '/lista/acolhido/:id', ( req, res ) => {
+    const id = req.params.id;
+    console.log( 'Recebendo requisição DELETE em /lista/acolhido/' + id );
+
+    con.query( 'DELETE FROM lista_acolhidos WHERE id=$1', [id], ( err ) => {
+      if ( err ) return console.log( err );
+
+      res.sendStatus( 200 );
+    });
+
+  });
+
 };

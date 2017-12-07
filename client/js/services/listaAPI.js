@@ -40,8 +40,8 @@ angular.module('novaVida').factory('listaAPI', function( $http, config ) {
       return $http.put( config.baseUrl + '/lista/acolhido/' + id, lista );
   }
 
-  const _deleteListaAcolhido = ( lista ) => {
-      return $http.delete( config.baseUrl + '/lista/acolhido', { data: lista , headers: { 'Content-type': 'application/json;charset=utf-8' } } );
+  const _deleteListaAcolhido = ( id ) => {
+      return $http.delete( config.baseUrl + '/lista/acolhido/' + id );
   }
 
   return {
