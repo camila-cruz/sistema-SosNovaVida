@@ -33,7 +33,7 @@ angular.module('novaVida').factory('listaAPI', function( $http, config ) {
   };
 
   const _postListaAcolhido = ( lista ) => {
-      return $http.post( config.baseUrl + '/lista/acolhido', lista );
+      return $http.post( config.baseUrl + '/lista/acolhido/' + lista.nome, lista );
   }
 
   const _putListaAcolhido = ( lista, id ) => {

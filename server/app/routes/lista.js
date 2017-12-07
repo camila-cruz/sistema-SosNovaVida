@@ -84,12 +84,19 @@ module.exports = ( app ) => {
   
   // ------------------------- ACOLHIDO ------------------------
 
-  app.post('/lista/acolhido', ( req, res ) => {
+  app.post('/lista/acolhido/:nome', ( req, res ) => {
     console.log('Recebendo requisição POST em /lista/acolhido');
     const lista = req.body;
+    console.log( 'Lista:', req.params.nome );
 
-    con.query('INSERT INTO lista_acolhidos VALUES ( $1, $2, $3 )', [ lista.nome, lista.acolhidos, new Date() ], ( err ) => {
+    const acolhidos = []
+
+    lista.forEach( acolhido => acolhidos.push(acolhido.id) );
+
+    con.query('INSERT INTO lista_acolhidos ( nome, acolhidos, data ) VALUES ( $1, $2, $3 )', [ req.params.nome, "{" + acolhidos + "}", new Date() ], ( err ) => {
       if( err ) return console.log( err );
+
+      return res.sendStatus( 200 );
     });
   });
 
