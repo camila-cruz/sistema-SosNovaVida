@@ -12,6 +12,10 @@ angular.module('novaVida').factory('configAPI', function( $http, config ) {
     return $http.put( config.baseUrl + '/usuario/senha', usuario ); 
   }
 
+  const _getSenha = () => {
+    return $http.get( config.baseUrl + '/usuario/senha');
+  }
+
   const _getConfig = ( ) => {
     return $http.get( config.baseUrl + '/usuario' );
   };
@@ -20,7 +24,8 @@ angular.module('novaVida').factory('configAPI', function( $http, config ) {
     putUsuario: _putUsuario,
     putLogin: _putLogin,
     putSenha: _putSenha,
-    getConfig: _getConfig
+    getConfig: _getConfig,
+    getSenha: _getSenha
   }
 
 });

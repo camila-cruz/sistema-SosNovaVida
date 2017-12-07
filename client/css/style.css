@@ -33,9 +33,11 @@ section.container {
     float: right;
     width: 15%;
     position: relative;
+    cursor: pointer;
 }
 .user-cont:hover {
-    background-color: #999999;
+    /*background-color: #999999;*/
+    background-color:  rgb(175,200,245);
 }
 
 .user-cont a {

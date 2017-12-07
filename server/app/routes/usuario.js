@@ -40,4 +40,17 @@ module.exports = ( app ) => {
       return res.sendStatus( 200 )
     });
   });
+
+  app.get('/usuario/senha', ( req, res ) => {
+    console.log( 'Recebendo requisição GET em /usuario/senha');
+
+    const query = 'SELECT senha FROM usuario WHERE id=1';
+    conn.query(query, [], (err, result) => {
+      if ( err ) return console.log( err );
+      console.log(result.rows[0].senha);
+      let pac = result.rows[0].senha;
+      
+      return res.status( 200 ).send(result.rows[0].senha);
+    });
+  });
 };
