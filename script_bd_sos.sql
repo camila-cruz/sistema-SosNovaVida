@@ -35,7 +35,7 @@ create table acolhido(
 create table residencia(
     id smallserial primary key,
     cep varchar(8),
-    logradouro varchar(40),
+    logradouro varchar(90),
     numero varchar(7),
     complemento varchar(40),
     bairro varchar(40),
@@ -64,7 +64,7 @@ create table juridico(
     processo varchar(20),
     comarca varchar(30),
     nro_vara varchar(4),
-    vara varchar(30),
+    vara varchar(60),
     id_acolhido int not null references acolhido(id)
 );
 
@@ -84,6 +84,7 @@ create table doador(
     tel1 varchar(11),
     tel2 varchar(11),
     email varchar(40),
+    endereco varchar(200),
     voluntario boolean default false,
     financeiro boolean default false,
     vestuario boolean default false,
@@ -91,9 +92,6 @@ create table doador(
     check (tel1 IS NOT NULL OR tel2 IS NOT NULL OR email IS NOT NULL),
     check (voluntario = true or financeiro = true or vestuario = true or alimenticio = true)
 );
-
-insert into doador (id, nome, tel1, voluntario, financeiro, alimenticio, vestuario) values ( '-1', 'Desconhecido', 'Desconhecido', true, true, true, true );
-
 
 --------------DOAÇÕES
 
@@ -248,5 +246,36 @@ insert into acolhido values (18, 'Rafael Muniz', '30-12-2013', 'M', '15-12-2013'
 insert into acolhido values (19, 'Pedro Dias batista', '27-08-2010', 'M', '10-10-2010', null, '965848521', 'sp', null, null, null, 'A+', null, null, 'p', 'p', 'p', '27', null, default, false, '11-01-2017');
 insert into acolhido values (20, 'Maria Clara Fernandes', '26-09-2011', 'F', '15-12-2011', null, '132589654', 'sp', 'Izabele Fernandes', null, null, 'O-', null, null, 'm', 'm', 'm', '28', null, default, true, null);
 
+insert into residencia values (1, '08666160', 'Rua Antônio Ronzella', '57', null, 'Chácaras Nova Suzano', 'Suzano', 'SP', 1);
+insert into residencia values (2, '08673040', 'Rua José Garcia de Souza', '48', null, 'Parque Suzano', 'Suzano', 'SP', 2);
+insert into residencia values (3, '08665295', 'Rua K', '15', 'fundos', 'Jardim Altos de Suzano', 'Suzano', 'SP', 4);
+insert into residencia values (4, '08665305', 'Rua Maria Favoti Cusma', '300', null, 'Jardim Altos de Suzano', 'Suzano', 'SP', 6);
+insert into residencia values (5, '08665260', 'Rua Mário Marques de Carvalho', '13', null, 'Jardim Altos de Suzano', 'Suzano', 'SP', 7);
+insert into residencia values (6, '08673050', 'Rua Nações Unidas', '14', null, 'Parque Suzano', 'Suzano', 'SP', 10);
+insert into residencia values (7, '08673060', 'Rua Otávio Miguel da Silva', '27', 'casa 2', 'Parque Suzano', 'Suzano', 'SP', 11);
+insert into residencia values (8, '08673080', 'Rua Roberto Bianchi', '19', null, 'Parque Suzano', 'Suzano', 'SP', 14);
+insert into residencia values (9, '08665290', 'Rua Sérgio Ricardo Spitti', '22', null, 'Jardim Altos de Suzano', 'Suzano', 'SP', 15);
+insert into residencia values (10, '08673020', 'Rua Sete de Setembro (Cidade Cruzeiro do Sul) - de 451/452 ao fim', '22', null, 'Parque Suzano', 'Suzano', 'SP', 17);
+insert into residencia values (11, '08665270', 'Rua Waldemar Mesquita', '20', null, 'Jardim Altos de Suzano', 'Suzano', 'SP', 19);
+insert into residencia values (12, '08665280', 'Rua Yasuo Iwo', '18', null, 'Jardim Altos de Suzano', 'Suzano', 'SP', 20);
 
+insert into trabalho values (1, 'Posto Petrobrás Nova Suzano', 'Frentista', 957.20, '08665295', 'Rua K', '97', 'fundos', 'Jardim Altos de Suzano', 'Suzano', 'SP', 1);
+insert into trabalho values (2, 'Pizzaria Boa Massa', 'Balconista', 1002.15, '08673050', 'Rua Nações Unidas', '47', null, 'Parque Suzano', 'Suzano', 'SP', 15);
+insert into trabalho values (3, 'Perfumaria Mil Aromas', 'Vendedora', 960.12, '08665270', 'Rua Waldemar Mesquita', '7', null, 'Jardim Altos de Suzano', 'Suzano', 'SP', 17);
 
+insert into juridico values (1, '10094173420178260011', null, null, '4ª Vara Cível', 1);
+
+insert into lista_acolhidos values (1, 'Apadrinhamento de Natal 2017', '{2,3,4,5,6,7,8,9,10,12,13,14,16,18,19,20}', current_date);
+
+insert into usuario values (1, 'Gabriel', '123', null);
+
+insert into doador values (-1, 'Desconhecido', 'xxxxxxxxx', null, null, null, true, true, true, true);
+insert into doador values (1, 'Flávio Viotti', '11974859324', null, 'flavioviotti@yahoo.com.br', null, true, false, false, true);
+insert into doador values (2, 'Roberto Reis de Santana', '11948588996', null, null, null, false, true, false, false);
+insert into doador values (3, 'Maria Neves Corvina', '1149968569', null, null, null, false, false, true, false);
+insert into doador values (4, 'Cláudio Aquiles da Costa', '1122726896', null, null, null, false, false, false, true);
+insert into doador values (5, 'Aparecida Bernadete de Soza', '11968635696', null, null, null, false, true, false, true);
+insert into doador values (6, 'Clemente Aquino Silva', null, null, 'clemente,aquin0@gmail.com', null, false, true, true, false);
+insert into doador values (7, 'Gustavo Damalgio', null, null, 'gustavo.damal_gio@hotmail.com', null, false, false, false, true);
+insert into doador values (8, 'Rebeca Soares', '11965663668', '1149856969', null, null, true, false, false, false);
+insert into doador values (9, 'Neide Aparecida da Costa', '11965582121', null, null, false, true, false, false);
