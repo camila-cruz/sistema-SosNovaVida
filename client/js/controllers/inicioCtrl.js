@@ -6,6 +6,8 @@ angular.module('novaVida').controller('inicioCtrl', function( graficoEstoque, gr
     graficoEstoque.data.forEach( produto => nomeProdutos.push( produto.descricao ) );
     const qtdProdutos = [];
     graficoEstoque.data.forEach( produto => qtdProdutos.push( produto.qtd ) );
+    console.log("estoque: " + graficoEstoque.data);
+    console.log("estoque api: " + graficosAPI.getGraficoEstoque().data);
 
     var c = document.getElementById("produtos");
     var ctx = c.getContext("2d");
@@ -38,6 +40,7 @@ angular.module('novaVida').controller('inicioCtrl', function( graficoEstoque, gr
             }
         }
     }
+    console.log("proutos: " + produtos);
     var chart = new Chart(ctx, datas);
 //////////////////////////////////////////////////////////////////
 
@@ -93,15 +96,14 @@ angular.module('novaVida').controller('inicioCtrl', function( graficoEstoque, gr
         let mes = new Date(dataString).toLocaleDateString('pt-br', {month: 'short'}).toUpperCase(); //transforma a string da data no mês reduzido
         datas.data.labels.unshift(mes);    //adiciona o mes da rodada no começo do labels do grafico
 
-        console.log("jota: " + jota);
-        //graficosAPI.getGraficoAcolhido(jota);
-        graficosAPI.getGraficoAcolhido(jota).data.forEach( acolhidos => qtdAcolhidos.unshift(acolhidos.qtd));
+        //console.log("acolhido: " + acolhido);
+        //graficosAPI.getGraficoAcolhido(jota).then( acolhido => qtdAcolhidos.unshift(acolhido.qtd));
+        console.log("retorno acolhidos: " + graficosAPI.getGraficoAcolhido(jota));
         //for (acolhidos.qtd in graficosAPI.getGraficoAcolhido(jota)){ qtdAcolhidos.unshift(acolhidos.qtd);}
         jota++;
-        console.log("acolhido qtd: " + qtdAcolhidos);
+        console.log("qtdAcolhidos: " + qtdAcolhidos);
 
     }
-
     var chart = new Chart(ctx, datas);
     
 })

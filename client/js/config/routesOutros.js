@@ -12,6 +12,14 @@ angular.module('novaVida').config( function( $routeProvider ) {
             }
         }
     });
+    /*$routeProvider.when('/grafico/acolhidos/:jota', {
+        controller: 'inicioCtrl',
+        resolve: {
+            graficoAcolhido: ( graficosAPI, $route ) => {
+                return graficosAPI.getGraficoAcolhido($route.current.params.jota);
+            }
+        }
+    });*/
 
     $routeProvider.otherwise({ redirectTo: '/index'});
 });
