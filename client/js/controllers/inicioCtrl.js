@@ -94,11 +94,11 @@ angular.module('novaVida').controller('inicioCtrl', function( graficoEstoque, gr
         datas.data.labels.unshift(mes);    //adiciona o mes da rodada no começo do labels do grafico
 
         console.log("jota: " + jota);
-        graficosAPI.getGraficoAcolhido(jota);
+        //graficosAPI.getGraficoAcolhido(jota);
+        graficosAPI.getGraficoAcolhido(jota).data.forEach( acolhidos => qtdAcolhidos.unshift(acolhidos.qtd));
+        //for (acolhidos.qtd in graficosAPI.getGraficoAcolhido(jota)){ qtdAcolhidos.unshift(acolhidos.qtd);}
         jota++;
-        console.log("acolhido.qtd: " + qtdAcolhidos);
-        graficoEstoque.data.forEach( acolhido => qtdAcolhidos.unshift(acolhidos.qtd));
-        console.log("acolhido.qtd: " + qtdAcolhidos);
+        console.log("acolhido qtd: " + qtdAcolhidos);
 
     }
 

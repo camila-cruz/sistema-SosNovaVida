@@ -222,3 +222,31 @@ where date_part('month', data_entrada) <= date_part('month', current_date)
 and date_part('year', data_entrada) <= date_part('year', current_date)
 and date_part('month', data_saida) >= date_part('month', current_date)
 and date_part('year', data_saida) = date_part('year', current_date);
+
+
+-------------------------------------------------------------------------------------
+--MASSA DE DADOS
+
+insert into acolhido values (1, 'Maria Ferreira', '25-12-1990', 'F', '17-08-2017', '64266512732', '496856324', 'sp', null, null, null, 'AB-', 0, 957.20, null, null, null, null, null, default, false, '15-11-2017');
+insert into acolhido values (2, 'Roberta Ferreira', '18-11-2010', 'F', '17-08-2017', null, '698657416', 'sp', 'Maria Ferreira', null, null, 'AB+', null, null, 'p', 'p', 'p', '29', null, 1, false, '15-11-2017');
+insert into acolhido values (3, 'Miguel Batista da Silva', '15-08-2009', 'M', '18-10-2016', null, '463612589', 'sp', 'Eduarda Silva', null, null, 'O+', null, null, 'p', 'p', 'p', '29', null, default, true, null);
+insert into acolhido values (4, 'Maria Eduarda Torres', '09-10-2011', 'F', '26-01-2017', null, '563258965', 'sp', 'Janaina Torres', null, 'Paracetamol', 'O+', null, null, 'p', 'm', 'm', '30', null, default, false, '18-07-2017');
+insert into acolhido values (5, 'Fernando dos Santos', '11-11-2012', 'M', '14-07-2015', null, '233654785', 'sp', 'Neide dos Santos', null, null, 'AB+', null, null, 'p', 'm', 'p', '29', null, default, true, null);
+insert into acolhido values (6, 'Fernanda das Neves', '15-01-2012', 'F', '25-09-2016', null, '595968632', 'sp', 'Cássia Liz das Nevez', null, null, 'A+', null, null, 'p', 'p', 'p', '27', null, default, false, '15-08-2017');
+insert into acolhido values (7, 'João Vitor Dias da Silva', '09-09-2011', 'M', '28-08-2017', null, '436987548', 'sp', 'Telma Dias', 'Ricardo Silva', null, 'A-', null, null, 'p', 'p', 'm', '29', null, default, true, null);
+insert into acolhido values (8, 'Bianca Matias de Jesus', '02-01-2013', 'F', '10-01-2017', null, '101520145', 'sp', 'Edinéia de Jesus', null, null, 'AB-', null, null, 'p', 'p', 'p', '30', null, default, false, '10-08-2017');
+insert into acolhido values (9, 'Camila de Lima', '01-10-2012', 'F', '02-12-2013', null, '101987548', 'sp', 'Cláudia de Lima', null, 'Medicamentos com sulfa', 'O+', null, null, 'm', 'm', 'p', '30', null, default, false, '02-11-2017');
+insert into acolhido values (10, 'Joana Dias da graça', '14-04-2014', 'F', '05-04-2013', null, '049658632', 'sp', null, null, null, 'O+', null, null, 'p', 'm', 'm', '29', null, default, false, '05-12-2017');
+insert into acolhido values (11, 'Maria Aparecida da Silva', '14-09-1991', 'F', '14-10-2015', '61608052664', '485756322', 'sp', null, null, null, 'O-', 0, null, 'g', '48', '48', '37', null, default, false, '06-08-2017');
+insert into acolhido values (12, 'Isabel da Silva', '17-04-2013', 'F', '14-10-2015', null, '498574896', 'sp', 'Maria Aparecida da Silva', 'Isaias Ferreira', null, 'O+', null, null, 'p', 'p', 'p', '29', null, 11, false, '06-08-2017');
+insert into acolhido values (13, 'Pedro da Silva', '18-09-2011', 'M', '14-10-2015', null, '8996214569', 'sp', 'Maria Aparecida da Silva', null, null, 'AB+', null, null, 'p', 'p', 'p', '30', null, 11, false, '06-08-2018');
+insert into acolhido values (14, 'Enzo Dias Soares', '15-08-2014', 'M', '10-10-2017', null, '159654865', 'sp', 'Dolores Dias Soares', null, null, 'O+', null, null, 'p', 'm', 'm', '30', null, default, true, null);
+insert into acolhido values (15, 'Franciele da Silva Santos', '09-06-1989', 'F', '15-12-2013', '88681682946', '165987423', 'sp', null, null, null, 'O-', 1, 1002.15, 'm', '40', '38', '36', null, default, false, '17-10-2017');
+insert into acolhido values (16, 'Lucas Santos', '09-09-2012', 'M', '03-03-2014', null, '465865231', 'sp', 'Franciele da Silva Santos', null, null, 'A-', null, null, 'p', 'p', 'm', '29', null, 15, false, '03-09-2017');
+insert into acolhido values (17, 'Iara Ferraz Muniz', '29-01-1990', 'F', '15-12-2013', '42736726936', '465985236', 'sp', null, null, null, 'O+', 0, 960.12, 'gg', '48', '48', '39', null, default, false, '04-03-2017');
+insert into acolhido values (18, 'Rafael Muniz', '30-12-2013', 'M', '15-12-2013', null, '465874569', 'sp', 'Iara Ferraz Muniz', null, null, 'B+', null, null, 'p', 'p', 'p', '26', null, 17, false, '04-03-2017');
+insert into acolhido values (19, 'Pedro Dias batista', '27-08-2010', 'M', '10-10-2010', null, '965848521', 'sp', null, null, null, 'A+', null, null, 'p', 'p', 'p', '27', null, default, false, '11-01-2017');
+insert into acolhido values (20, 'Maria Clara Fernandes', '26-09-2011', 'F', '15-12-2011', null, '132589654', 'sp', 'Izabele Fernandes', null, null, 'O-', null, null, 'm', 'm', 'm', '28', null, default, true, null);
+
+
+
