@@ -3,8 +3,8 @@ angular.module('novaVida').factory('graficosAPI', function( $http, config ) {
     return $http.get( config.baseUrl + '/grafico/estoque' );
   };
 
-  const _getGraficoAcolhido = () => {
-    return $http.get( config.baseUrl + '/grafico/acolhidos' );
+  const _getGraficoAcolhido = (jota) => {
+    return $http.get( config.baseUrl + '/grafico/acolhidos/' + jota);
   }
 
   return {

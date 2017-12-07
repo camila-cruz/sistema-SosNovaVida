@@ -1,5 +1,6 @@
 //angular.module('myModule', ['chart.js']);
-angular.module('novaVida').controller('inicioCtrl', function( graficoEstoque ) {
+//const con = require('../database/db-factory.js');
+angular.module('novaVida').controller('inicioCtrl', function( graficoEstoque, graficosAPI ) {
 
     const nomeProdutos = [];
     graficoEstoque.data.forEach( produto => nomeProdutos.push( produto.descricao ) );
@@ -38,7 +39,11 @@ angular.module('novaVida').controller('inicioCtrl', function( graficoEstoque ) {
         }
     }
     var chart = new Chart(ctx, datas);
+//////////////////////////////////////////////////////////////////
 
+
+    const qtdAcolhidos = [];
+    
     var c = document.getElementById("acolhidos");
     var ctx = c.getContext("2d");
 
@@ -52,7 +57,8 @@ angular.module('novaVida').controller('inicioCtrl', function( graficoEstoque ) {
                 label: "Quantidade de acolhidos ativos (mensal)",
                 backgroundColor: 'rgba(32, 178, 170, 0.5)',
                 borderColor: 'rgb(32, 178, 170)',
-                data: [25, 20, 30, 20, 10, 12, 3, 8, 30, 6, 19, 12],
+                //data: [25, 20, 30, 20, 10, 12, 3, 8, 30, 6, 19, 12],
+                data: qtdAcolhidos,
             }]
         },
         options: {
@@ -75,6 +81,7 @@ angular.module('novaVida').controller('inicioCtrl', function( graficoEstoque ) {
 
     //para preencher os labels dos meses no gráfico com o mês atual + os 11 meses anteriores
     var mesAtualNum = new Date().getMonth()+1;  //define o mes atual em numero + 1
+    var jota = 0;
     for (let i = 0; i <= 11; i++){  //roda 12 vezes
         if (mesAtualNum == 0){       //faz com que só varie de 0 a 11, pois são os 12 meses
             mesAtualNum = 11;
@@ -86,8 +93,12 @@ angular.module('novaVida').controller('inicioCtrl', function( graficoEstoque ) {
         let mes = new Date(dataString).toLocaleDateString('pt-br', {month: 'short'}).toUpperCase(); //transforma a string da data no mês reduzido
         datas.data.labels.unshift(mes);    //adiciona o mes da rodada no começo do labels do grafico
 
-        //faz a chamada da API de grafico dinamicamente, fazendo push do resultado no array criado la em cima.
-        
+        console.log("jota: " + jota);
+        graficosAPI.getGraficoAcolhido(jota);
+        jota++;
+        console.log("acolhido.qtd: " + qtdAcolhidos);
+        graficoEstoque.data.forEach( acolhido => qtdAcolhidos.unshift(acolhidos.qtd));
+        console.log("acolhido.qtd: " + qtdAcolhidos);
 
     }
 

@@ -33,7 +33,7 @@ create table acolhido(
 );
 
 create table residencia(
-    id smallserial not null,
+    id smallserial primary key,
     cep varchar(8),
     logradouro varchar(40),
     numero varchar(7),
@@ -45,7 +45,7 @@ create table residencia(
 );
 
 create table trabalho(
-    id smallserial primary key not null,
+    id smallserial primary key,
     empresa varchar(50),
     cargo varchar(20),
     salario decimal(6,2),
@@ -60,7 +60,7 @@ create table trabalho(
 );
 
 create table juridico(
-    id smallserial primary key not null,
+    id smallserial primary key,
     processo varchar(20),
     comarca varchar(30),
     nro_vara varchar(4),
@@ -209,11 +209,11 @@ mes e ano de entrada é <= mes passado do ano atual
 
 */
 
-select count(*)
+select count(*) as qtd
 from acolhido
-where date_part('month', data_entrada) <= date_part('month', current_date)-1
+where date_part('month', data_entrada) <= date_part('month', current_date)-0
 and date_part('year', data_entrada) <= date_part('year', current_date)
-and date_part('month', data_saida) >= date_part('month', current_date)-1
+and date_part('month', data_saida) >= date_part('month', current_date)-0
 and date_part('year', data_saida) = date_part('year', current_date);
 
 select count(*)

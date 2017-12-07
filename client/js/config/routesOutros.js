@@ -12,5 +12,6 @@ angular.module('novaVida').config( function( $routeProvider ) {
             }
         }
     });
+
     $routeProvider.otherwise({ redirectTo: '/index'});
 });
