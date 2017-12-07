@@ -46,6 +46,36 @@ angular.module('novaVida').controller('inicioCtrl', function( graficoEstoque, gr
 
 
     const qtdAcolhidos = [];
+    const meses = [];
+
+    //para preencher os labels dos meses no gráfico com o mês atual + os 11 meses anteriores
+    var mesAtualNum = new Date().getMonth()+1;  //define o mes atual em numero + 1
+    //var jota = 0;
+    for (let i = 0; i <= 11; i++){  //roda 12 vezes
+        if (mesAtualNum == 0){       //faz com que só varie de 0 a 11, pois são os 12 meses
+            mesAtualNum = 11;
+        }else{
+            mesAtualNum--;
+        }
+        
+        let dataString = (mesAtualNum+1).toString() + '-01-2017';    //monta a string de uma data qualquer com o mês da rodada
+        let mes = new Date(dataString).toLocaleDateString('pt-br', {month: 'short'}).toUpperCase(); //transforma a string da data no mês reduzido
+        meses.unshift(mes);    //adiciona o mes da rodada no começo do labels do grafico
+
+        //console.log("acolhido: " + acolhido);
+        var pacoca = graficosAPI.getGraficoAcolhido(i);
+        console.log(pacoca);
+        pacoca.then( acolhido => qtdAcolhidos.unshift(pacoca.data));
+        qtdAcolhidos.unshift(pacoca.value);
+        //console.log("retorno acolhidos: " + graficosAPI.getGraficoAcolhido(i));
+
+        //qtdAcolhidos.unshift(graficosAPI.getGraficoAcolhido(i)[0]);
+        //console.log("getgrafico: " + graficosAPI.getGraficoAcolhido(i));
+        //for (acolhidos.qtd in graficosAPI.getGraficoAcolhido(jota)){ qtdAcolhidos.unshift(acolhidos.qtd);}
+        //jota++;
+        console.log("qtdAcolhidos: " + qtdAcolhidos);
+
+    }
     
     var c = document.getElementById("acolhidos");
     var ctx = c.getContext("2d");
@@ -55,7 +85,7 @@ angular.module('novaVida').controller('inicioCtrl', function( graficoEstoque, gr
         type: 'line',   // Tipo de gráfico
         data: {
             //labels: ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"],
-            labels: [],
+            labels: meses,
             datasets: [{
                 label: "Quantidade de acolhidos ativos (mensal)",
                 backgroundColor: 'rgba(32, 178, 170, 0.5)',
@@ -82,28 +112,7 @@ angular.module('novaVida').controller('inicioCtrl', function( graficoEstoque, gr
     
     //criar um array com escopo local
 
-    //para preencher os labels dos meses no gráfico com o mês atual + os 11 meses anteriores
-    var mesAtualNum = new Date().getMonth()+1;  //define o mes atual em numero + 1
-    var jota = 0;
-    for (let i = 0; i <= 11; i++){  //roda 12 vezes
-        if (mesAtualNum == 0){       //faz com que só varie de 0 a 11, pois são os 12 meses
-            mesAtualNum = 11;
-        }else{
-            mesAtualNum--;
-        }
-        
-        let dataString = (mesAtualNum+1).toString() + '-01-2017';    //monta a string de uma data qualquer com o mês da rodada
-        let mes = new Date(dataString).toLocaleDateString('pt-br', {month: 'short'}).toUpperCase(); //transforma a string da data no mês reduzido
-        datas.data.labels.unshift(mes);    //adiciona o mes da rodada no começo do labels do grafico
-
-        //console.log("acolhido: " + acolhido);
-        //graficosAPI.getGraficoAcolhido(jota).then( acolhido => qtdAcolhidos.unshift(acolhido.qtd));
-        console.log("retorno acolhidos: " + graficosAPI.getGraficoAcolhido(jota));
-        //for (acolhidos.qtd in graficosAPI.getGraficoAcolhido(jota)){ qtdAcolhidos.unshift(acolhidos.qtd);}
-        jota++;
-        console.log("qtdAcolhidos: " + qtdAcolhidos);
-
-    }
+    
     var chart = new Chart(ctx, datas);
     
 })

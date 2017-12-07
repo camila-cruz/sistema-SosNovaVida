@@ -15,7 +15,6 @@ module.exports = (app) => {
       results.rows.forEach( ( element ) => {
         produtos.push( element ); 
       });
-      console.log("produtos: " + produtos);
       return res.status(200).send( produtos );
     });
   });
@@ -23,7 +22,7 @@ module.exports = (app) => {
   app.get( '/grafico/acolhidos/:jota', (req, res) => {
     const jota = req.params.jota;
     const acolhidos = [];
-    //console.log("jotas: " + jota);
+    console.log("jotas: " + jota);
 
     con.query("select count(*) as qtd from acolhido where date_part('month', data_entrada) <= date_part('month', current_date)-$1 and date_part('year', data_entrada) <= date_part('year', current_date) and date_part('month', data_saida) >= date_part('month', current_date)-$1 and date_part('year', data_saida) = date_part('year', current_date)", [jota], ( err, results ) => {
       if (err) {
@@ -32,13 +31,11 @@ module.exports = (app) => {
         console.log("erro: " + err);
         return res.status(200).send(acolhidos);
       }
-      
-      results.rows.forEach( (element) => {
-        acolhidos.push( element );
-        //acolhidos.push( results.rows );
-      });
-      console.log("jota: " + jota + " acolhidos: " + acolhidos);
-      return res.status(200).send( acolhidos )
+
+      console.log("resultado: " + results.rows[0].qtd);
+      return res.status(200).send(results.rows[0].qtd);
+      //console.log("jota: " + jota + " acolhidos: " + acolhidos);
+      //return res.status(200).send( acolhidos )
     });
   });
 };
