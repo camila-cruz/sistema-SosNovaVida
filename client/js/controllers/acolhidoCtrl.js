@@ -24,6 +24,17 @@ angular.module('novaVida').controller('acolhidoCtrl', function( $scope, acolhido
         });
     };
 
+    $scope.alterarAcolhido = (acolhido) => {
+        console.log("Chegou na controller");
+        acolhidoAPI.putAcolhido(acolhido).then((response) => {
+            swal("Sucesso!", "Acolhido cadastrado com sucesso!", "success"); 
+            console.log("Sucesso");
+        }).catch((err) => {
+            swal("Opa...", "Houve um erro, tente novamente!", "error");
+            console.log("O erro é: " + err);
+        });
+    };
+
     $scope.desativarAcolhido = (acolhido, estado) => {
         swal({
             title: 'Atenção',
@@ -190,4 +201,8 @@ angular.module('novaVida').controller('acolhidoCtrl', function( $scope, acolhido
             if ( acolhidoLista.nome !== acolhido.nome ) return acolhidoLista; 
         })
     };
+
+    $scope.voltar = () => {
+        $location.path('/consulta/acolhido')
+    }
 });

@@ -20,6 +20,10 @@ angular.module('novaVida').factory('acolhidoAPI', function( $http, config ) {
         return $http.post( config.baseUrl + '/acolhidos', acolhidos );
     };
 
+    const _putAcolhido = (acolhido, id) => {
+        return $http.put(config.baseUrl + '/acolhidos/' + id, acolhido);
+    }
+
     //Os métodos acima são acessados pelo retorno abaixo.
     return {
         // para acessar a função _getAcolhidos(), deve ser chamado getAcolhidos()
