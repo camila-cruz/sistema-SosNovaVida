@@ -6,8 +6,6 @@ angular.module('novaVida').controller('inicioCtrl', function( graficoEstoque, gr
     graficoEstoque.data.forEach( produto => nomeProdutos.push( produto.descricao ) );
     const qtdProdutos = [];
     graficoEstoque.data.forEach( produto => qtdProdutos.push( produto.qtd ) );
-    console.log("estoque: " + graficoEstoque.data);
-    console.log("estoque api: " + graficosAPI.getGraficoEstoque().data);
 
     var c = document.getElementById("produtos");
     var ctx = c.getContext("2d");
@@ -40,7 +38,6 @@ angular.module('novaVida').controller('inicioCtrl', function( graficoEstoque, gr
             }
         }
     }
-    console.log("proutos: " + produtos);
     var chart = new Chart(ctx, datas);
 //////////////////////////////////////////////////////////////////
 
@@ -52,6 +49,7 @@ angular.module('novaVida').controller('inicioCtrl', function( graficoEstoque, gr
     var mesAtualNum = new Date().getMonth()+1;  //define o mes atual em numero + 1
     //var jota = 0;
     for (let i = 0; i <= 11; i++){  //roda 12 vezes
+
         if (mesAtualNum == 0){       //faz com que só varie de 0 a 11, pois são os 12 meses
             mesAtualNum = 11;
         }else{
@@ -63,17 +61,18 @@ angular.module('novaVida').controller('inicioCtrl', function( graficoEstoque, gr
         meses.unshift(mes);    //adiciona o mes da rodada no começo do labels do grafico
 
         //console.log("acolhido: " + acolhido);
-        var pacoca = graficosAPI.getGraficoAcolhido(i);
-        console.log(pacoca);
-        pacoca.then( acolhido => qtdAcolhidos.unshift(pacoca.data));
-        qtdAcolhidos.unshift(pacoca.value);
+        graficosAPI.getGraficoAcolhido(i)
+            .then( result => {
+                console.log( 'Result.data', result.data);
+                qtdAcolhidos.unshift( result.data );
+            });
+        //qtdAcolhidos.unshift(pacoca.value);
         //console.log("retorno acolhidos: " + graficosAPI.getGraficoAcolhido(i));
 
         //qtdAcolhidos.unshift(graficosAPI.getGraficoAcolhido(i)[0]);
         //console.log("getgrafico: " + graficosAPI.getGraficoAcolhido(i));
         //for (acolhidos.qtd in graficosAPI.getGraficoAcolhido(jota)){ qtdAcolhidos.unshift(acolhidos.qtd);}
         //jota++;
-        console.log("qtdAcolhidos: " + qtdAcolhidos);
 
     }
     
@@ -103,7 +102,10 @@ angular.module('novaVida').controller('inicioCtrl', function( graficoEstoque, gr
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        callback: ( value ) => {
+                            if (value % 1 === 0 ) return value;
+                        }
                     }
                 }]
             }

@@ -18,7 +18,7 @@ angular.module('novaVida').factory('listaAPI', function( $http, config ) {
   }
 
   const _deleteListaEstoque = ( id ) => {
-      return $http.delete( config.baseUrl + '/lista/estoque/' + id/* , { data: lista , headers: { 'Content-type': 'application/json;charset=utf-8' } } */ );
+      return $http.delete( config.baseUrl + '/lista/estoque/' + id );
   }
 
 // ------------------------- Acolhido -----------------------
@@ -29,15 +29,15 @@ angular.module('novaVida').factory('listaAPI', function( $http, config ) {
   };
 
   const _getListaAcolhidoById = (id ) => {
-      return $http.get( config.baseUrl + '/lista/acolhido' + id);
+      return $http.get( config.baseUrl + '/lista/acolhido/' + id);
   };
 
   const _postListaAcolhido = ( lista ) => {
       return $http.post( config.baseUrl + '/lista/acolhido/' + lista.nome, lista );
   }
 
-  const _putListaAcolhido = ( lista, id ) => {
-      return $http.put( config.baseUrl + '/lista/acolhido/' + id, lista );
+  const _putListaAcolhido = ( lista ) => {
+      return $http.put( config.baseUrl + '/lista/acolhido/' + lista.id, lista );
   }
 
   const _deleteListaAcolhido = ( id ) => {

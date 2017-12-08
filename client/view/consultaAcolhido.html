@@ -44,7 +44,6 @@
                 <form>
                     <label>Escolha um nome</label><br>
                     <input type="text" class="form-control" ng-model='lista.nome'><br>
-                    {{lista.nome}}
                     <label>Acolhidos presentes na lista</label>
                     <table class="table table-bordered">
                         <tr>
@@ -56,7 +55,16 @@
                             <th class="col-md-1">Calçado</th>
                             <th class="col-md-1"></th>
                         </tr>
-                        <tr ng-repeat='acolhido in lista'>
+                        <tr ng-repeat='acolhido in lista' ng-if='modoDeAbertura == "criar"'>
+                            <td>{{acolhido.nome}}</td>
+                            <td>{{acolhido.data_nasc | date: 'dd/MM/yy'}}</td>
+                            <td>{{acolhido.camiseta}}</td>
+                            <td>{{acolhido.calca}}</td>
+                            <td>{{acolhido.intima}}</td>
+                            <td>{{acolhido.calcado}}</td>
+                            <td class="text-center"><button type="button" class="close" style="float:none;" ng-click=' removeAcolhido( acolhido )' ><span>&times;</span></button></td>
+                        </tr>
+                        <tr ng-repeat='acolhido in lista.acolhidos' ng-if='modoDeAbertura == "editar"'>
                             <td>{{acolhido.nome}}</td>
                             <td>{{acolhido.data_nasc | date: 'dd/MM/yy'}}</td>
                             <td>{{acolhido.camiseta}}</td>
@@ -99,7 +107,7 @@
                     </tr>
                     <tr ng-repeat='lista in listas'>
                         <td>{{lista.nome}}</td>
-                        <td><button type="button" class="close" style="float:none;" data-dismiss="modal" data-toggle="modal" data-target="#mdlCriarLista" ng-click="modoDeAbertura = 'editar'"><span class="glyphicon glyphicon-pencil"></span></button></td>
+                        <td><button type="button" class="close" style="float:none;" data-dismiss="modal" data-toggle="modal" data-target="#mdlCriarLista" ng-click="obterLista( lista )"><span class="glyphicon glyphicon-pencil"></span></button></td>
                         <td><button type="button" class="close" style="float:none;" ng-click='apagarLista( lista )'><span>&times;</span></button></td>
                     </tr>
                 </table>
