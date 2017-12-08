@@ -342,17 +342,18 @@
                         <div class="form-group">
                             <label class="col-md-2 col-md-offset-1">Data de nascimento</label>
                             <div class="col-md-3">
-                                <input type="date" ng-model='acolhido.dependente.dataNasc' class="form-control">
+                                <input type="date" ng-model='acolhido.dependente.data_nasc' class="form-control">
                             </div>
     
                             <label class="col-md-2">Grau de parentesco</label>
                             <div class="col-md-3">
                                 <select class='form-control' ng-model='acolhido.dependente.parentesco'><br>
-                                    <option value='mae'>MÃE</option>
+                                    <option value='mae' ng-disabled="true">MÃE</option>
                                     <option value='pai'>PAI</option>
                                     <option value='filho'>FILHO(A)</option>
                                     <option value='sobrinho'>SOBRINHO(A)</option>
-                                    <option value='' ng-disabled='true'>NENHUM</option>
+                                    <!--<option value='' ng-disabled='true'>NENHUM</option>-->
+                                    
                                 </select><br>
                             </div>
                         </div>
@@ -374,14 +375,14 @@
                         <div class="form-group">
                             <label class="col-md-2 col-md-offset-1">Nome da mãe</label>
                             <div class="col-md-8">
-                                <input type="text" ng-model='acolhido.dependente.nomeMae' class="form-control"><br>
+                                <input type="text" ng-model='acolhido.dependente.nome_mae' class="form-control"><br>
                             </div>
                         </div>
         
                         <div class="form-group">
                             <label class="col-md-2 col-md-offset-1">Nome do pai</label>
                             <div class="col-md-8">
-                                <input type="text" ng-model='acolhido.dependente.nomePai' class="form-control"><br>
+                                <input type="text" ng-model='acolhido.dependente.nome_pai' class="form-control"><br>
                             </div>
                         </div>
         
@@ -423,7 +424,7 @@
                         <div class='form-group'>
                             <label class='col-md-2 col-md-offset-1'>Tipo Sanguíneo</label>
                             <div class='col-md-2'>
-                                <select class='form-control' ng-model='acolhido.dependente.tipoSanguineo'>
+                                <select class='form-control' ng-model='acolhido.dependente.sangue'>
                                     <option value='desconhecido'>Desconhecido</option>
                                     <option value='A-'>A-</option>
                                     <option value='A+'>A+</option>
@@ -448,7 +449,7 @@
                             
                             <label class='col-md-1 text-right'>Quantos?</label>
                             <div class="col-md-1">
-                                <input type="text" class="form-control" ng-model="acolhido.dependente.qtdAborto">
+                                <input type="text" class="form-control" ng-model="acolhido.dependente.qtd_aborto">
                             </div>
                         </div>
 
@@ -456,19 +457,19 @@
                         <div class='form-group'>
                             <label class='col-md-1 col-md-offset-1'>Camiseta</label>
                             <div class='col-md-1'>
-                                <input type='text' ng-model='acolhido.dependente.tamCamiseta' class='form-control'>
+                                <input type='text' ng-model='acolhido.dependente.camiseta' class='form-control'>
                             </div>
                             <label class='col-md-1'>Calça</label>
                             <div class='col-md-1'>
-                                <input type='text' ng-model='acolhido.dependente.tamCalca' class='form-control'>
+                                <input type='text' ng-model='acolhido.dependente.calca' class='form-control'>
                             </div>
                             <label class='col-md-2'>Roupa íntima</label>
                             <div class='col-md-1'>
-                                <input type='text' ng-model='acolhido.dependente.tamIntima' class='form-control'>
+                                <input type='text' ng-model='acolhido.dependente.intima' class='form-control'>
                             </div>
                             <label class='col-md-1'>Calçado</label>
                             <div class='col-md-1'>
-                                <input type='text' ng-model='acolhido.dependente.tamSapato' class='form-control'>
+                                <input type='text' ng-model='acolhido.dependente.sapato' class='form-control'>
                             </div>
                         </div>
                     </div>
@@ -487,24 +488,24 @@
                     <div class="form-group">
                         <label class="col-md-2 col-md-offset-1">Nº do processo</label>
                         <div class="col-md-3">
-                            <input type="text" ng-model='acolhido.processo' class="form-control"><br>
+                            <input type="text" ng-model='acolhido.juridico.processo' class="form-control"><br>
                         </div>
 
                         <label class="col-md-1">Comarca</label>
                         <div class="col-md-4">
-                            <input type="text" ng-model='acolhido.comarca' class="form-control"><br>
+                            <input type="text" ng-model='acolhido.juridico.comarca' class="form-control"><br>
                         </div>
                     </div>
                     <!-- 15ª vara de infância de Suzano, por exemplo -->
                     <div class="form-group">
                         <label class="col-md-2 col-md-offset-1">Nº da vara</label>
                         <div class="col-md-2">
-                            <input type="text" ng-model='acolhido.numVara' class="form-control"><br>
+                            <input type="text" ng-model='acolhido.juridico.numVara' class="form-control"><br>
                         </div>
 
                         <label class="col-md-1">Vara</label>
                         <div class="col-md-5">
-                            <input type="text" ng-model='acolhido.vara' class="form-control"><br>
+                            <input type="text" ng-model='acolhido.juridico.vara' class="form-control"><br>
                         </div>                                        
                     </div>
                 </div>
