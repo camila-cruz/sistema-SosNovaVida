@@ -75,7 +75,6 @@ angular.module('novaVida').controller('acolhidoCtrl', function( $scope, acolhido
                     return console.log('Erro: ' + err );
                 })
         } else {
-            console.log( lista );
             listaAPI.putListaAcolhido(lista)
                 .then(() => {
                     listaAPI.getListaAcolhido()

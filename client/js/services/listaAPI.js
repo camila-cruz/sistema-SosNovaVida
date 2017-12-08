@@ -37,7 +37,6 @@ angular.module('novaVida').factory('listaAPI', function( $http, config ) {
   }
 
   const _putListaAcolhido = ( lista ) => {
-      console.log( 'Lista na API: ', lista );  
       return $http.put( config.baseUrl + '/lista/acolhido/' + lista.id, lista );
   }
 
