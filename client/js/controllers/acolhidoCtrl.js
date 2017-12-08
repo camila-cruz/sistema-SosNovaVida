@@ -1,4 +1,4 @@
-angular.module('novaVida').controller('acolhidoCtrl', function( $scope, acolhido, acolhidoAPI, uf ){ 
+angular.module('novaVida').controller('acolhidoCtrl', function( $scope, acolhido, acolhidoAPI, uf, listaAPI ){ 
     $scope.acolhidos = acolhido.data;
     //$scope.ufs = uf.data;
     $scope.ufs = ["AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"];
@@ -16,6 +16,17 @@ angular.module('novaVida').controller('acolhidoCtrl', function( $scope, acolhido
     $scope.cadastrarAcolhido = (acolhido) => {
         console.log("Chegou na controller");
         acolhidoAPI.setAcolhidos(acolhido).then((response) => {
+            swal("Sucesso!", "Acolhido cadastrado com sucesso!", "success"); 
+            console.log("Sucesso");
+        }).catch((err) => {
+            swal("Opa...", "Houve um erro, tente novamente!", "error");
+            console.log("O erro é: " + err);
+        });
+    };
+
+    $scope.alterarAcolhido = (acolhido) => {
+        console.log("Chegou na controller");
+        acolhidoAPI.putAcolhido(acolhido).then((response) => {
             swal("Sucesso!", "Acolhido cadastrado com sucesso!", "success"); 
             console.log("Sucesso");
         }).catch((err) => {
@@ -49,15 +60,13 @@ angular.module('novaVida').controller('acolhidoCtrl', function( $scope, acolhido
         });
     }
 
-    $scope.criarLista = ( produtos ) => {
+    $scope.criarLista = ( acolhidos ) => {
         $scope.modoDeAbertura = "criar";
-        $scope.lista = {
-            produtos: []
-        }
+        $scope.lista = []
 
-        produtos.filter( ( produto ) => {
-            if ( produto.selecionado ) {
-                $scope.lista.produtos.push( produto );
+        acolhidos.filter( ( acolhido ) => {
+            if ( acolhido.selecionado ) {
+                $scope.lista.push( acolhido );
             }; 
         });
     };
@@ -65,10 +74,10 @@ angular.module('novaVida').controller('acolhidoCtrl', function( $scope, acolhido
     $scope.salvarLista = ( lista ) => {
         console.log( 'Lista', lista);
         if ( $scope.modoDeAbertura === 'criar' ) {
-            listaAPI.postListaEstoque( lista )
+            listaAPI.postListaAcolhido( lista )
                 .then( () => {
                     $scope.lista = {
-                        produtos: []
+                        acolhidos: []
                     }
                     return swal("Sucesso!", "Lista salva com sucesso!", "success");
                 })
@@ -77,9 +86,9 @@ angular.module('novaVida').controller('acolhidoCtrl', function( $scope, acolhido
                     return console.log('Erro: ' + err );
                 })
         } else {
-            listaAPI.putListaEstoque(lista)
+            listaAPI.putListaAcolhido(lista)
                 .then(() => {
-                    listaAPI.getListaEstoque()
+                    listaAPI.getListaAcolhido()
                     .then( result => {
                         $scope.listas = result.data;
                         return swal("Sucesso!", "Lista editada com sucesso!", "success");
@@ -108,9 +117,10 @@ angular.module('novaVida').controller('acolhidoCtrl', function( $scope, acolhido
             confirmButtonText: 'Sim'
         }).then( result => {
             if (result.value) {
-                listaAPI.deleteListaEstoque( lista.id )
+                console.log( lista );
+                listaAPI.deleteListaAcolhido( lista.id )
                     .then( () => {
-                        listaAPI.getListaEstoque()
+                        listaAPI.getListaAcolhido()
                         .then( result => {
                             $scope.listas = result.data;
                             return swal("Sucesso!", "Lista apagada com sucesso!", "success")
@@ -170,7 +180,7 @@ angular.module('novaVida').controller('acolhidoCtrl', function( $scope, acolhido
     };
 
     $scope.cancelarLista = () => {
-        swal({
+        /*swal({
             title: 'Atenção',
             text: "Deseja realmente cancelar essa operação?",
             type: 'warning',
@@ -180,15 +190,19 @@ angular.module('novaVida').controller('acolhidoCtrl', function( $scope, acolhido
             cancelButtonText: 'Cancelar',
             confirmButtonText: 'Sim'
         }).then( result => {
-            if (result.value) {
+            if (result.value) {*/
                 $scope.lista = {};
-            }
-        });
+           /* }
+        });*/
     };
 
-    $scope.removeItem = ( item ) => {
-        $scope.lista.acolhidos = $scope.lista.acolhidos.filter( ( itemLista ) => {
-            if ( itemLista.descricao !== item.descricao ) return itemLista; 
+    $scope.removeAcolhido = ( acolhido ) => {
+        $scope.lista = $scope.lista.filter( ( acolhidoLista ) => {
+            if ( acolhidoLista.nome !== acolhido.nome ) return acolhidoLista; 
         })
     };
+
+    $scope.voltar = () => {
+        $location.path('/consulta/acolhido')
+    }
 });

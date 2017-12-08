@@ -33,15 +33,15 @@ angular.module('novaVida').factory('listaAPI', function( $http, config ) {
   };
 
   const _postListaAcolhido = ( lista ) => {
-      return $http.post( config.baseUrl + '/lista/acolhido', lista );
+      return $http.post( config.baseUrl + '/lista/acolhido/' + lista.nome, lista );
   }
 
   const _putListaAcolhido = ( lista, id ) => {
       return $http.put( config.baseUrl + '/lista/acolhido/' + id, lista );
   }
 
-  const _deleteListaAcolhido = ( lista ) => {
-      return $http.delete( config.baseUrl + '/lista/acolhido', { data: lista , headers: { 'Content-type': 'application/json;charset=utf-8' } } );
+  const _deleteListaAcolhido = ( id ) => {
+      return $http.delete( config.baseUrl + '/lista/acolhido/' + id );
   }
 
   return {

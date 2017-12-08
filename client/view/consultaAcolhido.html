@@ -2,8 +2,8 @@
 <hr>
 <input type="text" class="form-control" ng-model='criterioDeBusca' placeholder="Pesquise um acolhido">
 <hr>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mdlCriarLista" ng-click="criarLista( produtos )">Criar lista</button>
-<button type="button" class="btn btn-default" data-toggle="modal" data-target="#mdlViewLista">Visualizar listas</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mdlCriarLista" ng-click="criarLista( acolhidos )">Criar lista</button>
+<button type="button" class="btn btn-default" data-toggle="modal" data-target="#mdlViewLista" ng-click='carregarListas()'>Visualizar listas</button>
 <hr>
 <table class="table">
     <tr>
@@ -44,7 +44,7 @@
                 <form>
                     <label>Escolha um nome</label><br>
                     <input type="text" class="form-control" ng-model='lista.nome'><br>
-
+                    {{lista.nome}}
                     <label>Acolhidos presentes na lista</label>
                     <table class="table table-bordered">
                         <tr>
@@ -56,14 +56,14 @@
                             <th class="col-md-1">Calçado</th>
                             <th class="col-md-1"></th>
                         </tr>
-                        <tr ng-repeat='item in lista.itens'>
+                        <tr ng-repeat='acolhido in lista'>
                             <td>{{acolhido.nome}}</td>
-                            <td>{{acolhido.data_nasc}}</td>
+                            <td>{{acolhido.data_nasc | date: 'dd/MM/yy'}}</td>
                             <td>{{acolhido.camiseta}}</td>
                             <td>{{acolhido.calca}}</td>
                             <td>{{acolhido.intima}}</td>
                             <td>{{acolhido.calcado}}</td>
-                            <td class="text-center"><button type="button" class="close" style="float:none;" ng-click=' removeItem( item )' ><span>&times;</span></button></td>
+                            <td class="text-center"><button type="button" class="close" style="float:none;" ng-click=' removeAcolhido( acolhido )' ><span>&times;</span></button></td>
                         </tr>
                     </table>
                 </form>
@@ -97,15 +97,10 @@
                         <th class="col-md-1"></th>
                         <th class="col-md-1"></th>
                     </tr>
-                    <tr>
-                        <td>Lista de natal</td>
-                        <td><button type="button" class="close" style="float:none;" data-dismiss="modal" data-toggle="modal" data-target="#mdlCriarLista" ng-click="modoDeAbertura = 'editar'"><span class="glyphicon glyphicon-pencil"></span></button></td>
-                        <td><button type="button" class="close" style="float:none;"><span>&times;</span></button></td>
-                    </tr>
                     <tr ng-repeat='lista in listas'>
-                        <td>Lista de natal</td>
+                        <td>{{lista.nome}}</td>
                         <td><button type="button" class="close" style="float:none;" data-dismiss="modal" data-toggle="modal" data-target="#mdlCriarLista" ng-click="modoDeAbertura = 'editar'"><span class="glyphicon glyphicon-pencil"></span></button></td>
-                        <td><button type="button" class="close" style="float:none;"><span>&times;</span></button></td>
+                        <td><button type="button" class="close" style="float:none;" ng-click='apagarLista( lista )'><span>&times;</span></button></td>
                     </tr>
                 </table>
             </div> 

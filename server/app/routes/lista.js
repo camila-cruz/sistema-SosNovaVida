@@ -84,13 +84,46 @@ module.exports = ( app ) => {
   
   // ------------------------- ACOLHIDO ------------------------
 
-  app.post('/lista/acolhido', ( req, res ) => {
+  app.post('/lista/acolhido/:nome', ( req, res ) => {
     console.log('Recebendo requisição POST em /lista/acolhido');
     const lista = req.body;
+    console.log( 'Lista:', req.params.nome );
 
-    con.query('INSERT INTO lista_acolhidos VALUES ( $1, $2, $3 )', [ lista.nome, lista.acolhidos, new Date() ], ( err ) => {
+    const acolhidos = []
+
+    lista.forEach( acolhido => acolhidos.push(acolhido.id) );
+
+    con.query('INSERT INTO lista_acolhidos ( nome, acolhidos, data ) VALUES ( $1, $2, $3 )', [ req.params.nome, "{" + acolhidos + "}", new Date() ], ( err ) => {
       if( err ) return console.log( err );
+
+      return res.sendStatus( 200 );
     });
+  });
+
+  app.get('/lista/acolhido', ( req, res ) => {
+    console.log('Recebendo requisição GET em /lista/acolhido');
+  
+    const listas = [];
+
+    con.query( 'SELECT nome, id FROM lista_acolhidos;', [], ( err, results ) => {
+      if (err) return res.sendStatus( 500 );
+
+      results.rows.forEach( lista => listas.push( lista ) );
+
+      return res.send( listas );
+    })
+  });
+
+  app.delete( '/lista/acolhido/:id', ( req, res ) => {
+    const id = req.params.id;
+    console.log( 'Recebendo requisição DELETE em /lista/acolhido/' + id );
+
+    con.query( 'DELETE FROM lista_acolhidos WHERE id=$1', [id], ( err ) => {
+      if ( err ) return console.log( err );
+
+      res.sendStatus( 200 );
+    });
+
   });
 
 };
