@@ -84,7 +84,13 @@ create table doador(
     tel1 varchar(11),
     tel2 varchar(11),
     email varchar(40),
-    endereco varchar(200),
+    cep varchar(8),
+    logradouro varchar(40),
+    numero varchar(7),
+    complemento varchar(40),
+    bairro varchar(40),
+    cidade varchar(40),
+    uf varchar(2),
     voluntario boolean default false,
     financeiro boolean default false,
     vestuario boolean default false,
@@ -110,13 +116,13 @@ create table doacao(
 
 create table estoque(
     id smallserial primary key,
-    descricao varchar(20) not null,
+    descricao varchar(50) not null,
     qtd int not null
 );
 
 create table movimentacao(
 	id smallserial primary key,
-	descricao varchar(20) not null,
+	descricao varchar(50) not null,
     qtd int not null,
     data date not null,
     tipo varchar(7) not null,
@@ -127,7 +133,7 @@ create table movimentacao(
 create table lista_produtos(
     id smallserial primary key,
     nome varchar(30) not null,
-    produtos varchar(30) array not null,    --array guarda o ID dos produtos  que foram adicionados na lista, formato '{abc,def,ghi}'
+    produtos varchar(50) array not null,    --array guarda o ID dos produtos  que foram adicionados na lista, formato '{abc,def,ghi}'
     qtd int array not null,         --array guarda a quantidade respectiva dos produtos adicionados na lista, formato '{1,2,3}'
     check (array_length(produtos, 1) = array_length(qtd, 1))    --checa se os arrays de produtos e quantidades são de tamanhos iguais
 );
@@ -188,10 +194,10 @@ insert into lista_produtos values (default, 'lista teste 2', '{1, 2, 4, 7}', '{4
 
 insert into estoque values (default, 'Leite B 1L', 7);
 insert into estoque values (default, 'Arroz 5Kg', 5);
-insert into estoque values (default, 'Feijão 1Kg', 12);
-insert into estoque values (default, 'Macarrão 500g', 9);
+insert into estoque values (default, 'Feijao 1Kg', 12);
+insert into estoque values (default, 'Macarrao 500g', 9);
 insert into estoque values (default, 'Farinha 1Kg', 7);
-insert into estoque values (default, 'Açúcar 1Kg', 6);
+insert into estoque values (default, 'Açucar 1Kg', 6);
 insert into estoque values (default, 'Achocolatado 500g', 5);
 
 
@@ -230,10 +236,10 @@ insert into acolhido values (2, 'Roberta Ferreira', '18-11-2010', 'F', '17-08-20
 insert into acolhido values (3, 'Miguel Batista da Silva', '15-08-2009', 'M', '18-10-2016', null, '463612589', 'sp', 'Eduarda Silva', null, null, 'O+', null, null, 'p', 'p', 'p', '29', null, default, true, null);
 insert into acolhido values (4, 'Maria Eduarda Torres', '09-10-2011', 'F', '26-01-2017', null, '563258965', 'sp', 'Janaina Torres', null, 'Paracetamol', 'O+', null, null, 'p', 'm', 'm', '30', null, default, false, '18-07-2017');
 insert into acolhido values (5, 'Fernando dos Santos', '11-11-2012', 'M', '14-07-2015', null, '233654785', 'sp', 'Neide dos Santos', null, null, 'AB+', null, null, 'p', 'm', 'p', '29', null, default, true, null);
-insert into acolhido values (6, 'Fernanda das Neves', '15-01-2012', 'F', '25-09-2016', null, '595968632', 'sp', 'Cássia Liz das Nevez', null, null, 'A+', null, null, 'p', 'p', 'p', '27', null, default, false, '15-08-2017');
-insert into acolhido values (7, 'João Vitor Dias da Silva', '09-09-2011', 'M', '28-08-2017', null, '436987548', 'sp', 'Telma Dias', 'Ricardo Silva', null, 'A-', null, null, 'p', 'p', 'm', '29', null, default, true, null);
-insert into acolhido values (8, 'Bianca Matias de Jesus', '02-01-2013', 'F', '10-01-2017', null, '101520145', 'sp', 'Edinéia de Jesus', null, null, 'AB-', null, null, 'p', 'p', 'p', '30', null, default, false, '10-08-2017');
-insert into acolhido values (9, 'Camila de Lima', '01-10-2012', 'F', '02-12-2013', null, '101987548', 'sp', 'Cláudia de Lima', null, 'Medicamentos com sulfa', 'O+', null, null, 'm', 'm', 'p', '30', null, default, false, '02-11-2017');
+insert into acolhido values (6, 'Fernanda das Neves', '15-01-2012', 'F', '25-09-2016', null, '595968632', 'sp', 'Cassia Liz das Nevez', null, null, 'A+', null, null, 'p', 'p', 'p', '27', null, default, false, '15-08-2017');
+insert into acolhido values (7, 'Joao Vitor Dias da Silva', '09-09-2011', 'M', '28-08-2017', null, '436987548', 'sp', 'Telma Dias', 'Ricardo Silva', null, 'A-', null, null, 'p', 'p', 'm', '29', null, default, true, null);
+insert into acolhido values (8, 'Bianca Matias de Jesus', '02-01-2013', 'F', '10-01-2017', null, '101520145', 'sp', 'Edineia de Jesus', null, null, 'AB-', null, null, 'p', 'p', 'p', '30', null, default, false, '10-08-2017');
+insert into acolhido values (9, 'Camila de Lima', '01-10-2012', 'F', '02-12-2013', null, '101987548', 'sp', 'Claudia de Lima', null, 'Medicamentos com sulfa', 'O+', null, null, 'm', 'm', 'p', '30', null, default, false, '02-11-2017');
 insert into acolhido values (10, 'Joana Dias da graça', '14-04-2014', 'F', '05-04-2013', null, '049658632', 'sp', null, null, null, 'O+', null, null, 'p', 'm', 'm', '29', null, default, false, '05-12-2017');
 insert into acolhido values (11, 'Maria Aparecida da Silva', '14-09-1991', 'F', '14-10-2015', '61608052664', '485756322', 'sp', null, null, null, 'O-', 0, null, 'g', '48', '48', '37', null, default, false, '06-08-2017');
 insert into acolhido values (12, 'Isabel da Silva', '17-04-2013', 'F', '14-10-2015', null, '498574896', 'sp', 'Maria Aparecida da Silva', 'Isaias Ferreira', null, 'O+', null, null, 'p', 'p', 'p', '29', null, 11, false, '06-08-2017');
@@ -246,36 +252,72 @@ insert into acolhido values (18, 'Rafael Muniz', '30-12-2013', 'M', '15-12-2013'
 insert into acolhido values (19, 'Pedro Dias batista', '27-08-2010', 'M', '10-10-2010', null, '965848521', 'sp', null, null, null, 'A+', null, null, 'p', 'p', 'p', '27', null, default, false, '11-01-2017');
 insert into acolhido values (20, 'Maria Clara Fernandes', '26-09-2011', 'F', '15-12-2011', null, '132589654', 'sp', 'Izabele Fernandes', null, null, 'O-', null, null, 'm', 'm', 'm', '28', null, default, true, null);
 
-insert into residencia values (1, '08666160', 'Rua Antônio Ronzella', '57', null, 'Chácaras Nova Suzano', 'Suzano', 'SP', 1);
-insert into residencia values (2, '08673040', 'Rua José Garcia de Souza', '48', null, 'Parque Suzano', 'Suzano', 'SP', 2);
+insert into residencia values (1, '08666160', 'Rua Antonio Ronzella', '57', null, 'Chacaras Nova Suzano', 'Suzano', 'SP', 1);
+insert into residencia values (2, '08673040', 'Rua Jose Garcia de Souza', '48', null, 'Parque Suzano', 'Suzano', 'SP', 2);
 insert into residencia values (3, '08665295', 'Rua K', '15', 'fundos', 'Jardim Altos de Suzano', 'Suzano', 'SP', 4);
 insert into residencia values (4, '08665305', 'Rua Maria Favoti Cusma', '300', null, 'Jardim Altos de Suzano', 'Suzano', 'SP', 6);
-insert into residencia values (5, '08665260', 'Rua Mário Marques de Carvalho', '13', null, 'Jardim Altos de Suzano', 'Suzano', 'SP', 7);
-insert into residencia values (6, '08673050', 'Rua Nações Unidas', '14', null, 'Parque Suzano', 'Suzano', 'SP', 10);
-insert into residencia values (7, '08673060', 'Rua Otávio Miguel da Silva', '27', 'casa 2', 'Parque Suzano', 'Suzano', 'SP', 11);
+insert into residencia values (5, '08665260', 'Rua Mario Marques de Carvalho', '13', null, 'Jardim Altos de Suzano', 'Suzano', 'SP', 7);
+insert into residencia values (6, '08673050', 'Rua Naçaes Unidas', '14', null, 'Parque Suzano', 'Suzano', 'SP', 10);
+insert into residencia values (7, '08673060', 'Rua Otavio Miguel da Silva', '27', 'casa 2', 'Parque Suzano', 'Suzano', 'SP', 11);
 insert into residencia values (8, '08673080', 'Rua Roberto Bianchi', '19', null, 'Parque Suzano', 'Suzano', 'SP', 14);
-insert into residencia values (9, '08665290', 'Rua Sérgio Ricardo Spitti', '22', null, 'Jardim Altos de Suzano', 'Suzano', 'SP', 15);
+insert into residencia values (9, '08665290', 'Rua Sergio Ricardo Spitti', '22', null, 'Jardim Altos de Suzano', 'Suzano', 'SP', 15);
 insert into residencia values (10, '08673020', 'Rua Sete de Setembro (Cidade Cruzeiro do Sul) - de 451/452 ao fim', '22', null, 'Parque Suzano', 'Suzano', 'SP', 17);
 insert into residencia values (11, '08665270', 'Rua Waldemar Mesquita', '20', null, 'Jardim Altos de Suzano', 'Suzano', 'SP', 19);
 insert into residencia values (12, '08665280', 'Rua Yasuo Iwo', '18', null, 'Jardim Altos de Suzano', 'Suzano', 'SP', 20);
 
-insert into trabalho values (1, 'Posto Petrobrás Nova Suzano', 'Frentista', 957.20, '08665295', 'Rua K', '97', 'fundos', 'Jardim Altos de Suzano', 'Suzano', 'SP', 1);
-insert into trabalho values (2, 'Pizzaria Boa Massa', 'Balconista', 1002.15, '08673050', 'Rua Nações Unidas', '47', null, 'Parque Suzano', 'Suzano', 'SP', 15);
+insert into trabalho values (1, 'Posto Petrobras Nova Suzano', 'Frentista', 957.20, '08665295', 'Rua K', '97', 'fundos', 'Jardim Altos de Suzano', 'Suzano', 'SP', 1);
+insert into trabalho values (2, 'Pizzaria Boa Massa', 'Balconista', 1002.15, '08673050', 'Rua Naçaes Unidas', '47', null, 'Parque Suzano', 'Suzano', 'SP', 15);
 insert into trabalho values (3, 'Perfumaria Mil Aromas', 'Vendedora', 960.12, '08665270', 'Rua Waldemar Mesquita', '7', null, 'Jardim Altos de Suzano', 'Suzano', 'SP', 17);
 
-insert into juridico values (1, '10094173420178260011', null, null, '4ª Vara Cível', 1);
+insert into juridico values (1, '10094173420178260011', null, null, '4ª Vara Civel', 1);
 
 insert into lista_acolhidos values (1, 'Apadrinhamento de Natal 2017', '{2,3,4,5,6,7,8,9,10,12,13,14,16,18,19,20}', current_date);
 
-insert into usuario values (1, 'Gabriel', '123', null);
+insert into usuario values (1, 'Simone', '123', null);
 
-insert into doador values (-1, 'Desconhecido', 'xxxxxxxxx', null, null, null, true, true, true, true);
-insert into doador values (1, 'Flávio Viotti', '11974859324', null, 'flavioviotti@yahoo.com.br', null, true, false, false, true);
-insert into doador values (2, 'Roberto Reis de Santana', '11948588996', null, null, null, false, true, false, false);
-insert into doador values (3, 'Maria Neves Corvina', '1149968569', null, null, null, false, false, true, false);
-insert into doador values (4, 'Cláudio Aquiles da Costa', '1122726896', null, null, null, false, false, false, true);
-insert into doador values (5, 'Aparecida Bernadete de Soza', '11968635696', null, null, null, false, true, false, true);
-insert into doador values (6, 'Clemente Aquino Silva', null, null, 'clemente,aquin0@gmail.com', null, false, true, true, false);
-insert into doador values (7, 'Gustavo Damalgio', null, null, 'gustavo.damal_gio@hotmail.com', null, false, false, false, true);
-insert into doador values (8, 'Rebeca Soares', '11965663668', '1149856969', null, null, true, false, false, false);
-insert into doador values (9, 'Neide Aparecida da Costa', '11965582121', null, null, false, true, false, false);
+insert into doador values (-1, 'Desconhecido', 'xxxxxxxxx', null, null, null, null, null, null, null, null, null, true, true, true, true);
+insert into doador values (1, 'Flavio Viotti', '11974859324', null, 'flavioviotti@hotmail.com', null, null, null, null, null, null, null, true, false, false, true);
+insert into doador values (2, 'Roberto Reis de Santana', '11948588996', null, null, '09175360', 'Avenida Andrade Neves', '57', null, 'Vila Helena', 'Santo Andre', 'SP', false, true, false, false);
+insert into doador values (3, 'Maria Neves Corvina', '1149968569', null, null, null, null, null, null, null, null, null, false, false, true, false);
+insert into doador values (4, 'Claudio Aquiles da Costa', '1122726896', null, null, '09290000', 'Avenida Andre Ramalho', '38', null, 'Parque Joao Ramalho', 'Santo Andre', 'SP', false, false, false, true);
+insert into doador values (5, 'Aparecida Bernadete de Soza', '11968635696', null, null, null, null, null, null, null, null, null, false, true, false, true);
+insert into doador values (6, 'Clemente Aquino Silva', null, null, 'clemente,aquin0@gmail.com', '09280570', 'Avenida Antonio Cardoso', '157', null, 'Bangu', 'Santo Andre', 'SP', false, true, true, false);
+insert into doador values (7, 'Gustavo Damalgio', null, null, 'gustavo.damal_gio@hotmail.com', '09531190', 'Alameda Terracota', '138', null, 'Ceramica', 'Sao Caetano do Sul', 'SP', false, false, false, true);
+insert into doador values (8, 'Rebeca Soares', '11965663668', '1149856969', null, '09541155', 'Alameda Valdomiro Ferreira da Silva', '46', null, 'Santa Paula', 'Sao Caetano do Sul', 'SP', true, false, false, false);
+insert into doador values (9, 'Neide Aparecida da Costa', '11965582121', null, null, null, null, null, null, null, null, null, false, true, false, false);
+insert into doador values (10, 'Jose Machado de Almeida', null, null, 'jose.machalmeida@yahoo.com.br', '08625280', 'Avenida Jonas Profeta de Carvalho', '47', null, 'Jardim Itamaraca', 'Suzano', 'SP', false, false, true, false);
+
+insert into doacao values (1, 'DINHEIRO', 10.00, null, null, '15-08-2017', -1);
+insert into doacao values (2, 'DINHEIRO', 25.00, null, null, '17-11-2017', -1);
+insert into doacao values (3, 'ALIMENTO', null, 12, 'Leite B 1L', '22-10-2017', 1);
+insert into doacao values (4, 'ROUPA', null, 15, 'Roupas usadas de adulto - casacos', '14-11-2017', 6);
+insert into doacao values (5, 'DINHEIRO', 70.00, null, null, '06-12-2017', 2);
+insert into doacao values (6, 'ALIMENTO', null, 2, 'Farinha de trigo 1Kg', '04-12-2017', 4);
+insert into doacao values (7, 'DINHEIRO', 30.00, null, null, '07-11-2017', -1);
+insert into doacao values (8, 'DINHEIRO', 80.00, null, null, '08-09-2017', 6);
+insert into doacao values (9, 'ROUPA', null, 8, 'Roupas usadas de adulto - blusa e calça femininas', '15-10-2017', 6);
+insert into doacao values (10, 'DINHEIRO', 30.00, null, null, '14-11-2017', -1);
+insert into doacao values (11, 'DINHEIRO', 100.00, null, null, '15-10-2017', 5);
+insert into doacao values (12, 'ALIMENTO', null, 14, 'Feijao 1Kg', '18-11-2017', 7);
+insert into doacao values (13, 'DINHEIRO', 80.00, null, null, '30-11-2017', -1);
+insert into doacao values (14, 'ALIMENTO', null, 8, 'Bolacha agua e sal 200g', '22-11-2017', 1);
+insert into doacao values (15, 'ALIMENTO', null, 1, 'Arroz 5Kg', '01-12-2017', 4);
+
+insert into estoque values (1, 'Leite B 1L', 29);
+insert into estoque values (2, 'Farinha de trigo 1Kg', 4);
+insert into estoque values (3, 'Feijao 1Kg', 22);
+insert into estoque values (4, 'Bolacha agua e sal 200g', 7);
+insert into estoque values (5, 'Arroz 5Kg', 11);
+insert into estoque values (6, 'Achocolatado 500g', 6);
+insert into estoque values (7, 'Milho em lata', 14);
+
+insert into movimentacao values (1, 'Leite B 1L', 12, '22-10-2017', 'ENTRADA', 1);
+insert into movimentacao values (2, 'Farinha de trigo 1Kg', 2, '04-12-2017', 'ENTRADA', 2);
+insert into movimentacao values (3, 'Feijao 1Kg', 14, '18-11-2017', 'ENTRADA', 3);
+insert into movimentacao values (4, 'Bolacha agua e sal 200g', 8, '22-11-2017', 'ENTRADA', 4);
+insert into movimentacao values (5, 'Arroz 5Kg', 1, '01-12-2017', 'ENTRADA', 5);
+insert into movimentacao values (6, 'Leite B 1L', 5, '02-12-2017', 'SAIDA', 1);
+insert into movimentacao values (7, 'Feijao 1Kg', 2, '03-12-2017', 'SAIDA', 3);
+insert into movimentacao values (8, 'Arroz 5Kg', 1, '03-12-2017', 'SAIDA', 5);
+
+insert into lista_produtos values (1, 'Necessidades Dezembro 2017', '{"Leite B 1L","Farinha de trigo 1Kg","Feijao 1Kg","Bolacha agua e sal 200g"}', '{12,5,10,15}');
