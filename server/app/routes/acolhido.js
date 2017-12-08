@@ -46,8 +46,7 @@ module.exports = ( app ) => {
             else {
                 //console.log(results.rows[0]);
                 acolhido = results.rows[0];
-                dependencia = acolhido.idresponsavel;
-                console.log(dependencia);
+                acolhido.data_nasc = new Date(acolhido.data_nasc);
 
                 con.query('SELECT * FROM residencia WHERE id_acolhido = $1;', [id], ( err, results ) => {
                     if (err) return res.status(500).send(err);
