@@ -3,8 +3,6 @@ angular.module('novaVida').controller('acolhidoCtrl', function( $scope, acolhido
     //$scope.ufs = uf.data;
     $scope.ufs = ["AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"];
     $scope.modoDeAbertura = "criar";
-    $scope.data_entrada = $filter('date')(Date.now(), 'dd-MM-yyyy');
-    acolhido.data_entrada = $scope.data_entrada;
 
     $scope.carregarAcolhidos = () => {
         acolhidoAPI.getAcolhidos().then((response) => {

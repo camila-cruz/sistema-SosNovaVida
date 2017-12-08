@@ -228,12 +228,12 @@
                     <div class="form-group">
                         <label class="col-md-2 col-md-offset-1">Nome do local</label>
                         <div class="col-md-4">
-                            <input type="text" ng-model='acolhido.empresa' class="form-control"><br>
+                            <input type="text" ng-model='acolhido.trabalho.empresa' class="form-control"><br>
                         </div>
 
                         <label class="col-md-1">Função</label>
                         <div class="col-md-3">
-                            <input type="text" ng-model='acolhido.cargo' class="form-control"><br>
+                            <input type="text" ng-model='acolhido.trabalho.cargo' class="form-control"><br>
                         </div>
                     </div>
 
@@ -241,7 +241,7 @@
                         <label class="col-md-2 col-md-offset-1">CEP</label>
                         <div class="col-md-3">
                             <div class="input-group">
-                                <input type="text" ng-model='acolhido.Tcep' class="form-control">
+                                <input type="text" ng-model='acolhido.trabalho.cep' class="form-control">
                                 <div class="input-group-btn">
                                     <button class="btn btn-default btn-input-group" type="button">
                                         <span class="glyphicon glyphicon-search"></span>
@@ -253,7 +253,7 @@
                         <label class="col-md-1 col-md-offset-1">Salário</label>
                         <div class="col-md-3">
                             <div class="input-group">
-                                <span class="input-group-addon">R$</span><input type="text" ng-model='acolhido.salario' class="form-control">
+                                <span class="input-group-addon">R$</span><input type="text" ng-model='acolhido.trabalho.salario' class="form-control">
                             </div>
                         </div>
                     </div><br>
@@ -261,36 +261,36 @@
                     <div class="form-group">
                         <label class="col-md-2 col-md-offset-1">Endereço</label>
                         <div class="col-md-5">
-                            <input type="text" ng-model='acolhido.Tendereco' class="form-control"><br>
+                            <input type="text" ng-model='acolhido.trabalho.endereco' class="form-control"><br>
                         </div>
 
                         <label class="col-md-1">Número</label>
                         <div class="col-md-2">
-                            <input type="text" ng-model='acolhido.Tnumero' class="form-control"><br>
+                            <input type="text" ng-model='acolhido.trabalho.numero' class="form-control"><br>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-2 col-md-offset-1">Complemento</label>
                         <div class="col-md-2">
-                            <input type="text" ng-model='acolhido.Tcompl' class="form-control"><br>
+                            <input type="text" ng-model='acolhido.trabalho.compl' class="form-control"><br>
                         </div>
 
                         <label class="col-md-1 col-md-offset-1">Bairro</label>
                         <div class="col-md-4">
-                            <input type="text" ng-model='acolhido.Tbairro' class="form-control"><br>
+                            <input type="text" ng-model='acolhido.trabalho.bairro' class="form-control"><br>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-2 col-md-offset-1">Cidade</label>
                         <div class="col-md-5">
-                            <input type="text" ng-model='acolhido.Tcidade' class="form-control"><br>
+                            <input type="text" ng-model='acolhido.trabalho.cidade' class="form-control"><br>
                         </div>
 
                         <label class="col-md-1">UF</label>
                         <div class="col-md-2">
-                            <select class='form-control' ng-model='acolhido.Tuf' ng-options='uf for uf in ufs'>
+                            <select class='form-control' ng-model='acolhido.trabalho.uf' ng-options='uf for uf in ufs'>
                                 <option value='' ng-disabled='true'>UF</option>
                             </select><br>
                         </div>

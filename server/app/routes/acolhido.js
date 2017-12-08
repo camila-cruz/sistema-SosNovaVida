@@ -110,8 +110,8 @@ module.exports = ( app ) => {
                         }
                         else {
                             con.query('INSERT INTO trabalho (empresa, cargo, salario, cep, logradouro, numero, complemento, bairro, cidade, uf, id_acolhido) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, (SELECT MAX(ID) FROM ACOLHIDO))', 
-                                [acolhido.empresa, acolhido.cargo, acolhido.salario, acolhido.Tcep, acolhido.Tendereco,
-                                     acolhido.Tnumero, acolhido.Tcompl, acolhido.Tbairro, acolhido.Tcidade, acolhido.Tuf], function (err, result) {
+                                [acolhido.trabalho.empresa, acolhido.trabalho.cargo, acolhido.trabalho.salario, acolhido.trabalho.cep, acolhido.trabalho.endereco,
+                                     acolhido.trabalho.numero, acolhido.trabalho.compl, acolhido.trabalho.bairro, acolhido.trabalho.cidade, acolhido.trabalho.uf], function (err, result) {
                                 if (err) {
                                     console.log("Trabalho" + err.message);
                                     console.log(err);
@@ -191,7 +191,7 @@ module.exports = ( app ) => {
                             return res.status(500).json({success: false, data: err});
                         }
                         else {
-                            con.query('INSERT INTO trabalho (empresa, cargo, salario, cep, logradouro, numero, complemento, bairro, cidade, uf, id_acolhido) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, (SELECT MAX(ID) FROM ACOLHIDO))', 
+                            con.query('UPDATE trabalho (empresa=$1, cargo=$2, salario=$3, cep=$4, logradouro=$5, numero=$6, complemento=$7, bairro=$8, cidade=$9, uf=$10, id_acolhido=$(SELECT MAX(ID) FROM ACOLHIDO)', 
                                 [acolhido.empresa, acolhido.cargo, acolhido.salario, acolhido.Tcep, acolhido.Tendereco,
                                      acolhido.Tnumero, acolhido.Tcompl, acolhido.Tbairro, acolhido.Tcidade, acolhido.Tuf], function (err, result) {
                                 if (err) {
