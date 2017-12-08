@@ -200,9 +200,15 @@ angular.module('novaVida').controller('acolhidoCtrl', function( $scope, acolhido
     };
 
     $scope.removeAcolhido = ( acolhido ) => {
-        $scope.lista = $scope.lista.filter( ( acolhidoLista ) => {
-            if ( acolhidoLista.nome !== acolhido.nome ) return acolhidoLista; 
-        })
+        if ($scope.modoDeAbertura == 'editar' ) {
+            $scope.lista.acolhidos = $scope.lista.acolhidos.filter( ( acolhidoLista ) => {
+                if ( acolhidoLista.nome !== acolhido.nome ) return acolhidoLista; 
+            })
+        } else {
+            $scope.lista = $scope.lista.filter( ( acolhidoLista ) => {
+                if ( acolhidoLista.nome !== acolhido.nome ) return acolhidoLista;
+            });
+        }
     };
 
     $scope.voltar = () => {
