@@ -46,9 +46,9 @@ angular.module('novaVida').controller('inicioCtrl', function( graficoEstoque, gr
     const meses = [];
 
     //para preencher os labels dos meses no gráfico com o mês atual + os 11 meses anteriores
-    var mesAtualNum = new Date().getMonth()+1;  //define o mes atual em numero + 1
+    var mesAtualNum = new Date().getMonth();  //define o mes atual em numero + 1
     //var jota = 0;
-    for (let i = 0; i <= 11; i++){  //roda 12 vezes
+    for (let i = 1; i <= 11; i++){  //roda 12 vezes
 
         if (mesAtualNum == 0){       //faz com que só varie de 0 a 11, pois são os 12 meses
             mesAtualNum = 11;
@@ -86,7 +86,7 @@ angular.module('novaVida').controller('inicioCtrl', function( graficoEstoque, gr
             //labels: ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"],
             labels: meses,
             datasets: [{
-                label: "Quantidade de acolhidos ativos (mensal)",
+                label: "Pico de acolhidos ativos (mensal)",
                 backgroundColor: 'rgba(32, 178, 170, 0.5)',
                 borderColor: 'rgb(32, 178, 170)',
                 //data: [25, 20, 30, 20, 10, 12, 3, 8, 30, 6, 19, 12],
