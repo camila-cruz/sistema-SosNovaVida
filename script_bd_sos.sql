@@ -72,8 +72,8 @@ create table lista_acolhidos(
     id smallserial primary key,
     nome varchar(40) not null,
     id_acolhido int array not null, --array guarda o ID dos acolhidos que foram adicionados na lista, formato '{1,2,3}'
-    data date not null,
-    check (data >= current_date)
+    --data date not null,
+    --check (data >= current_date)
 );
 
 --------------DOADORES
@@ -85,7 +85,7 @@ create table doador(
     tel2 varchar(11),
     email varchar(40),
     cep varchar(8),
-    logradouro varchar(40),
+    logradouro varchar(90),
     numero varchar(7),
     complemento varchar(40),
     bairro varchar(40),
@@ -146,7 +146,7 @@ create table usuario(
     id smallserial primary key,
     nomeusuario varchar(20) not null,
     senha varchar(20) not null,
-    foto varchar(100)
+    --foto varchar(100)
 );
 
 --------------EVENTOS
@@ -222,11 +222,11 @@ and date_part('year', data_saida) = date_part('year', current_date);
 
 select count(*) as qtd
 from acolhido
-where date_part('month', data_entrada) <= date_part('month', current_date)
+where date_part('month', data_entrada) <= date_part('month', current_date)-$1
 and date_part('year', data_entrada) <= date_part('year', current_date)
-and date_part('month', data_saida) >= date_part('month', current_date)
+and date_part('month', data_saida) >= date_part('month', current_date)-$1
 and date_part('year', data_saida) = date_part('year', current_date)
-or date_part('month', data_entrada) <= date_part('month', current_date)
+or date_part('month', data_entrada) <= date_part('month', current_date)=$1
 and date_part('year', data_entrada) <= date_part('year', current_date)
 and ativo=true;
 
@@ -288,7 +288,7 @@ insert into doador values (default, 'Clemente Aquino Silva', null, null, 'clemen
 insert into doador values (default, 'Gustavo Damalgio', null, null, 'gustavo.damal_gio@hotmail.com', '09531190', 'Alameda Terracota', '138', null, 'Ceramica', 'Sao Caetano do Sul', 'SP', false, false, false, true);
 insert into doador values (default, 'Rebeca Soares', '11965663668', '1149856969', null, '09541155', 'Alameda Valdomiro Ferreira da Silva', '46', null, 'Santa Paula', 'Sao Caetano do Sul', 'SP', true, false, false, false);
 insert into doador values (default, 'Neide Aparecida da Costa', '11965582121', null, null, null, null, null, null, null, null, null, false, true, false, false);
-insert into doador values (default, 'Jose Machado de Almeida', null, null, 'jose.machalmeida@yahoo.com.br', '08625280', 'Avenida Jonas Profeta de Carvalho', '47', null, 'Jardim Itamaraca', 'Suzano', 'SP', false, false, true, false);*/
+insert into doador values (default, 'Jose Machado de Almeida', null, null, 'jose.machalmeida@yahoo.com.br', '08625280', 'Avenida Jonas Profeta de Carvalho', '47', null, 'Jardim Itamaraca', 'Suzano', 'SP', false, false, true, false);
 
 insert into doacao values (default, 'DINHEIRO', 10.00, null, null, '15-08-2017', -1);
 insert into doacao values (default, 'DINHEIRO', 25.00, null, null, '17-11-2017', -1);
@@ -324,3 +324,5 @@ insert into movimentacao values (default, 'Feijao 1Kg', 2, '03-12-2017', 'SAIDA'
 insert into movimentacao values (default, 'Arroz 5Kg', 1, '03-12-2017', 'SAIDA', 5);
 
 insert into lista_produtos values (default, 'Necessidades Dezembro 2017', '{"Leite B 1L","Farinha de trigo 1Kg","Feijao 1Kg","Bolacha agua e sal 200g"}', '{12,5,10,15}');
+
+
