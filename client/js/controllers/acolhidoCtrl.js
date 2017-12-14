@@ -153,22 +153,25 @@ angular.module('novaVida').controller('acolhidoCtrl', function( $scope, acolhido
     };
 
     $scope.obterLista = ( lista ) => {
+        $scope.lista = [];
         $scope.lista.acolhidos = [];
         listaAPI.getListaAcolhidoById( lista.id )
             .then( result => {
-                for ( i = 0; i <= result.data.acolhidos.length - 1; i++ ) {
+                result.data.acolhidos[0].forEach( acolhido => {
                     $scope.lista.acolhidos.push({
-                        nome: result.data.nome[i],
-                        data_nasc: result.data.data_nasc[i],
-                        camiseta: result.data.camiseta[i],
-                        calca: result.data.calca[i],
-                        intima: result.data.intima[i],
-                        calcado: result.data.calcado[i]
+                        id: acolhido.id,
+                        nome: acolhido.nome,
+                        data_nasc: acolhido.data_nasc,
+                        camiseta: acolhido.camiseta,
+                        calca: acolhido.calca,
+                        intima: acolhido.intima,
+                        calcado: acolhido.calcado
                     });
-                };
+                })
                 $scope.lista.nome = result.data.nome;
                 $scope.lista.id = lista.id;
                 $scope.modoDeAbertura = 'editar';
+                console.log( 'Completa: ', $scope.lista );
             })
             .catch( err => {
                 swal("Opa...", "Houve um erro, tente novamente!", "error");
@@ -199,9 +202,15 @@ angular.module('novaVida').controller('acolhidoCtrl', function( $scope, acolhido
     };
 
     $scope.removeAcolhido = ( acolhido ) => {
-        $scope.lista = $scope.lista.filter( ( acolhidoLista ) => {
-            if ( acolhidoLista.nome !== acolhido.nome ) return acolhidoLista; 
-        })
+        if ($scope.modoDeAbertura == 'editar' ) {
+            $scope.lista.acolhidos = $scope.lista.acolhidos.filter( ( acolhidoLista ) => {
+                if ( acolhidoLista.nome !== acolhido.nome ) return acolhidoLista; 
+            })
+        } else {
+            $scope.lista = $scope.lista.filter( ( acolhidoLista ) => {
+                if ( acolhidoLista.nome !== acolhido.nome ) return acolhidoLista;
+            });
+        }
     };
 
     $scope.voltar = () => {

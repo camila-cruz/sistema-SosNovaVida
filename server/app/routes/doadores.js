@@ -50,9 +50,11 @@ module.exports = ( app ) => {
     app.post('/doadores', (req, res) => {
         console.log('Recebendo requisição POST em /doadores');
         const doador = req.body;
+        //console.log(doador.uf.nome);
 
-        con.query('INSERT INTO DOADOR (nome, tel1, tel2, email, voluntario, financeiro, vestuario, alimenticio) values ($1, $2, $3, $4, $5, $6, $7, $8)',
-                  [ doador.nome, doador.tel1, doador.tel2, doador.email, doador.voluntario, doador.financeiro, doador.vestuario, doador.alimenticio ], (err, result) => {
+        //con.query('INSERT INTO DOADOR (nome, tel1, tel2, email, voluntario, financeiro, vestuario, alimenticio) values ($1, $2, $3, $4, $5, $6, $7, $8)',
+        con.query('INSERT INTO DOADOR values (default, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)',
+                  [ doador.nome, doador.tel1, doador.tel2, doador.email, doador.endereco, doador.numero, doador.complemento, doador.bairro, doador.cidade, doador.uf.nome, doador.voluntario, doador.financeiro, doador.vestuario, doador.alimenticio ], (err, result) => {
             
             if (err) {
                 console.log(err.message);
