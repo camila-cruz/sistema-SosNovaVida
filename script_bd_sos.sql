@@ -278,17 +278,17 @@ insert into lista_acolhidos values (default, 'Apadrinhamento de Natal 2017', '{2
 
 insert into usuario values (default, 'Simone', '123', null);
 
-insert into doador values (-1, 'Desconhecido', 'xxxxxxxxx', null, null, null, null, null, null, null, null, null, true, true, true, true);
-insert into doador values (default, 'Flavio Viotti', '11974859324', null, 'flavioviotti@hotmail.com', null, null, null, null, null, null, null, true, false, false, true);
-insert into doador values (default, 'Roberto Reis de Santana', '11948588996', null, null, '09175360', 'Avenida Andrade Neves', '57', null, 'Vila Helena', 'Santo Andre', 'SP', false, true, false, false);
-insert into doador values (default, 'Maria Neves Corvina', '1149968569', null, null, null, null, null, null, null, null, null, false, false, true, false);
-insert into doador values (default, 'Claudio Aquiles da Costa', '1122726896', null, null, '09290000', 'Avenida Andre Ramalho', '38', null, 'Parque Joao Ramalho', 'Santo Andre', 'SP', false, false, false, true);
-insert into doador values (default, 'Aparecida Bernadete de Soza', '11968635696', null, null, null, null, null, null, null, null, null, false, true, false, true);
-insert into doador values (default, 'Clemente Aquino Silva', null, null, 'clemente,aquin0@gmail.com', '09280570', 'Avenida Antonio Cardoso', '157', null, 'Bangu', 'Santo Andre', 'SP', false, true, true, false);
-insert into doador values (default, 'Gustavo Damalgio', null, null, 'gustavo.damal_gio@hotmail.com', '09531190', 'Alameda Terracota', '138', null, 'Ceramica', 'Sao Caetano do Sul', 'SP', false, false, false, true);
-insert into doador values (default, 'Rebeca Soares', '11965663668', '1149856969', null, '09541155', 'Alameda Valdomiro Ferreira da Silva', '46', null, 'Santa Paula', 'Sao Caetano do Sul', 'SP', true, false, false, false);
-insert into doador values (default, 'Neide Aparecida da Costa', '11965582121', null, null, null, null, null, null, null, null, null, false, true, false, false);
-insert into doador values (default, 'Jose Machado de Almeida', null, null, 'jose.machalmeida@yahoo.com.br', '08625280', 'Avenida Jonas Profeta de Carvalho', '47', null, 'Jardim Itamaraca', 'Suzano', 'SP', false, false, true, false);
+insert into doador values (-1, 'Desconhecido', 'xxxxxxxxx', null, null, null, null, null, null, null, null, true, true, true, true);
+insert into doador values (default, 'Flavio Viotti', '11974859324', null, 'flavioviotti@hotmail.com', null, null, null, null, null, null, true, false, false, true);
+insert into doador values (default, 'Roberto Reis de Santana', '11948588996', null, null, 'Avenida Andrade Neves', '57', null, 'Vila Helena', 'Santo Andre', 'SP', false, true, false, false);
+insert into doador values (default, 'Maria Neves Corvina', '1149968569', null, null, null, null, null, null, null, null, false, false, true, false);
+insert into doador values (default, 'Claudio Aquiles da Costa', '1122726896', null, null, 'Avenida Andre Ramalho', '38', null, 'Parque Joao Ramalho', 'Santo Andre', 'SP', false, false, false, true);
+insert into doador values (default, 'Aparecida Bernadete de Soza', '11968635696', null, null, null, null, null, null, null, null, false, true, false, true);
+insert into doador values (default, 'Clemente Aquino Silva', null, null, 'clemente,aquin0@gmail.com', 'Avenida Antonio Cardoso', '157', null, 'Bangu', 'Santo Andre', 'SP', false, true, true, false);
+insert into doador values (default, 'Gustavo Damalgio', null, null, 'gustavo.damal_gio@hotmail.com', 'Alameda Terracota', '138', null, 'Ceramica', 'Sao Caetano do Sul', 'SP', false, false, false, true);
+insert into doador values (default, 'Rebeca Soares', '11965663668', '1149856969', null, 'Alameda Valdomiro Ferreira da Silva', '46', null, 'Santa Paula', 'Sao Caetano do Sul', 'SP', true, false, false, false);
+insert into doador values (default, 'Neide Aparecida da Costa', '11965582121', null, null, null, null, null, null, null, null, false, true, false, false);
+insert into doador values (default, 'Jose Machado de Almeida', null, null, 'jose.machalmeida@yahoo.com.br', 'Avenida Jonas Profeta de Carvalho', '47', null, 'Jardim Itamaraca', 'Suzano', 'SP', false, false, true, false);
 
 insert into doacao values (default, 'DINHEIRO', 10.00, null, null, '15-08-2017', -1);
 insert into doacao values (default, 'DINHEIRO', 25.00, null, null, '17-11-2017', -1);
