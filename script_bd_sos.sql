@@ -84,7 +84,7 @@ create table doador(
     tel1 varchar(11),
     tel2 varchar(11),
     email varchar(40),
-    cep varchar(8),
+    --cep varchar(8),
     logradouro varchar(90),
     numero varchar(7),
     complemento varchar(40),
