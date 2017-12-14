@@ -36,9 +36,11 @@ angular.module('novaVida').controller('acolhidoCtrl', function( $scope, acolhido
     };
 
     $scope.desativarAcolhido = (acolhido, estado) => {
+        let txtModal = estado == 1? "ativar":"desativar";
+        let txtAviso = estado == 1? "ativado":"desativado";
         swal({
             title: 'Atenção',
-            text: "Deseja realmente desativar este cadastro?",
+            text: "Deseja realmente " + txtModal + " este cadastro?",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -48,7 +50,7 @@ angular.module('novaVida').controller('acolhidoCtrl', function( $scope, acolhido
         }).then((result) => {
             if (result.value) {
                 acolhidoAPI.setAcolhidoState(acolhido, estado).then((response) => {
-                    swal("Sucesso!", "Cadastro desativado com sucesso!", "success"); 
+                    swal("Sucesso!", "Cadastro " + txtAviso + " com sucesso!", "success"); 
                     console.log("Sucesso");
                     console.log(response.data)
                     $scope.acolhidos = response.data;

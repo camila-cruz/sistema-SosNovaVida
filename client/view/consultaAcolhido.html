@@ -22,7 +22,7 @@
         <td>{{acolhido.data_entrada | date:'dd/MM/yy'}}</td> 
         <td>{{acolhido.sangue}}</td> <!-- Atualizar de acordo com a doc -->
         <td class="text-center" ng-if="acolhido.ativo == 1"><a class="btn btn-info" href="#!/consulta/acolhido/{{acolhido.id}}" role="button">Editar</a>
-            <button class="btn btn-warning" ng-click="desativarAcolhido(acolhido, 1)">Desativar</button></td>
+            <button class="btn btn-warning" ng-click="desativarAcolhido(acolhido, 0)">Desativar</button></td>
         <td class="text-center" ng-if="acolhido.ativo == 0"><a class="btn btn-info" href="#!/consulta/acolhido/{{acolhido.id}}" role="button">Editar</a>
             <button class="btn btn-warning" ng-click="desativarAcolhido(acolhido, 1)">Ativar</button></td>
     </tr>

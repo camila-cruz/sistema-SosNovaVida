@@ -250,6 +250,7 @@ module.exports = ( app ) => {
         let estado = req.params.estado;
         let acolhido = req.body;
 
+        // Estado é 1 se for pra ativar e 0 se for pra desativar
         estado = estado == 1? true:false;
 
         con.query("UPDATE acolhido SET ativo=$1 WHERE id=$2", [estado, acolhido.id], (err) => {
@@ -257,7 +258,7 @@ module.exports = ( app ) => {
                 return res.status(500).json({success: false, data: err});
             }
             else {
-                con.query("SELECT * FROM acolhido WHERE ativo=true", [], (err, result) => {
+                con.query("SELECT * FROM acolhido ORDER BY ativo desc, id", [], (err, result) => {
                     if (err) {
                         return res.status(500).json({success: false, data: err});
                     }
