@@ -1,4 +1,4 @@
-angular.module('novaVida', [ 'ngRoute' ] );
+angular.module('novaVida', [ 'ngRoute', 'angular.viacep' ] );
 
 angular.module('novaVida').controller('inicioController', function( $scope, loginAPI, $location ) {
     $scope.app = 'SOS Nova Vida'

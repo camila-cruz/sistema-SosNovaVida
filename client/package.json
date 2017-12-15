@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Camila-Cruz/sistema-SosNovaVida#readme",
   "dependencies": {
     "angular-chart.js": "^1.1.1",
+    "angular-viacep": "^1.1.2",
     "chart.js": "^2.6.0",
     "sweetalert2": "^7.0.6"
   }
